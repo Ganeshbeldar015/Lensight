@@ -53,11 +53,8 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
             <Flame className="w-5 h-5 fill-white/20" />
           </div>
           <div className="hidden sm:block">
-            <div className="text-base font-bold tracking-wider text-slate-900 flex items-center gap-1.5">
+            <div className="text-base font-bold tracking-wider text-slate-900">
               <span>LENSIGHT</span>
-              <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-orange-50 border border-orange-200 text-[#fa5d19] font-semibold">
-                AI-OPS
-              </span>
             </div>
             <p className="text-[10px] text-slate-400 font-mono tracking-tight -mt-0.5 font-medium">
               INTELLIGENCE PLATFORM
