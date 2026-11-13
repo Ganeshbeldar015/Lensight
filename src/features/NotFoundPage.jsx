@@ -8,12 +8,12 @@ export const NotFoundPage = () => {
 
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center text-center p-6 space-y-4">
-      <div className="w-16 h-16 rounded-2xl bg-[#EAF5EF] border border-[#16845B]/20 flex items-center justify-center text-[#16845B] mb-2 shadow-xs">
+      <div className="w-16 h-16 rounded-2xl bg-[#ddf1f1] border border-[#168a91]/20 flex items-center justify-center text-[#168a91] mb-2 shadow-xs">
         <AlertTriangle className="w-8 h-8" />
       </div>
 
-      <h1 className="text-3xl font-bold text-[#1F2937] tracking-tight">404: Page Not Found</h1>
-      <p className="text-sm text-[#64748B] max-w-md leading-relaxed">
+      <h1 className="text-3xl font-bold text-[#263b40] tracking-tight">404: Page Not Found</h1>
+      <p className="text-sm text-[#61777c] max-w-md leading-relaxed">
         The route you requested does not exist on the Lensight monitoring network.
       </p>
 

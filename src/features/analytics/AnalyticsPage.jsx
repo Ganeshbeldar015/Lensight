@@ -57,22 +57,22 @@ export const AnalyticsPage = () => {
         title="Analytics & Insights"
         description="Temporal trends, detection volume distribution, and camera load metrics."
         badge={
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#EAF5EF] border border-[#16845B]/20 text-[#16845B] font-semibold flex items-center gap-1.5">
+          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#ddf1f1] border border-[#168a91]/20 text-[#168a91] font-semibold flex items-center gap-1.5">
             <BarChart3 className="w-3.5 h-3.5" />
             Security Intelligence
           </span>
         }
         actions={
-          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-[#E5E7EB]">
-            <Calendar className="w-3.5 h-3.5 text-[#64748B] ml-2 mr-1" />
+          <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7]">
+            <Calendar className="w-3.5 h-3.5 text-[#61777c] ml-2 mr-1" />
             {['today', '24h', '7d', '30d'].map((r) => (
               <button
                 key={r}
                 onClick={() => setRange(r)}
                 className={`px-3 py-1 rounded text-xs uppercase font-medium transition-colors cursor-pointer ${
                   range === r
-                    ? 'bg-[#16845B] text-white font-semibold shadow-xs'
-                    : 'text-[#64748B] hover:text-[#1F2937]'
+                    ? 'bg-[#168a91] text-white font-semibold shadow-xs'
+                    : 'text-[#61777c] hover:text-[#263b40]'
                 }`}
               >
                 {r}
@@ -101,70 +101,70 @@ export const AnalyticsPage = () => {
         <>
           {/* Summary Stats Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Card className="bg-white border-[#E5E7EB] shadow-xs">
-              <div className="flex items-center justify-between text-[#64748B] text-xs font-semibold uppercase tracking-wider">
+            <Card className="bg-white border-[#dce5e7] shadow-xs">
+              <div className="flex items-center justify-between text-[#61777c] text-xs font-semibold uppercase tracking-wider">
                 <span>Total Detections</span>
-                <TrendingUp className="w-4 h-4 text-[#16845B]" />
+                <TrendingUp className="w-4 h-4 text-[#168a91]" />
               </div>
-              <div className="mt-2 text-2xl font-bold text-[#1F2937]">
+              <div className="mt-2 text-2xl font-bold text-[#263b40]">
                 {data.totalEvents}
               </div>
-              <p className="text-xs text-[#64748B] mt-1">in selected window</p>
+              <p className="text-xs text-[#61777c] mt-1">in selected window</p>
             </Card>
 
-            <Card className="bg-white border-[#E5E7EB] shadow-xs">
-              <div className="flex items-center justify-between text-[#64748B] text-xs font-semibold uppercase tracking-wider">
+            <Card className="bg-white border-[#dce5e7] shadow-xs">
+              <div className="flex items-center justify-between text-[#61777c] text-xs font-semibold uppercase tracking-wider">
                 <span>Avg Confidence</span>
-                <ShieldCheck className="w-4 h-4 text-[#16845B]" />
+                <ShieldCheck className="w-4 h-4 text-[#299b72]" />
               </div>
-              <div className="mt-2 text-2xl font-bold text-[#1F2937]">
+              <div className="mt-2 text-2xl font-bold text-[#263b40]">
                 {data.averageConfidence}%
               </div>
-              <p className="text-xs text-[#16845B] mt-1 font-medium">Detection reliability</p>
+              <p className="text-xs text-[#299b72] mt-1 font-medium">Detection reliability</p>
             </Card>
 
-            <Card className="bg-white border-[#E5E7EB] shadow-xs">
-              <div className="flex items-center justify-between text-[#64748B] text-xs font-semibold uppercase tracking-wider">
+            <Card className="bg-white border-[#dce5e7] shadow-xs">
+              <div className="flex items-center justify-between text-[#61777c] text-xs font-semibold uppercase tracking-wider">
                 <span>Peak Activity Hour</span>
-                <Clock className="w-4 h-4 text-[#D99A26]" />
+                <Clock className="w-4 h-4 text-[#d69a38]" />
               </div>
-              <div className="mt-2 text-xl font-bold text-[#1F2937] truncate">
+              <div className="mt-2 text-xl font-bold text-[#263b40] truncate">
                 {data.peakHour}
               </div>
-              <p className="text-xs text-[#64748B] mt-1">Highest event volume</p>
+              <p className="text-xs text-[#61777c] mt-1">Highest event volume</p>
             </Card>
 
-            <Card className="bg-white border-[#E5E7EB] shadow-xs">
-              <div className="flex items-center justify-between text-[#64748B] text-xs font-semibold uppercase tracking-wider">
+            <Card className="bg-white border-[#dce5e7] shadow-xs">
+              <div className="flex items-center justify-between text-[#61777c] text-xs font-semibold uppercase tracking-wider">
                 <span>Most Active Camera</span>
-                <Camera className="w-4 h-4 text-[#4B83C5]" />
+                <Camera className="w-4 h-4 text-[#168a91]" />
               </div>
-              <div className="mt-2 text-base font-bold text-[#1F2937] truncate" title={data.busiestCamera.name}>
+              <div className="mt-2 text-base font-bold text-[#263b40] truncate" title={data.busiestCamera.name}>
                 {data.busiestCamera.name}
               </div>
-              <p className="text-xs text-[#4B83C5] mt-1 font-medium">
+              <p className="text-xs text-[#168a91] mt-1 font-medium">
                 {data.busiestCamera.count} events logged
               </p>
             </Card>
           </div>
 
           {/* Events Over Time Chart */}
-          <Card className="p-5 bg-white border-[#E5E7EB] shadow-xs">
+          <Card className="p-5 bg-white border-[#dce5e7] shadow-xs">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-4">
               <div>
-                <h3 className="text-sm font-semibold text-[#1F2937]">
+                <h3 className="text-sm font-semibold text-[#263b40]">
                   Detection Activity Over Time
                 </h3>
-                <p className="text-xs text-[#64748B] mt-0.5">
+                <p className="text-xs text-[#61777c] mt-0.5">
                   Hourly or daily event frequencies segmented by critical severity breaches.
                 </p>
               </div>
               <div className="flex items-center gap-3 text-xs">
-                <span className="flex items-center gap-1.5 text-[#16845B] font-medium">
-                  <span className="w-2 h-2 rounded-full bg-[#16845B]" /> Total Events
+                <span className="flex items-center gap-1.5 text-[#168a91] font-medium">
+                  <span className="w-2 h-2 rounded-full bg-[#168a91]" /> Total Events
                 </span>
-                <span className="flex items-center gap-1.5 text-[#DC5656] font-medium">
-                  <span className="w-2 h-2 rounded-full bg-[#DC5656]" /> Critical Alerts
+                <span className="flex items-center gap-1.5 text-[#d95757] font-medium">
+                  <span className="w-2 h-2 rounded-full bg-[#d95757]" /> Critical Alerts
                 </span>
               </div>
             </div>
@@ -174,18 +174,18 @@ export const AnalyticsPage = () => {
                 <AreaChart data={data.eventsOverTime}>
                   <defs>
                     <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#16845B" stopOpacity={0.25} />
-                      <stop offset="95%" stopColor="#16845B" stopOpacity={0.0} />
+                      <stop offset="5%" stopColor="#168a91" stopOpacity={0.25} />
+                      <stop offset="95%" stopColor="#168a91" stopOpacity={0.0} />
                     </linearGradient>
                   </defs>
-                  <XAxis dataKey="label" stroke="#94A3B8" fontSize={11} tickLine={false} />
-                  <YAxis stroke="#94A3B8" fontSize={11} tickLine={false} width={30} />
+                  <XAxis dataKey="label" stroke="#8a9b9f" fontSize={11} tickLine={false} />
+                  <YAxis stroke="#8a9b9f" fontSize={11} tickLine={false} width={30} />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: '#FFFFFF',
-                      borderColor: '#E5E7EB',
+                      borderColor: '#dce5e7',
                       borderRadius: '8px',
-                      color: '#1F2937',
+                      color: '#263b40',
                       fontSize: '12px',
                       boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
                     }}
@@ -194,7 +194,7 @@ export const AnalyticsPage = () => {
                     type="monotone"
                     dataKey="count"
                     name="Total Events"
-                    stroke="#16845B"
+                    stroke="#168a91"
                     strokeWidth={2}
                     fillOpacity={1}
                     fill="url(#areaGradient)"
@@ -203,10 +203,10 @@ export const AnalyticsPage = () => {
                     type="monotone"
                     dataKey="critical"
                     name="Critical Alerts"
-                    stroke="#DC5656"
+                    stroke="#d95757"
                     strokeWidth={2}
                     fillOpacity={0.15}
-                    fill="#DC5656"
+                    fill="#d95757"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -216,13 +216,13 @@ export const AnalyticsPage = () => {
           {/* Bottom Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Event Categories Donut */}
-            <Card className="p-5 bg-white border-[#E5E7EB] shadow-xs flex flex-col justify-between">
+            <Card className="p-5 bg-white border-[#dce5e7] shadow-xs flex flex-col justify-between">
               <div>
-                <h3 className="text-sm font-semibold text-[#1F2937] flex items-center gap-2">
-                  <PieIcon className="w-4 h-4 text-[#16845B]" />
+                <h3 className="text-sm font-semibold text-[#263b40] flex items-center gap-2">
+                  <PieIcon className="w-4 h-4 text-[#168a91]" />
                   Event Category Distribution
                 </h3>
-                <p className="text-xs text-[#64748B] mt-0.5">
+                <p className="text-xs text-[#61777c] mt-0.5">
                   Proportional breakdown of classified event categories.
                 </p>
               </div>
@@ -247,17 +247,17 @@ export const AnalyticsPage = () => {
                     <Tooltip
                       contentStyle={{
                         backgroundColor: '#FFFFFF',
-                        borderColor: '#E5E7EB',
+                        borderColor: '#dce5e7',
                         borderRadius: '8px',
                         fontSize: '12px',
-                        color: '#1F2937',
+                        color: '#263b40',
                         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
                       }}
                     />
                     <Legend
                       verticalAlign="bottom"
                       height={36}
-                      formatter={(val) => <span className="text-xs text-[#1F2937] font-medium">{val}</span>}
+                      formatter={(val) => <span className="text-xs text-[#263b40] font-medium">{val}</span>}
                     />
                   </PieChart>
                 </ResponsiveContainer>
@@ -265,13 +265,13 @@ export const AnalyticsPage = () => {
             </Card>
 
             {/* Camera-Wise Event Count Horizontal Bar */}
-            <Card className="p-5 bg-white border-[#E5E7EB] shadow-xs flex flex-col justify-between">
+            <Card className="p-5 bg-white border-[#dce5e7] shadow-xs flex flex-col justify-between">
               <div>
-                <h3 className="text-sm font-semibold text-[#1F2937] flex items-center gap-2">
-                  <Camera className="w-4 h-4 text-[#16845B]" />
+                <h3 className="text-sm font-semibold text-[#263b40] flex items-center gap-2">
+                  <Camera className="w-4 h-4 text-[#168a91]" />
                   Camera-Wise Activity Density
                 </h3>
-                <p className="text-xs text-[#64748B] mt-0.5">
+                <p className="text-xs text-[#61777c] mt-0.5">
                   Top surveillance nodes sorted by detection frequency.
                 </p>
               </div>
@@ -279,11 +279,11 @@ export const AnalyticsPage = () => {
               <div className="h-64 w-full my-3">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={data.cameraDistribution} layout="vertical" margin={{ left: 10, right: 20 }}>
-                    <XAxis type="number" stroke="#94A3B8" fontSize={11} tickLine={false} />
+                    <XAxis type="number" stroke="#8a9b9f" fontSize={11} tickLine={false} />
                     <YAxis
                       dataKey="id"
                       type="category"
-                      stroke="#64748B"
+                      stroke="#61777c"
                       fontSize={11}
                       tickLine={false}
                       width={65}
@@ -291,10 +291,10 @@ export const AnalyticsPage = () => {
                     <Tooltip
                       contentStyle={{
                         backgroundColor: '#FFFFFF',
-                        borderColor: '#E5E7EB',
+                        borderColor: '#dce5e7',
                         borderRadius: '8px',
                         fontSize: '12px',
-                        color: '#1F2937',
+                        color: '#263b40',
                         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
                       }}
                       formatter={(val, name, item) => [
@@ -302,7 +302,7 @@ export const AnalyticsPage = () => {
                         item.payload.name
                       ]}
                     />
-                    <Bar dataKey="count" fill="#16845B" radius={[0, 4, 4, 0]} />
+                    <Bar dataKey="count" fill="#168a91" radius={[0, 4, 4, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>

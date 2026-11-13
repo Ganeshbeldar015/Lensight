@@ -65,8 +65,8 @@ export const OverviewPage = () => {
         title="Security Operations Overview"
         description="Unified monitoring dashboard for multi-camera feeds, security alerts, and detection telemetry."
         badge={
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#EAF5EF] border border-[#16845B]/20 text-[#16845B] flex items-center gap-1.5 font-semibold">
-            <Radio className="w-3.5 h-3.5 animate-pulse text-[#16845B]" />
+          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#ddf1f1] border border-[#168a91]/20 text-[#168a91] flex items-center gap-1.5 font-semibold">
+            <Radio className="w-3.5 h-3.5 animate-pulse text-[#168a91]" />
             Live System
           </span>
         }
@@ -84,22 +84,22 @@ export const OverviewPage = () => {
 
       {/* Critical Alerts Banner if any */}
       {urgentAlerts.length > 0 && (
-        <div className="p-4 rounded-xl border border-red-200 bg-red-50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+        <div className="p-4 rounded-xl border border-[#d95757]/30 bg-[#fdf0f0] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#DC5656] flex items-center justify-center text-white shrink-0">
+            <div className="w-9 h-9 rounded-lg bg-[#d95757] flex items-center justify-center text-white shrink-0">
               <AlertTriangle className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-sm text-[#1F2937]">
+                <span className="font-semibold text-sm text-[#263b40]">
                   {urgentAlerts.length} Critical Security {urgentAlerts.length === 1 ? 'Alert' : 'Alerts'} Pending
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-red-100 text-[#DC5656] border border-red-200 font-semibold">
+                <span className="text-[10px] px-2 py-0.5 rounded bg-[#fdf0f0] text-[#d95757] border border-[#d95757]/30 font-semibold">
                   Action Required
                 </span>
               </div>
-              <p className="text-xs text-[#64748B] mt-0.5">
-                {urgentAlerts[0].title} &bull; <span className="font-medium text-[#1F2937]">{urgentAlerts[0].cameraName || urgentAlerts[0].cameraId}</span>
+              <p className="text-xs text-[#61777c] mt-0.5">
+                {urgentAlerts[0].title} &bull; <span className="font-medium text-[#263b40]">{urgentAlerts[0].cameraName || urgentAlerts[0].cameraId}</span>
               </p>
             </div>
           </div>
@@ -128,42 +128,42 @@ export const OverviewPage = () => {
         {/* Total Cameras */}
         <Card hoverable onClick={() => navigate('/cameras')} className="relative overflow-hidden group">
           <div className="flex items-center justify-between">
-            <span className="text-xs uppercase tracking-wider text-[#64748B] font-semibold">Total Cameras</span>
-            <div className="w-8 h-8 rounded-lg bg-slate-100 border border-[#E5E7EB] flex items-center justify-center text-[#64748B] group-hover:text-[#16845B] group-hover:border-[#16845B]/30 transition-colors">
+            <span className="text-xs uppercase tracking-wider text-[#61777c] font-semibold">Total Cameras</span>
+            <div className="w-8 h-8 rounded-lg bg-[#f0f6f6] border border-[#dce5e7] flex items-center justify-center text-[#61777c] group-hover:text-[#168a91] group-hover:border-[#168a91]/30 transition-colors">
               <Camera className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-[#1F2937]">
+            <span className="text-3xl font-bold text-[#263b40]">
               {camerasLoading ? '...' : kpis?.totalCameras || cameras.length}
             </span>
-            <span className="text-xs text-[#64748B]">devices configured</span>
+            <span className="text-xs text-[#61777c]">devices configured</span>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs text-[#64748B]">
-            <span className="text-[#16845B] font-medium">{kpis?.onlineCount || 0} Online</span>
-            <span className="text-[#D99A26] font-medium">{kpis?.warningCount || 0} Warning</span>
-            <span className="text-[#DC5656] font-medium">{kpis?.offlineCount || 0} Offline</span>
+          <div className="mt-3 pt-3 border-t border-[#dce5e7] flex items-center justify-between text-xs text-[#61777c]">
+            <span className="text-[#299b72] font-medium">{kpis?.onlineCount || 0} Online</span>
+            <span className="text-[#d69a38] font-medium">{kpis?.warningCount || 0} Warning</span>
+            <span className="text-[#d95757] font-medium">{kpis?.offlineCount || 0} Offline</span>
           </div>
         </Card>
 
         {/* Active Streams */}
         <Card hoverable onClick={() => navigate('/live')} className="relative overflow-hidden group">
           <div className="flex items-center justify-between">
-            <span className="text-xs uppercase tracking-wider text-[#64748B] font-semibold">Active Streams</span>
-            <div className="w-8 h-8 rounded-lg bg-[#EAF5EF] border border-[#16845B]/20 flex items-center justify-center text-[#16845B] transition-colors">
+            <span className="text-xs uppercase tracking-wider text-[#61777c] font-semibold">Active Streams</span>
+            <div className="w-8 h-8 rounded-lg bg-[#ddf1f1] border border-[#168a91]/20 flex items-center justify-center text-[#168a91] transition-colors">
               <Video className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-[#1F2937]">
+            <span className="text-3xl font-bold text-[#263b40]">
               {camerasLoading ? '...' : kpis?.activeCameras || 0}
             </span>
-            <span className="text-xs text-[#16845B] font-medium">
+            <span className="text-xs text-[#168a91] font-medium">
               {kpis?.totalCameras ? `${Math.round(((kpis.onlineCount) / kpis.totalCameras) * 100)}%` : '0%'} uptime
             </span>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#E5E7EB] flex items-center gap-1.5 text-xs text-[#64748B]">
-            <span className="w-2 h-2 rounded-full bg-[#16845B] animate-pulse" />
+          <div className="mt-3 pt-3 border-t border-[#dce5e7] flex items-center gap-1.5 text-xs text-[#61777c]">
+            <span className="w-2 h-2 rounded-full bg-[#299b72] animate-pulse" />
             <span>Streaming simulated CCTV feeds</span>
           </div>
         </Card>
@@ -171,20 +171,20 @@ export const OverviewPage = () => {
         {/* Events Today */}
         <Card hoverable onClick={() => navigate('/events')} className="relative overflow-hidden group">
           <div className="flex items-center justify-between">
-            <span className="text-xs uppercase tracking-wider text-[#64748B] font-semibold">Events Today</span>
-            <div className="w-8 h-8 rounded-lg bg-[#EAF5EF] border border-[#16845B]/20 flex items-center justify-center text-[#16845B] transition-colors">
+            <span className="text-xs uppercase tracking-wider text-[#61777c] font-semibold">Events Today</span>
+            <div className="w-8 h-8 rounded-lg bg-[#ddf1f1] border border-[#168a91]/20 flex items-center justify-center text-[#168a91] transition-colors">
               <Activity className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-[#1F2937]">
+            <span className="text-3xl font-bold text-[#263b40]">
               {kpis?.eventsToday ?? recentEvents.length}
             </span>
-            <span className="text-xs text-[#16845B] font-medium">since 00:00</span>
+            <span className="text-xs text-[#168a91] font-medium">since 00:00</span>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs text-[#64748B]">
+          <div className="mt-3 pt-3 border-t border-[#dce5e7] flex items-center justify-between text-xs text-[#61777c]">
             <span>Security detections logged</span>
-            <TrendingUp className="w-3.5 h-3.5 text-[#16845B]" />
+            <TrendingUp className="w-3.5 h-3.5 text-[#168a91]" />
           </div>
         </Card>
 
@@ -194,25 +194,25 @@ export const OverviewPage = () => {
           onClick={() => navigate('/alerts')} 
           className={`relative overflow-hidden group ${
             (kpis?.criticalAlerts || 0) > 0 
-              ? 'border-red-200 bg-red-50/40' 
+              ? 'border-[#d95757]/30 bg-[#fdf0f0]/60' 
               : ''
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs uppercase tracking-wider text-[#DC5656] font-semibold">Critical Alerts</span>
-            <div className="w-8 h-8 rounded-lg bg-red-50 border border-red-200 flex items-center justify-center text-[#DC5656]">
+            <span className="text-xs uppercase tracking-wider text-[#d95757] font-semibold">Critical Alerts</span>
+            <div className="w-8 h-8 rounded-lg bg-[#fdf0f0] border border-[#d95757]/20 flex items-center justify-center text-[#d95757]">
               <ShieldAlert className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-[#DC5656]">
+            <span className="text-3xl font-bold text-[#d95757]">
               {kpis?.criticalAlerts || 0}
             </span>
-            <span className="text-xs text-[#DC5656] font-medium">unacknowledged</span>
+            <span className="text-xs text-[#d95757] font-medium">unacknowledged</span>
           </div>
-          <div className="mt-3 pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-xs text-[#64748B]">
+          <div className="mt-3 pt-3 border-t border-[#dce5e7] flex items-center justify-between text-xs text-[#61777c]">
             <span>Requires operational review</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#DC5656]" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#d95757]" />
           </div>
         </Card>
       </div>
@@ -223,8 +223,8 @@ export const OverviewPage = () => {
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Video className="w-4 h-4 text-[#16845B]" />
-              <h2 className="text-sm font-semibold text-[#1F2937]">
+              <Video className="w-4 h-4 text-[#168a91]" />
+              <h2 className="text-sm font-semibold text-[#263b40]">
                 Live Monitoring Preview
               </h2>
             </div>
@@ -243,12 +243,12 @@ export const OverviewPage = () => {
               return (
                 <div
                   key={camera.id}
-                  className="group rounded-xl border border-[#E5E7EB] bg-white overflow-hidden flex flex-col transition-all hover:shadow-md"
+                  className="group rounded-xl border border-[#dce5e7] bg-white overflow-hidden flex flex-col transition-all hover:shadow-md"
                 >
-                  <div className="p-3 bg-slate-50 border-b border-[#E5E7EB] flex items-center justify-between">
+                  <div className="p-3 bg-[#f0f6f6] border-b border-[#dce5e7] flex items-center justify-between">
                     <div className="truncate">
-                      <p className="text-xs font-semibold text-[#1F2937] truncate">{camera.name}</p>
-                      <p className="text-[11px] text-[#64748B] truncate">{camera.location}</p>
+                      <p className="text-xs font-semibold text-[#263b40] truncate">{camera.name}</p>
+                      <p className="text-[11px] text-[#61777c] truncate">{camera.location}</p>
                     </div>
                     <StatusBadge status={camera.status} size="sm" />
                   </div>
@@ -265,11 +265,11 @@ export const OverviewPage = () => {
           </div>
 
           {/* Mini Events-Over-Time Chart */}
-          <Card className="p-4 bg-white border-[#E5E7EB]">
+          <Card className="p-4 bg-white border-[#dce5e7]">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-[#16845B]" />
-                <span className="text-sm font-semibold text-[#1F2937]">
+                <TrendingUp className="w-4 h-4 text-[#168a91]" />
+                <span className="text-sm font-semibold text-[#263b40]">
                   Detection Activity Trend (Last 12 Hours)
                 </span>
               </div>
@@ -287,18 +287,18 @@ export const OverviewPage = () => {
                 <AreaChart data={trendData}>
                   <defs>
                     <linearGradient id="eventGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#16845B" stopOpacity={0.25} />
-                      <stop offset="95%" stopColor="#16845B" stopOpacity={0.0} />
+                      <stop offset="5%" stopColor="#168a91" stopOpacity={0.25} />
+                      <stop offset="95%" stopColor="#168a91" stopOpacity={0.0} />
                     </linearGradient>
                   </defs>
                   <XAxis 
                     dataKey="hour" 
-                    stroke="#94A3B8" 
+                    stroke="#8a9b9f" 
                     fontSize={11} 
                     tickLine={false} 
                   />
                   <YAxis 
-                    stroke="#94A3B8" 
+                    stroke="#8a9b9f" 
                     fontSize={11} 
                     tickLine={false} 
                     width={28} 
@@ -306,17 +306,17 @@ export const OverviewPage = () => {
                   <Tooltip 
                     contentStyle={{ 
                       backgroundColor: '#FFFFFF', 
-                      borderColor: '#E5E7EB', 
+                      borderColor: '#dce5e7', 
                       borderRadius: '8px',
                       fontSize: '12px',
-                      color: '#1F2937',
+                      color: '#263b40',
                       boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
                     }} 
                   />
                   <Area
                     type="monotone"
                     dataKey="count"
-                    stroke="#16845B"
+                    stroke="#168a91"
                     strokeWidth={2}
                     fillOpacity={1}
                     fill="url(#eventGradient)"
@@ -331,8 +331,8 @@ export const OverviewPage = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Activity className="w-4 h-4 text-[#16845B]" />
-              <h2 className="text-sm font-semibold text-[#1F2937]">
+              <Activity className="w-4 h-4 text-[#168a91]" />
+              <h2 className="text-sm font-semibold text-[#263b40]">
                 Recent Events
               </h2>
             </div>
@@ -345,9 +345,9 @@ export const OverviewPage = () => {
             </Button>
           </div>
 
-          <Card className="p-3 bg-white border-[#E5E7EB] divide-y divide-[#E5E7EB]">
+          <Card className="p-3 bg-white border-[#dce5e7] divide-y divide-[#dce5e7]">
             {recentEvents.length === 0 ? (
-              <div className="py-12 text-center text-xs text-[#64748B]">
+              <div className="py-12 text-center text-xs text-[#61777c]">
                 Monitoring for security events...
               </div>
             ) : (
@@ -355,27 +355,27 @@ export const OverviewPage = () => {
                 <div
                   key={event.id}
                   onClick={() => setSelectedEvent(event)}
-                  className="py-3 px-2 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer flex items-start justify-between gap-3 group"
+                  className="py-3 px-2 rounded-lg hover:bg-[#f0f6f6] transition-colors cursor-pointer flex items-start justify-between gap-3 group"
                 >
                   <div className="space-y-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="text-[11px] font-mono text-[#64748B]">
+                      <span className="text-[11px] font-mono text-[#61777c]">
                         {event.id}
                       </span>
                       <EventTypeBadge type={event.type} size="sm" />
                       <SeverityBadge severity={event.severity} size="sm" />
                     </div>
-                    <p className="text-xs text-[#1F2937] font-medium leading-snug line-clamp-2 group-hover:text-[#16845B] transition-colors">
+                    <p className="text-xs text-[#263b40] font-medium leading-snug line-clamp-2 group-hover:text-[#168a91] transition-colors">
                       {event.description}
                     </p>
-                    <div className="flex items-center gap-2 text-[11px] text-[#64748B]">
+                    <div className="flex items-center gap-2 text-[11px] text-[#61777c]">
                       <span>{event.cameraName || event.cameraId}</span>
                       <span>&bull;</span>
                       <span>{(event.confidence * 100).toFixed(0)}% conf</span>
                     </div>
                   </div>
 
-                  <span className="text-[11px] text-[#94A3B8] shrink-0 pt-0.5">
+                  <span className="text-[11px] text-[#8a9b9f] shrink-0 pt-0.5">
                     {new Date(event.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>

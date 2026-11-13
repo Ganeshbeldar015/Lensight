@@ -13,42 +13,42 @@ export const SeverityBadge = ({
 
   const config = {
     critical: {
-      bg: 'bg-red-50',
-      border: 'border-red-200',
-      text: 'text-[#dc5656]',
-      dot: 'bg-[#dc5656]',
+      bg: 'bg-[#fdf0f0]',
+      border: 'border-[#d95757]/25',
+      text: 'text-[#d95757]',
+      dot: 'bg-[#d95757]',
       icon: AlertOctagon,
       label: 'CRITICAL'
     },
     high: {
-      bg: 'bg-amber-50',
-      border: 'border-amber-200',
-      text: 'text-[#b47a16]',
-      dot: 'bg-[#d99a26]',
+      bg: 'bg-[#fdf6ea]',
+      border: 'border-[#d69a38]/30',
+      text: 'text-[#d69a38]',
+      dot: 'bg-[#d69a38]',
       icon: AlertTriangle,
       label: 'HIGH'
     },
     medium: {
-      bg: 'bg-amber-50/60',
-      border: 'border-amber-200/80',
-      text: 'text-[#b47a16]',
-      dot: 'bg-[#d99a26]',
+      bg: 'bg-[#fdf6ea]/70',
+      border: 'border-[#d69a38]/25',
+      text: 'text-[#d69a38]',
+      dot: 'bg-[#d69a38]',
       icon: AlertCircle,
       label: 'MEDIUM'
     },
     low: {
-      bg: 'bg-slate-100',
-      border: 'border-slate-200',
-      text: 'text-slate-700',
-      dot: 'bg-slate-500',
+      bg: 'bg-[#f0f5fa]',
+      border: 'border-[#4b83c5]/25',
+      text: 'text-[#4b83c5]',
+      dot: 'bg-[#4b83c5]',
       icon: ShieldCheck,
       label: 'LOW'
     }
   }[normalized] || {
-    bg: 'bg-slate-100',
-    border: 'border-slate-200',
-    text: 'text-slate-600',
-    dot: 'bg-slate-400',
+    bg: 'bg-[#f0f6f6]',
+    border: 'border-[#dce5e7]',
+    text: 'text-[#61777c]',
+    dot: 'bg-[#8a9b9f]',
     icon: ShieldCheck,
     label: (severity || 'INFO').toUpperCase()
   };
