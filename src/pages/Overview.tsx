@@ -6,6 +6,7 @@ import { StatCard } from '@/components/common/StatCard';
 import { StatusBadge } from '@/components/common/StatusBadge';
 import { SeverityBadge } from '@/components/common/SeverityBadge';
 import { EventTypeBadge } from '@/components/common/EventTypeBadge';
+import { CameraCard } from '@/components/cameras/CameraCard';
 import { EventsLineChart } from '@/components/analytics/EventsLineChart';
 import { CameraDetailsModal } from '@/components/cameras/CameraDetailsModal';
 import { EventDetailsModal } from '@/components/events/EventDetailsModal';
@@ -20,6 +21,7 @@ import {
   ShieldCheck,
   Radio,
   Eye,
+  Grid2X2,
 } from 'lucide-react';
 
 export const Overview: React.FC = () => {
@@ -28,6 +30,9 @@ export const Overview: React.FC = () => {
   const [selectedCamera, setSelectedCamera] = useState<Camera | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<DetectionEvent | null>(null);
   const [selectedAlert, setSelectedAlert] = useState<Alert | null>(null);
+
+  // Top 4 cameras for the live monitoring preview grid on Overview
+  const previewCameras = useMemo(() => cameras.slice(0, 4), [cameras]);
 
   // Recent 6 detection events
   const recentEvents = useMemo(() => events.slice(0, 6), [events]);
@@ -68,7 +73,7 @@ export const Overview: React.FC = () => {
               className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/20 transition-colors"
             >
               <Video className="w-4 h-4" />
-              <span>Open Video Wall</span>
+              <span>Full Video Wall</span>
             </Link>
           </div>
         }
@@ -112,6 +117,39 @@ export const Overview: React.FC = () => {
           indicatorColor="red"
           highlight={alerts.some((a) => a.severity === 'critical' && !a.acknowledged)}
         />
+      </div>
+
+      {/* Live Camera Surveillance Grid (Section 4 layout requirement) */}
+      <div className="bg-[#1F2937] border border-[#374151] rounded-2xl p-5 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h3 className="text-sm font-bold text-[#F9FAFB] uppercase tracking-wider font-mono flex items-center gap-2">
+              <Grid2X2 className="w-4 h-4 text-emerald-400" />
+              Live Surveillance Grid Preview
+            </h3>
+            <p className="text-xs text-[#9CA3AF] mt-0.5">
+              Priority optical streams with synchronized neural bounding boxes and telemetry
+            </p>
+          </div>
+
+          <Link
+            to="/monitoring"
+            className="text-xs text-emerald-400 hover:text-emerald-300 font-medium flex items-center gap-1 font-mono"
+          >
+            Launch Multi-Matrix Wall ({cameras.length} Feeds) <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {previewCameras.map((camera) => (
+            <CameraCard
+              key={camera.id}
+              camera={camera}
+              onOpenDetails={(cam) => setSelectedCamera(cam)}
+              onFullscreen={(cam) => setSelectedCamera(cam)}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Camera Health & Critical Alerts Split Grid */}
