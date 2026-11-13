@@ -10,13 +10,13 @@ export const ErrorState = ({
 }) => {
   return (
     <div
-      className={`flex flex-col items-center justify-center p-8 text-center rounded-xl border border-[rgba(235,52,36,0.25)] bg-[rgba(235,52,36,0.04)] ${className}`}
+      className={`flex flex-col items-center justify-center p-8 text-center rounded-xl border border-red-200 bg-red-50/60 shadow-xs ${className}`}
     >
-      <div className="w-12 h-12 rounded-full bg-[rgba(235,52,36,0.12)] border border-[rgba(235,52,36,0.3)] flex items-center justify-center mb-3 text-[#eb3424]">
+      <div className="w-12 h-12 rounded-full bg-red-100 border border-red-200 flex items-center justify-center mb-3 text-red-600">
         <AlertCircle className="w-6 h-6" />
       </div>
-      <h3 className="text-base font-semibold text-[#f5f5f5] mb-1">{title}</h3>
-      <p className="text-sm text-[#ff9990] max-w-sm mb-4 leading-relaxed">{message}</p>
+      <h3 className="text-base font-semibold text-red-900 mb-1">{title}</h3>
+      <p className="text-sm text-red-700 max-w-sm mb-4 leading-relaxed">{message}</p>
       {onRetry && (
         <Button
           variant="secondary"

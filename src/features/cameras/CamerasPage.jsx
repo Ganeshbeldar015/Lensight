@@ -50,7 +50,7 @@ export const CamerasPage = () => {
         title="Camera Inventory & Node Management"
         description="Configure, inspect telemetry, and manage active surveillance nodes across facilities."
         badge={
-          <span className="font-mono text-xs px-2.5 py-0.5 rounded-full bg-[rgba(250,93,25,0.1)] border border-[#fa5d19]/30 text-[#fa5d19] flex items-center gap-1.5 font-bold">
+          <span className="font-mono text-xs px-2.5 py-0.5 rounded-full bg-orange-50 border border-orange-200 text-[#fa5d19] flex items-center gap-1.5 font-bold">
             <CameraIcon className="w-3.5 h-3.5" />
             {cameras.length} NODES LINKED
           </span>
@@ -68,28 +68,28 @@ export const CamerasPage = () => {
       />
 
       {/* Search & Filter Strip */}
-      <div className="p-4 rounded-xl border border-[#262626] bg-[#121212] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 shadow-md">
+      <div className="p-4 rounded-xl border border-slate-200 bg-white flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 shadow-xs">
         <div className="relative flex-1 max-w-md">
-          <Search className="w-4 h-4 text-[#777] absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by name, location, or CAM-ID..."
-            className="w-full pl-9 pr-4 py-2 rounded-lg bg-[#181818] border border-[#2d2d2d] text-xs text-white placeholder-[#666] focus:border-[#fa5d19] focus:outline-none"
+            className="w-full pl-9 pr-4 py-2 rounded-lg bg-slate-50 border border-slate-300 text-xs text-slate-900 placeholder-slate-400 focus:border-[#fa5d19] focus:ring-2 focus:ring-orange-500/20 focus:outline-none transition-colors"
           />
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1 bg-[#181818] p-1 rounded-lg border border-[#2d2d2d]">
+          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
             {['all', 'online', 'warning', 'offline'].map((s) => (
               <button
                 key={s}
                 onClick={() => setStatusFilter(s)}
-                className={`px-3 py-1 rounded text-xs font-mono capitalize transition-colors ${
+                className={`px-3 py-1 rounded text-xs font-mono capitalize transition-colors cursor-pointer ${
                   statusFilter === s
-                    ? 'bg-[#fa5d19] text-white font-bold shadow'
-                    : 'text-[#888] hover:text-white'
+                    ? 'bg-[#fa5d19] text-white font-bold shadow-2xs'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {s}
@@ -97,17 +97,17 @@ export const CamerasPage = () => {
             ))}
           </div>
 
-          <span className="font-mono text-xs text-[#777] ml-2 hidden sm:inline-block">
+          <span className="font-mono text-xs text-slate-500 ml-2 hidden sm:inline-block">
             {filteredCameras.length} of {cameras.length} Nodes
           </span>
         </div>
       </div>
 
       {/* Camera Inventory Table */}
-      <div className="rounded-xl border border-[#262626] bg-[#121212] overflow-hidden shadow-lg">
+      <div className="rounded-xl border border-slate-200 bg-white overflow-hidden shadow-xs">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-[#242424] bg-[#171717] font-mono text-[11px] uppercase tracking-wider text-[#888]">
+            <tr className="border-b border-slate-200 bg-slate-50 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-semibold">
               <th className="py-3 px-4">Node ID</th>
               <th className="py-3 px-4">Camera Name</th>
               <th className="py-3 px-4">Physical Location</th>
@@ -118,44 +118,46 @@ export const CamerasPage = () => {
               <th className="py-3 px-4 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#1e1e1e] text-xs">
+          <tbody className="divide-y divide-slate-100 text-xs">
             {filteredCameras.map((camera) => (
               <tr
                 key={camera.id}
-                className="hover:bg-[#181818] transition-colors group"
+                className="hover:bg-slate-50/90 transition-colors group"
               >
                 <td className="py-3 px-4 font-mono font-bold text-[#fa5d19]">
                   {camera.id}
                 </td>
                 <td className="py-3 px-4">
-                  <div className="font-semibold text-white group-hover:text-[#fa5d19] transition-colors">
+                  <div className="font-semibold text-slate-900 group-hover:text-[#fa5d19] transition-colors">
                     {camera.name}
                   </div>
-                  <div className="text-[10px] text-[#777] font-mono truncate max-w-xs">
+                  <div className="text-[10px] text-slate-400 font-mono truncate max-w-xs">
                     {camera.streamUrl || 'Sample Stream Simulation'}
                   </div>
                 </td>
-                <td className="py-3 px-4 text-[#aaa] flex items-center gap-1.5 pt-4">
-                  <MapPin className="w-3.5 h-3.5 text-[#666]" />
-                  <span>{camera.location}</span>
+                <td className="py-3 px-4 text-slate-600">
+                  <div className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                    <span>{camera.location}</span>
+                  </div>
                 </td>
-                <td className="py-3 px-4 font-mono text-[#888]">
-                  <span className="px-2 py-0.5 rounded bg-[#1c1c1c] border border-[#2a2a2a]">
+                <td className="py-3 px-4 font-mono text-slate-600">
+                  <span className="px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 font-medium">
                     {camera.zone || 'Zone 01'}
                   </span>
                 </td>
                 <td className="py-3 px-4">
                   <StatusBadge status={camera.status} size="sm" />
                 </td>
-                <td className="py-3 px-4 font-mono text-[#888]">
+                <td className="py-3 px-4 font-mono text-slate-600">
                   <span>{camera.resolution}</span> • <span>{camera.fps}fps</span>
                 </td>
                 <td 
-                  className="py-3 px-4 font-mono text-[#888]"
+                  className="py-3 px-4 font-mono text-slate-500"
                   title={new Date(camera.lastSeen).toUTCString()}
                 >
                   <span className="flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-[#666]" />
+                    <Clock className="w-3 h-3 text-slate-400" />
                     {new Date(camera.lastSeen).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </td>
@@ -163,14 +165,14 @@ export const CamerasPage = () => {
                   <div className="flex items-center justify-end gap-1.5">
                     <button
                       onClick={() => setFocusCamera(camera)}
-                      className="p-1.5 rounded-lg text-[#aaa] hover:text-white hover:bg-[#252525] transition-colors"
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
                       title="Inspect Live Feed"
                     >
                       <Maximize2 className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => setCameraToDelete(camera)}
-                      className="p-1.5 rounded-lg text-[#eb3424]/70 hover:text-[#eb3424] hover:bg-red-950/30 transition-colors"
+                      className="p-1.5 rounded-lg text-rose-500 hover:text-rose-700 hover:bg-rose-50 transition-colors cursor-pointer"
                       title="Remove Node"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -203,11 +205,11 @@ export const CamerasPage = () => {
 
       {/* Delete Confirmation Dialog */}
       {cameraToDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-          <div className="w-full max-w-md rounded-2xl border border-[#333] bg-[#141414] p-6 shadow-2xl space-y-4">
-            <h3 className="text-base font-bold text-white">Decommission Camera Node</h3>
-            <p className="text-xs text-[#aaa] leading-relaxed">
-              Are you sure you want to remove <span className="font-semibold text-white">{cameraToDelete.name}</span> ({cameraToDelete.id})? This will immediately disconnect its live feed from the monitoring wall.
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in">
+          <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl space-y-4">
+            <h3 className="text-base font-bold text-slate-900">Decommission Camera Node</h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Are you sure you want to remove <span className="font-semibold text-slate-900">{cameraToDelete.name}</span> ({cameraToDelete.id})? This will immediately disconnect its live feed from the monitoring wall.
             </p>
             <div className="flex items-center justify-end gap-2 pt-2">
               <Button variant="secondary" size="sm" onClick={() => setCameraToDelete(null)}>
