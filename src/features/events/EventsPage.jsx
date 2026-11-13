@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { dataProvider } from '@/services/dataProvider';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { SeverityBadge } from '@/components/ui/SeverityBadge';
+import { EventTypeBadge } from '@/components/ui/EventTypeBadge';
 import { Button } from '@/components/ui/Button';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { Skeleton } from '@/components/ui/Skeleton';
@@ -15,15 +16,42 @@ import {
   ChevronRight, 
   Calendar,
   X,
-  ScanLine
+  ScanLine,
+  User,
+  Car,
+  Activity,
+  ShieldAlert
 } from 'lucide-react';
 
 export const EventsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // Helper to normalize types from URL or state
+  const parseUrlTypes = (params) => {
+    return params.getAll('type')
+      .flatMap(t => t.split(','))
+      .map(t => {
+        const lower = t.toLowerCase().trim();
+        if (lower === 'person_detected' || lower === 'face_recognized' || lower === 'crowd_gathering' || lower === 'loitering_detected') return 'person';
+        if (lower === 'vehicle_detected') return 'vehicle';
+        if (lower === 'motion_detected') return 'motion';
+        if (lower === 'intrusion_alert') return 'restricted_area';
+        return lower;
+      })
+      .filter(t => ['person', 'vehicle', 'motion', 'restricted_area'].includes(t));
+  };
+
+  // Helper to normalize severities from URL or state
+  const parseUrlSeverities = (params) => {
+    return params.getAll('severity')
+      .flatMap(s => s.split(','))
+      .map(s => s.toLowerCase().trim())
+      .filter(s => ['critical', 'high', 'medium', 'low'].includes(s));
+  };
+
   const initialSearch = searchParams.get('search') || '';
-  const initialTypes = searchParams.getAll('type');
-  const initialSeverities = searchParams.getAll('severity');
+  const initialTypes = parseUrlTypes(searchParams);
+  const initialSeverities = parseUrlSeverities(searchParams);
   const initialRange = searchParams.get('range') || '30d';
 
   const [searchQuery, setSearchQuery] = useState(initialSearch);
@@ -51,12 +79,13 @@ export const EventsPage = () => {
     return () => clearTimeout(handler);
   }, [searchQuery]);
 
+  // Keep URL search params in sync with active filters
   useEffect(() => {
     const params = new URLSearchParams();
     if (debouncedQuery) params.set('search', debouncedQuery);
     selectedTypes.forEach((t) => params.append('type', t));
     selectedSeverities.forEach((s) => params.append('severity', s));
-    if (dateRange !== '30d') params.set('range', dateRange);
+    if (dateRange && dateRange !== '30d') params.set('range', dateRange);
     setSearchParams(params, { replace: true });
   }, [debouncedQuery, selectedTypes, selectedSeverities, dateRange, setSearchParams]);
 
@@ -76,11 +105,13 @@ export const EventsPage = () => {
           page,
           limit: pageSize
         });
-        setEvents(res.events);
-        setTotalCount(res.total);
-        setTotalPages(res.totalPages);
+        setEvents(res.events || []);
+        setTotalCount(res.total || 0);
+        setTotalPages(res.totalPages || 1);
       } catch (err) {
         console.error('Failed to fetch events', err);
+        setEvents([]);
+        setTotalCount(0);
       } finally {
         setLoading(false);
       }
@@ -98,17 +129,25 @@ export const EventsPage = () => {
     setPage(1);
   };
 
-  const toggleType = (type) => {
-    setSelectedTypes((prev) =>
-      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
-    );
+  const toggleType = (typeId) => {
+    if (typeId === 'all') {
+      setSelectedTypes([]);
+    } else {
+      setSelectedTypes((prev) =>
+        prev.includes(typeId) ? prev.filter((t) => t !== typeId) : [...prev, typeId]
+      );
+    }
     setPage(1);
   };
 
-  const toggleSeverity = (sev) => {
-    setSelectedSeverities((prev) =>
-      prev.includes(sev) ? prev.filter((s) => s !== sev) : [...prev, sev]
-    );
+  const toggleSeverity = (sevId) => {
+    if (sevId === 'all') {
+      setSelectedSeverities([]);
+    } else {
+      setSelectedSeverities((prev) =>
+        prev.includes(sevId) ? prev.filter((s) => s !== sevId) : [...prev, sevId]
+      );
+    }
     setPage(1);
   };
 
@@ -121,16 +160,18 @@ export const EventsPage = () => {
   };
 
   const allTypes = [
-    'motion_detected',
-    'person_detected',
-    'vehicle_detected',
-    'face_recognized',
-    'crowd_gathering',
-    'intrusion_alert',
-    'loitering_detected'
+    { id: 'person', label: 'Person', icon: User },
+    { id: 'vehicle', label: 'Vehicle', icon: Car },
+    { id: 'motion', label: 'Motion', icon: Activity },
+    { id: 'restricted_area', label: 'Restricted Area', icon: ShieldAlert }
   ];
 
-  const allSeverities = ['critical', 'high', 'medium', 'low'];
+  const allSeverities = [
+    { id: 'critical', label: 'Critical' },
+    { id: 'high', label: 'High' },
+    { id: 'medium', label: 'Medium' },
+    { id: 'low', label: 'Low' }
+  ];
 
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
@@ -154,7 +195,7 @@ export const EventsPage = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Filter by description, camera name, or ID..."
+              placeholder="Search by ID, type (Person, Vehicle, Motion, Restricted Area), camera..."
               className="w-full pl-9 pr-8 py-2 rounded-lg bg-slate-50 border border-slate-300 text-xs text-slate-900 placeholder-slate-400 focus:border-[#fa5d19] focus:ring-2 focus:ring-orange-500/20 focus:outline-none transition-colors"
             />
             {searchQuery && (
@@ -169,7 +210,7 @@ export const EventsPage = () => {
 
           <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200 self-start md:self-auto">
             <Calendar className="w-3.5 h-3.5 text-slate-500 ml-2 mr-1" />
-            {['today', '24h', '7d', '30d'].map((r) => (
+            {['today', '24h', '7d', '30d', 'all'].map((r) => (
               <button
                 key={r}
                 onClick={() => {
@@ -190,38 +231,59 @@ export const EventsPage = () => {
 
         <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-mono text-slate-400 font-semibold mr-1">TYPE:</span>
-            {allTypes.map((type) => {
-              const active = selectedTypes.includes(type);
+            <span className="text-[11px] font-mono text-slate-400 font-semibold mr-1">EVENT TYPE:</span>
+            <button
+              onClick={() => toggleType('all')}
+              className={`px-2.5 py-1 rounded-md text-xs font-mono transition-all border cursor-pointer ${
+                selectedTypes.length === 0
+                  ? 'bg-orange-50 text-[#fa5d19] border-orange-300 font-semibold shadow-2xs'
+                  : 'bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              All Types
+            </button>
+            {allTypes.map(({ id, label, icon: Icon }) => {
+              const active = selectedTypes.includes(id);
               return (
                 <button
-                  key={type}
-                  onClick={() => toggleType(type)}
-                  className={`px-2.5 py-1 rounded-md text-xs font-mono capitalize transition-all border cursor-pointer ${
+                  key={id}
+                  onClick={() => toggleType(id)}
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono transition-all border cursor-pointer ${
                     active
                       ? 'bg-orange-50 text-[#fa5d19] border-orange-300 font-semibold shadow-2xs'
                       : 'bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
-                  {type.replace('_', ' ')}
+                  <Icon className="w-3.5 h-3.5" />
+                  <span>{label}</span>
                 </button>
               );
             })}
 
             <span className="text-[11px] font-mono text-slate-400 font-semibold ml-2 mr-1">SEVERITY:</span>
-            {allSeverities.map((sev) => {
-              const active = selectedSeverities.includes(sev);
+            <button
+              onClick={() => toggleSeverity('all')}
+              className={`px-2.5 py-1 rounded-md text-xs font-mono uppercase transition-all border cursor-pointer ${
+                selectedSeverities.length === 0
+                  ? 'bg-slate-900 text-white border-slate-900 font-bold shadow-2xs'
+                  : 'bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              ALL
+            </button>
+            {allSeverities.map(({ id, label }) => {
+              const active = selectedSeverities.includes(id);
               return (
                 <button
-                  key={sev}
-                  onClick={() => toggleSeverity(sev)}
+                  key={id}
+                  onClick={() => toggleSeverity(id)}
                   className={`px-2.5 py-1 rounded-md text-xs font-mono uppercase transition-all border cursor-pointer ${
                     active
-                      ? 'bg-slate-900 text-white border-slate-900 font-bold shadow-2xs'
+                      ? 'bg-slate-900 text-white border-slate-900 font-bold shadow-2xs ring-2 ring-slate-900/10'
                       : 'bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
-                  {sev}
+                  {label}
                 </button>
               );
             })}
@@ -267,7 +329,7 @@ export const EventsPage = () => {
               <thead>
                 <tr className="border-b border-slate-200 bg-slate-50 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-semibold">
                   <th className="py-3 px-4">Event ID</th>
-                  <th className="py-3 px-4">Type</th>
+                  <th className="py-3 px-4">Event Type</th>
                   <th className="py-3 px-4">Camera Source</th>
                   <th 
                     className="py-3 px-4 cursor-pointer hover:text-slate-900 transition-colors"
@@ -308,17 +370,19 @@ export const EventsPage = () => {
                   >
                     <td className="py-3 px-4 font-mono font-bold text-[#fa5d19]">{e.id}</td>
                     <td className="py-3 px-4">
-                      <span className="capitalize font-semibold text-slate-900">
-                        {e.type.replace('_', ' ')}
-                      </span>
+                      <EventTypeBadge type={e.type} size="sm" />
                     </td>
                     <td className="py-3 px-4">
                       <div className="text-slate-900 font-medium">{e.cameraName || e.cameraId}</div>
                       <div className="font-mono text-[10px] text-slate-400">{e.cameraId}</div>
                     </td>
                     <td className="py-3 px-4 font-mono text-slate-600">
-                      {new Date(e.timestamp).toLocaleDateString([], { month: 'short', day: 'numeric' })} •{' '}
-                      {new Date(e.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      <div className="text-slate-900 font-medium">
+                        {new Date(e.timestamp).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </div>
+                      <div className="text-[11px] text-slate-400">
+                        {new Date(e.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+                      </div>
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2">
@@ -359,21 +423,28 @@ export const EventsPage = () => {
               <div
                 key={e.id}
                 onClick={() => setSelectedEvent(e)}
-                className="p-4 rounded-xl border border-slate-200 bg-white space-y-2 shadow-xs active:bg-slate-50 cursor-pointer"
+                className="p-4 rounded-xl border border-slate-200 bg-white space-y-2.5 shadow-xs active:bg-slate-50 cursor-pointer"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-xs font-bold text-[#fa5d19]">{e.id}</span>
                   <SeverityBadge severity={e.severity} size="sm" />
                 </div>
-                <p className="text-xs font-semibold text-slate-900 capitalize">
-                  {e.type.replace('_', ' ')}
-                </p>
+                <div className="flex items-center gap-2">
+                  <EventTypeBadge type={e.type} size="sm" />
+                  <span className="text-xs font-medium text-slate-700 truncate">
+                    {e.cameraName || e.cameraId}
+                  </span>
+                </div>
                 <p className="text-xs text-slate-600 leading-snug line-clamp-2">
                   {e.description}
                 </p>
                 <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                  <span>{e.cameraName || e.cameraId}</span>
-                  <span>{(e.confidence * 100).toFixed(0)}% confidence</span>
+                  <span>
+                    {new Date(e.timestamp).toLocaleDateString([], { month: 'short', day: 'numeric' })} • {new Date(e.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </span>
+                  <span className="font-bold text-slate-700">
+                    {(e.confidence * 100).toFixed(0)}% conf
+                  </span>
                 </div>
               </div>
             ))}

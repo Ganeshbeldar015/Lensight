@@ -46,7 +46,7 @@
     "cameraName": "Executive Office Corridor",
     "timestamp": "2026-11-13T11:37:48.659Z",
     "confidence": 0.77,
-    "severity": "medium",
+    "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -66,7 +66,7 @@
     "cameraName": "Perimeter South Riverbank",
     "timestamp": "2026-11-13T10:57:02.235Z",
     "confidence": 0.9,
-    "severity": "low",
+    "severity": "high",
     "description": "Individual lingering near executive suites",
     "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -146,7 +146,7 @@
     "cameraName": "Perimeter North Fence line",
     "timestamp": "2026-11-13T08:46:52.618Z",
     "confidence": 0.76,
-    "severity": "critical",
+    "severity": "high",
     "description": "Perimeter fence crossing detected on North boundary",
     "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -206,7 +206,7 @@
     "cameraName": "Loading Bay & Logistics Dock 4",
     "timestamp": "2026-11-13T06:22:09.044Z",
     "confidence": 0.93,
-    "severity": "low",
+    "severity": "high",
     "description": "Unregistered passenger vehicle entered underground garage P1",
     "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -226,7 +226,7 @@
     "cameraName": "Chemical & Hazmat Storage Yard",
     "timestamp": "2026-11-13T03:28:50.877Z",
     "confidence": 0.96,
-    "severity": "low",
+    "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -286,7 +286,7 @@
     "cameraName": "Perimeter South Riverbank",
     "timestamp": "2026-11-12T15:27:29.699Z",
     "confidence": 0.7,
-    "severity": "low",
+    "severity": "medium",
     "description": "Sudden rapid movement detected along perimeter fence line",
     "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -426,7 +426,7 @@
     "cameraName": "Chemical & Hazmat Storage Yard",
     "timestamp": "2026-11-12T03:44:29.754Z",
     "confidence": 0.87,
-    "severity": "medium",
+    "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -446,7 +446,7 @@
     "cameraName": "Perimeter South Riverbank",
     "timestamp": "2026-11-11T16:08:31.590Z",
     "confidence": 0.82,
-    "severity": "critical",
+    "severity": "high",
     "description": "Perimeter fence crossing detected on North boundary",
     "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -466,7 +466,7 @@
     "cameraName": "Chemical & Hazmat Storage Yard",
     "timestamp": "2026-11-11T15:42:08.578Z",
     "confidence": 0.75,
-    "severity": "low",
+    "severity": "critical",
     "description": "Vibration anomaly registered at server rack row C",
     "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -486,7 +486,7 @@
     "cameraName": "Visitor Reception & Lobby",
     "timestamp": "2026-11-11T13:19:11.876Z",
     "confidence": 0.95,
-    "severity": "low",
+    "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -506,7 +506,7 @@
     "cameraName": "Sub-Level Parking Lot P1",
     "timestamp": "2026-11-11T12:26:24.753Z",
     "confidence": 0.7,
-    "severity": "low",
+    "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
     "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -606,7 +606,7 @@
     "cameraName": "Rooftop HVAC & Solar Array",
     "timestamp": "2026-11-11T03:39:02.756Z",
     "confidence": 0.91,
-    "severity": "low",
+    "severity": "medium",
     "description": "Individual lingering near executive suites",
     "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -706,7 +706,7 @@
     "cameraName": "Loading Bay & Logistics Dock 4",
     "timestamp": "2026-11-10T08:00:42.649Z",
     "confidence": 0.69,
-    "severity": "low",
+    "severity": "critical",
     "description": "Heavy cargo transport parked in red clearance zone",
     "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -726,7 +726,7 @@
     "cameraName": "Perimeter North Fence line",
     "timestamp": "2026-11-10T05:02:44.957Z",
     "confidence": 0.93,
-    "severity": "low",
+    "severity": "medium",
     "description": "Individual lingering near executive suites",
     "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -746,7 +746,7 @@
     "cameraName": "Cafeteria & Central Atrium",
     "timestamp": "2026-11-10T04:20:18.162Z",
     "confidence": 0.78,
-    "severity": "medium",
+    "severity": "high",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -766,7 +766,7 @@
     "cameraName": "Sub-Level Parking Lot P1",
     "timestamp": "2026-11-09T13:37:16.527Z",
     "confidence": 0.78,
-    "severity": "medium",
+    "severity": "high",
     "description": "Unregistered passenger vehicle entered underground garage P1",
     "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -846,7 +846,7 @@
     "cameraName": "Visitor Reception & Lobby",
     "timestamp": "2026-11-09T08:59:52.935Z",
     "confidence": 0.78,
-    "severity": "low",
+    "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
     "thumbnailUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -866,7 +866,7 @@
     "cameraName": "Rooftop HVAC & Solar Array",
     "timestamp": "2026-11-09T08:14:27.201Z",
     "confidence": 0.88,
-    "severity": "high",
+    "severity": "critical",
     "description": "Unauthorized breach inside Secure Server Room Tier 4",
     "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -946,7 +946,7 @@
     "cameraName": "East Turnstile Employee Access",
     "timestamp": "2026-11-09T04:32:48.828Z",
     "confidence": 0.73,
-    "severity": "medium",
+    "severity": "critical",
     "description": "Vibration anomaly registered at server rack row C",
     "thumbnailUrl": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1006,7 +1006,7 @@
     "cameraName": "Chemical & Hazmat Storage Yard",
     "timestamp": "2026-11-08T06:34:27.776Z",
     "confidence": 0.74,
-    "severity": "medium",
+    "severity": "critical",
     "description": "Individual lingering near executive suites",
     "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1046,7 +1046,7 @@
     "cameraName": "Data Center Vault & Server Room",
     "timestamp": "2026-11-07T15:37:02.265Z",
     "confidence": 0.98,
-    "severity": "high",
+    "severity": "critical",
     "description": "Perimeter fence crossing detected on North boundary",
     "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1066,7 +1066,7 @@
     "cameraName": "Perimeter North Fence line",
     "timestamp": "2026-11-07T13:28:33.444Z",
     "confidence": 0.86,
-    "severity": "critical",
+    "severity": "high",
     "description": "Unauthorized breach inside Secure Server Room Tier 4",
     "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1126,7 +1126,7 @@
     "cameraName": "Perimeter North Fence line",
     "timestamp": "2026-11-07T05:16:44.530Z",
     "confidence": 0.72,
-    "severity": "low",
+    "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
     "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1166,7 +1166,7 @@
     "cameraName": "Executive Office Corridor",
     "timestamp": "2026-11-07T03:20:04.584Z",
     "confidence": 0.77,
-    "severity": "low",
+    "severity": "high",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1206,7 +1206,7 @@
     "cameraName": "Rooftop HVAC & Solar Array",
     "timestamp": "2026-11-06T09:41:06.983Z",
     "confidence": 0.71,
-    "severity": "medium",
+    "severity": "high",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1286,7 +1286,7 @@
     "cameraName": "Perimeter South Riverbank",
     "timestamp": "2026-11-05T12:21:51.175Z",
     "confidence": 0.66,
-    "severity": "low",
+    "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1406,7 +1406,7 @@
     "cameraName": "Perimeter South Riverbank",
     "timestamp": "2026-11-04T11:35:24.136Z",
     "confidence": 0.78,
-    "severity": "low",
+    "severity": "critical",
     "description": "Individual lingering near executive suites",
     "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1446,7 +1446,7 @@
     "cameraName": "Perimeter North Fence line",
     "timestamp": "2026-11-04T09:04:58.226Z",
     "confidence": 0.91,
-    "severity": "low",
+    "severity": "high",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1466,7 +1466,7 @@
     "cameraName": "Loading Bay & Logistics Dock 4",
     "timestamp": "2026-11-04T06:40:14.528Z",
     "confidence": 0.73,
-    "severity": "low",
+    "severity": "critical",
     "description": "Unregistered passenger vehicle entered underground garage P1",
     "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1506,7 +1506,7 @@
     "cameraName": "Data Center Vault & Server Room",
     "timestamp": "2026-11-03T10:58:23.175Z",
     "confidence": 0.73,
-    "severity": "low",
+    "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1586,7 +1586,7 @@
     "cameraName": "Loading Bay & Logistics Dock 4",
     "timestamp": "2026-11-02T15:08:15.459Z",
     "confidence": 0.78,
-    "severity": "medium",
+    "severity": "critical",
     "description": "Unregistered passenger vehicle entered underground garage P1",
     "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1666,7 +1666,7 @@
     "cameraName": "Executive Office Corridor",
     "timestamp": "2026-11-02T11:20:09.330Z",
     "confidence": 0.69,
-    "severity": "low",
+    "severity": "critical",
     "description": "Sudden rapid movement detected along perimeter fence line",
     "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1706,7 +1706,7 @@
     "cameraName": "Perimeter South Riverbank",
     "timestamp": "2026-11-02T05:26:42.134Z",
     "confidence": 0.9,
-    "severity": "low",
+    "severity": "critical",
     "description": "Individual lingering near executive suites",
     "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1766,7 +1766,7 @@
     "cameraName": "Sub-Level Parking Lot P1",
     "timestamp": "2026-11-01T09:32:55.798Z",
     "confidence": 0.94,
-    "severity": "medium",
+    "severity": "high",
     "description": "Heavy cargo transport parked in red clearance zone",
     "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1826,7 +1826,7 @@
     "cameraName": "Loading Bay & Logistics Dock 4",
     "timestamp": "2026-11-01T04:57:33.579Z",
     "confidence": 0.75,
-    "severity": "low",
+    "severity": "critical",
     "description": "Sudden rapid movement detected along perimeter fence line",
     "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1866,7 +1866,7 @@
     "cameraName": "Main Entrance Gate",
     "timestamp": "2026-10-31T13:43:53.411Z",
     "confidence": 0.84,
-    "severity": "low",
+    "severity": "high",
     "description": "Unregistered passenger vehicle entered underground garage P1",
     "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -1886,7 +1886,7 @@
     "cameraName": "Main Entrance Gate",
     "timestamp": "2026-10-31T09:12:55.832Z",
     "confidence": 0.85,
-    "severity": "low",
+    "severity": "critical",
     "description": "Sudden rapid movement detected along perimeter fence line",
     "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -2006,7 +2006,7 @@
     "cameraName": "Loading Bay & Logistics Dock 4",
     "timestamp": "2026-10-29T07:38:03.485Z",
     "confidence": 0.82,
-    "severity": "low",
+    "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
     "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -2126,7 +2126,7 @@
     "cameraName": "Chemical & Hazmat Storage Yard",
     "timestamp": "2026-10-28T05:15:57.233Z",
     "confidence": 0.94,
-    "severity": "low",
+    "severity": "high",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -2226,7 +2226,7 @@
     "cameraName": "Main Entrance Gate",
     "timestamp": "2026-10-26T10:46:05.431Z",
     "confidence": 0.73,
-    "severity": "medium",
+    "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
     "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -2286,7 +2286,7 @@
     "cameraName": "Loading Bay & Logistics Dock 4",
     "timestamp": "2026-10-25T03:49:43.535Z",
     "confidence": 0.69,
-    "severity": "medium",
+    "severity": "critical",
     "description": "Vibration anomaly registered at server rack row C",
     "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -2346,7 +2346,7 @@
     "cameraName": "Rooftop HVAC & Solar Array",
     "timestamp": "2026-10-24T06:50:15.171Z",
     "confidence": 0.75,
-    "severity": "low",
+    "severity": "high",
     "description": "Vibration anomaly registered at server rack row C",
     "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -2386,7 +2386,7 @@
     "cameraName": "Sub-Level Parking Lot P1",
     "timestamp": "2026-10-24T05:20:07.203Z",
     "confidence": 0.78,
-    "severity": "low",
+    "severity": "critical",
     "description": "Unregistered passenger vehicle entered underground garage P1",
     "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -2466,7 +2466,7 @@
     "cameraName": "Cafeteria & Central Atrium",
     "timestamp": "2026-10-23T15:56:35.801Z",
     "confidence": 0.75,
-    "severity": "medium",
+    "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -2766,7 +2766,7 @@
     "cameraName": "Perimeter South Riverbank",
     "timestamp": "2026-10-20T09:03:42.448Z",
     "confidence": 0.66,
-    "severity": "low",
+    "severity": "high",
     "description": "Vibration anomaly registered at server rack row C",
     "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -2806,7 +2806,7 @@
     "cameraName": "Loading Bay & Logistics Dock 4",
     "timestamp": "2026-10-19T16:25:35.460Z",
     "confidence": 0.84,
-    "severity": "medium",
+    "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
     "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -3046,7 +3046,7 @@
     "cameraName": "Chemical & Hazmat Storage Yard",
     "timestamp": "2026-10-17T13:04:48.827Z",
     "confidence": 0.86,
-    "severity": "medium",
+    "severity": "high",
     "description": "Individual lingering near executive suites",
     "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -3086,7 +3086,7 @@
     "cameraName": "Visitor Reception & Lobby",
     "timestamp": "2026-10-17T05:41:38.198Z",
     "confidence": 0.69,
-    "severity": "medium",
+    "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
     "thumbnailUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -3146,7 +3146,7 @@
     "cameraName": "Rooftop HVAC & Solar Array",
     "timestamp": "2026-10-16T12:00:28.627Z",
     "confidence": 0.83,
-    "severity": "medium",
+    "severity": "critical",
     "description": "Individual lingering near executive suites",
     "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -3166,7 +3166,7 @@
     "cameraName": "Sub-Level Parking Lot P1",
     "timestamp": "2026-10-16T08:55:50.925Z",
     "confidence": 0.67,
-    "severity": "low",
+    "severity": "high",
     "description": "Heavy cargo transport parked in red clearance zone",
     "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -3266,7 +3266,7 @@
     "cameraName": "Chemical & Hazmat Storage Yard",
     "timestamp": "2026-10-14T12:03:49.238Z",
     "confidence": 0.93,
-    "severity": "low",
+    "severity": "high",
     "description": "Vibration anomaly registered at server rack row C",
     "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [
@@ -3286,7 +3286,7 @@
     "cameraName": "Perimeter South Riverbank",
     "timestamp": "2026-10-14T11:17:52.379Z",
     "confidence": 0.77,
-    "severity": "medium",
+    "severity": "high",
     "description": "Individual lingering near executive suites",
     "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
     "boundingBoxes": [

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useCameras } from '@/context/CameraContext';
+import { dataProvider } from '@/services/dataProvider';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { Button } from '@/components/ui/Button';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { CameraFocusModal } from '@/components/cameras/CameraFocusModal';
+import { CCTVVideoFeed } from '@/components/cameras/CCTVVideoFeed';
 import { 
   Maximize2, 
   Play, 
@@ -11,7 +13,8 @@ import {
   Grid, 
   Filter, 
   AlertTriangle,
-  Layers
+  Layers,
+  Info
 } from 'lucide-react';
 
 export const LiveMonitoringPage = () => {
@@ -23,15 +26,30 @@ export const LiveMonitoringPage = () => {
   const [playingState, setPlayingState] = useState({});
   const [overlayState, setOverlayState] = useState({});
   const [focusCamera, setFocusCamera] = useState(null);
-  const [liveClock, setLiveClock] = useState('');
+  const [detectionsByCamera, setDetectionsByCamera] = useState({});
 
+  // Connect live camera tiles to centralized detection events mock data
   useEffect(() => {
-    const updateTime = () => {
-      setLiveClock(new Date().toLocaleTimeString('en-US', { hour12: false }));
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
+    async function loadDetectionEvents() {
+      try {
+        const res = await dataProvider.getEvents({ limit: 100 });
+        const map = {};
+        (res.events || []).forEach((e) => {
+          if (!map[e.cameraId] && e.boundingBoxes && e.boundingBoxes.length > 0) {
+            map[e.cameraId] = {
+              type: e.type,
+              confidence: e.confidence,
+              boundingBox: e.boundingBoxes[0],
+              label: e.boundingBoxes[0].label || `${e.type.toUpperCase()} ${(e.confidence * 100).toFixed(0)}%`
+            };
+          }
+        });
+        setDetectionsByCamera(map);
+      } catch (err) {
+        console.warn('Failed to load detection overlays for cameras', err);
+      }
+    }
+    loadDetectionEvents();
   }, []);
 
   const filteredCameras = cameras.filter((c) => {
@@ -138,10 +156,22 @@ export const LiveMonitoringPage = () => {
         </div>
       </div>
 
+      {/* Mandatory Demonstration Disclosure Banner */}
+      <div className="p-3 rounded-xl border border-amber-200/90 bg-amber-50/70 flex items-start sm:items-center justify-between gap-3 text-xs text-amber-900 font-mono shadow-xs">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0" />
+          <span>
+            <strong className="font-bold">DEMO SIMULATION DISCLOSURE:</strong> Video streams are simulated CCTV channels mapped to local files in <code className="bg-amber-100/80 px-1.5 py-0.5 rounded text-[11px] font-bold">public/demo-videos/</code>. Bounding boxes and confidence scores are simulated demonstrations, not real-time camera telemetry or live AI model inference.
+          </span>
+        </div>
+        <span className="text-[10px] text-amber-700 uppercase tracking-wider shrink-0 font-bold hidden lg:inline-block">
+          Offline & Local Safe
+        </span>
+      </div>
+
       {/* Multi-Tile Camera Grid */}
       <div className={`grid ${gridClass} gap-4`}>
         {filteredCameras.map((camera) => {
-          const isOffline = camera.status === 'offline';
           const isPlaying = playingState[camera.id] !== false;
           const showOverlay = overlayState[camera.id] ?? true;
 
@@ -161,97 +191,24 @@ export const LiveMonitoringPage = () => {
                 <StatusBadge status={camera.status} size="sm" />
               </div>
 
-              <div className="relative aspect-video bg-slate-950 flex items-center justify-center overflow-hidden">
-                {isOffline ? (
-                  <div className="flex flex-col items-center justify-center p-4 text-center">
-                    <AlertTriangle className="w-8 h-8 text-rose-500 mb-2 opacity-90" />
-                    <span className="font-mono text-xs font-bold text-rose-500">NO SIGNAL</span>
-                    <span className="text-[10px] text-slate-400 font-mono mt-1">
-                      Last seen: {new Date(camera.lastSeen).toLocaleTimeString()}
-                    </span>
-                  </div>
-                ) : isPlaying && camera.streamUrl ? (
-                  <video
-                    src={camera.streamUrl}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <img
-                    src={camera.thumbnail}
-                    alt={camera.name}
-                    className="w-full h-full object-cover opacity-85"
-                  />
-                )}
-
-                {!isOffline && showOverlay && (
-                  <div
-                    className="absolute border-2 border-[#fa5d19] bg-[rgba(250,93,25,0.18)] pointer-events-none"
-                    style={{ left: '30%', top: '25%', width: '35%', height: '55%' }}
-                  >
-                    <span className="bg-[#fa5d19] text-white font-mono text-[9px] font-bold px-1.5 py-0.5 tracking-wider self-start flex items-center gap-1 shadow">
-                      <span>SIMULATED [94%]</span>
-                    </span>
-                  </div>
-                )}
-
-                <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-900/80 backdrop-blur-md border border-white/10 font-mono text-[10px] text-white shadow">
-                  <span className={`w-1.5 h-1.5 rounded-full ${isOffline ? 'bg-red-500' : 'bg-emerald-500 animate-pulse'}`} />
-                  <span>{isOffline ? 'OFFLINE' : 'LIVE'}</span>
-                  <span>•</span>
-                  <span>{liveClock}</span>
-                </div>
-
-                <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-slate-900/80 font-mono text-[9px] text-slate-300">
-                  {camera.resolution}
-                </div>
-
-                <div className="absolute inset-0 bg-slate-950/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
-                  {!isOffline && (
-                    <button
-                      onClick={() => togglePlay(camera.id)}
-                      className="w-9 h-9 rounded-full bg-slate-800 hover:bg-[#fa5d19] text-white flex items-center justify-center transition-all border border-slate-700 cursor-pointer shadow"
-                      title={isPlaying ? 'Pause Feed' : 'Resume Feed'}
-                      aria-label="Play/Pause"
-                    >
-                      {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
-                    </button>
-                  )}
-
-                  {!isOffline && (
-                    <button
-                      onClick={() => toggleOverlay(camera.id)}
-                      className={`w-9 h-9 rounded-full flex items-center justify-center transition-all border cursor-pointer shadow ${
-                        showOverlay ? 'bg-[#fa5d19] border-transparent text-white' : 'bg-slate-800 border-slate-700 text-slate-300'
-                      }`}
-                      title={showOverlay ? 'Hide AI Bounding' : 'Show AI Bounding'}
-                      aria-label="Toggle Overlay"
-                    >
-                      <Layers className="w-4 h-4" />
-                    </button>
-                  )}
-
-                  <button
-                    onClick={() => setFocusCamera(camera)}
-                    className="w-9 h-9 rounded-full bg-slate-800 hover:bg-[#fa5d19] text-white flex items-center justify-center transition-all border border-slate-700 cursor-pointer shadow"
-                    title="Expand View"
-                    aria-label="Expand Camera View"
-                  >
-                    <Maximize2 className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
+              {/* CCTV Video Feed with Autoplay, Muted, Loop, PlaysInline, Error Fallback & AI Bounding Overlay */}
+              <CCTVVideoFeed
+                camera={camera}
+                latestDetection={detectionsByCamera[camera.id]}
+                isPlaying={isPlaying}
+                showOverlay={showOverlay}
+                onTogglePlay={() => togglePlay(camera.id)}
+                onToggleOverlay={() => toggleOverlay(camera.id)}
+                onFocus={() => setFocusCamera(camera)}
+              />
 
               <div className="px-3 py-2 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-[11px] font-mono text-slate-500">
-                <span>{camera.zone || 'General Zone'}</span>
+                <span className="truncate max-w-[60%]">{camera.zone || 'General Zone'}</span>
                 <button
                   onClick={() => setFocusCamera(camera)}
-                  className="text-[#fa5d19] hover:underline flex items-center gap-1 font-semibold cursor-pointer"
+                  className="text-[#fa5d19] hover:underline flex items-center gap-1 font-semibold cursor-pointer shrink-0"
                 >
-                  Inspect Feed
+                  Inspect Feed →
                 </button>
               </div>
             </div>

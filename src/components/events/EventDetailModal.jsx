@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { SeverityBadge } from '@/components/ui/SeverityBadge';
+import { EventTypeBadge } from '@/components/ui/EventTypeBadge';
 import { Button } from '@/components/ui/Button';
-import { X, Camera, Clock, ShieldCheck, MapPin, ExternalLink } from 'lucide-react';
+import { X, Camera, Clock, ShieldCheck, MapPin, ExternalLink, ScanLine } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export const EventDetailModal = ({ event, onClose }) => {
@@ -29,6 +30,7 @@ export const EventDetailModal = ({ event, onClose }) => {
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50">
           <div className="flex items-center gap-2.5">
             <span className="font-mono text-sm font-bold text-[#fa5d19]">{event.id}</span>
+            <EventTypeBadge type={event.type} size="sm" />
             <SeverityBadge severity={event.severity} size="sm" />
           </div>
           <button
@@ -91,6 +93,16 @@ export const EventDetailModal = ({ event, onClose }) => {
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
+                <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-500 mb-1.5">
+                  <ScanLine className="w-3.5 h-3.5 text-[#fa5d19]" />
+                  EVENT TYPE
+                </div>
+                <div className="pt-0.5">
+                  <EventTypeBadge type={event.type} size="sm" />
+                </div>
+              </div>
+
+              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
                 <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-500 mb-1">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#fa5d19]" />
                   CONFIDENCE
@@ -125,7 +137,7 @@ export const EventDetailModal = ({ event, onClose }) => {
                 </div>
               </div>
 
-              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 col-span-2">
+              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
                 <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-500 mb-1">
                   <MapPin className="w-3.5 h-3.5 text-[#fa5d19]" />
                   CAMERA SOURCE

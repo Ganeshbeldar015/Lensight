@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBadge } from '@/components/ui/StatusBadge';
+import { EventTypeBadge } from '@/components/ui/EventTypeBadge';
 import { Button } from '@/components/ui/Button';
+import { CCTVVideoFeed } from '@/components/cameras/CCTVVideoFeed';
 import { dataProvider } from '@/services/dataProvider';
 import { 
   X, 
@@ -92,61 +94,16 @@ export const CameraFocusModal = ({
         <div className="flex-1 overflow-y-auto grid grid-cols-1 lg:grid-cols-3 gap-0">
           {/* Main Video Viewport (2 Cols) */}
           <div className="lg:col-span-2 bg-slate-950 flex flex-col justify-between relative min-h-[300px] sm:min-h-[420px] p-4 border-b lg:border-b-0 lg:border-r border-slate-800">
-            {isOffline ? (
-              <div className="flex-1 flex flex-col items-center justify-center text-center p-6">
-                <AlertTriangle className="w-16 h-16 text-red-500 mb-3 opacity-90 animate-pulse" />
-                <h4 className="font-mono text-lg font-bold text-white tracking-widest">CAMERA OFFLINE</h4>
-                <p className="text-xs text-red-400 font-mono mt-1">NO SIGNAL DETECTED FROM SENSOR</p>
-                <p className="text-xs text-slate-400 font-mono mt-2">
-                  Last heartbeat: {new Date(camera.lastSeen).toLocaleString()}
-                </p>
-              </div>
-            ) : isPlaying && camera.streamUrl ? (
-              <div className="relative w-full h-full flex items-center justify-center">
-                <video
-                  src={camera.streamUrl}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-contain max-h-[500px]"
-                />
-
-                {/* Simulated AI Bounding Box Overlay */}
-                {showOverlays && (
-                  <div
-                    className="absolute border-2 border-[#fa5d19] bg-[rgba(250,93,25,0.15)] flex flex-col justify-start"
-                    style={{ left: '25%', top: '22%', width: '22%', height: '48%' }}
-                  >
-                    <span className="bg-[#fa5d19] text-white font-mono text-[9px] font-bold px-1.5 py-0.5 tracking-wider self-start flex items-center gap-1 shadow">
-                      <span>PERSON 96%</span>
-                      <span className="opacity-80 text-[8px]">[SIMULATED]</span>
-                    </span>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="relative w-full h-full flex items-center justify-center">
-                <img
-                  src={camera.thumbnail}
-                  alt={camera.name}
-                  className="w-full h-full object-contain opacity-75 max-h-[500px]"
-                />
-              </div>
-            )}
-
-            {/* Over-Video HUD Elements */}
-            <div className="absolute top-6 left-6 flex items-center gap-2">
-              <span className="px-2.5 py-1 rounded-md bg-slate-900/80 backdrop-blur-md border border-white/10 font-mono text-xs text-white flex items-center gap-2 shadow">
-                <span className={`w-2 h-2 rounded-full ${isOffline ? 'bg-red-500' : 'bg-emerald-500 animate-pulse'}`} />
-                {isOffline ? 'OFFLINE' : 'LIVE'} • {liveTimestamp}
-              </span>
-            </div>
-
-            <div className="absolute top-6 right-6 flex items-center gap-2">
-              <span className="px-2.5 py-1 rounded-md bg-slate-900/80 backdrop-blur-md border border-white/10 font-mono text-xs text-slate-300 shadow">
-                {camera.resolution} @ {camera.fps}fps
-              </span>
+            <div className="flex-1 flex items-center justify-center overflow-hidden rounded-xl bg-slate-950">
+              <CCTVVideoFeed
+                camera={camera}
+                latestDetection={recentEvents[0]}
+                isPlaying={isPlaying}
+                showOverlay={showOverlays}
+                aspectRatio="aspect-video w-full max-h-[500px]"
+                onTogglePlay={() => setIsPlaying(!isPlaying)}
+                onToggleOverlay={() => setShowOverlays(!showOverlays)}
+              />
             </div>
 
             {/* Controls Bar at bottom of video */}
@@ -172,8 +129,9 @@ export const CameraFocusModal = ({
                   </Button>
                 </div>
 
-                <span className="font-mono text-[10px] text-[#fa5d19] uppercase tracking-wider font-semibold">
-                  [Simulated Stream]
+                <span className="font-mono text-[10px] text-amber-400/90 uppercase tracking-wider font-semibold flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                  [Simulated Local CCTV Feed]
                 </span>
               </div>
             )}
@@ -255,15 +213,18 @@ export const CameraFocusModal = ({
                   {recentEvents.map((e) => (
                     <div
                       key={e.id}
-                      className="p-2.5 rounded-lg bg-white border border-slate-200 text-xs shadow-2xs"
+                      className="p-2.5 rounded-lg bg-white border border-slate-200 text-xs shadow-2xs space-y-1.5"
                     >
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="font-mono text-[10px] text-[#fa5d19] font-bold">{e.id}</span>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-mono text-[10px] text-[#fa5d19] font-bold">{e.id}</span>
+                          <EventTypeBadge type={e.type} size="sm" />
+                        </div>
                         <span className="text-[10px] text-slate-400 font-mono">
                           {new Date(e.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </span>
                       </div>
-                      <p className="text-slate-800 line-clamp-1">{e.description}</p>
+                      <p className="text-slate-800 line-clamp-1 text-[11px]">{e.description}</p>
                     </div>
                   ))}
                 </div>
