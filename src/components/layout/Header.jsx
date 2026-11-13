@@ -5,7 +5,6 @@ import {
   Bell, 
   Search, 
   Menu, 
-  Database, 
   ExternalLink,
   Flame,
   CheckCircle2,
@@ -85,19 +84,6 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
         <div className="hidden xl:inline-flex items-center gap-2 h-8 px-3 rounded-full bg-slate-100/90 border border-slate-200/90 font-mono text-xs text-slate-700 select-none">
           <Clock className="w-3.5 h-3.5 text-[#fa5d19]" />
           <span>{currentTime}</span>
-        </div>
-
-        {/* Permanent Honesty Rule: Demo Data Pill */}
-        <div 
-          title="Demo Data: Running in frontend-simulated mode. No actual video telemetry is streamed to external AI models."
-          className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-orange-50 border border-orange-200 text-[#fa5d19] font-mono text-[11px] font-bold select-none shadow-2xs"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fa5d19] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#fa5d19]" />
-          </span>
-          <Database className="w-3.5 h-3.5" />
-          <span>DEMO DATA</span>
         </div>
 
         {/* Mobile Search Button */}
