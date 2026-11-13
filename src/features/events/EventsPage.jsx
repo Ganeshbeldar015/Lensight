@@ -26,9 +26,32 @@ import {
 export const EventsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // Helper to normalize types from URL or state
+  const parseUrlTypes = (params) => {
+    return params.getAll('type')
+      .flatMap(t => t.split(','))
+      .map(t => {
+        const lower = t.toLowerCase().trim();
+        if (lower === 'person_detected' || lower === 'face_recognized' || lower === 'crowd_gathering' || lower === 'loitering_detected') return 'person';
+        if (lower === 'vehicle_detected') return 'vehicle';
+        if (lower === 'motion_detected') return 'motion';
+        if (lower === 'intrusion_alert') return 'restricted_area';
+        return lower;
+      })
+      .filter(t => ['person', 'vehicle', 'motion', 'restricted_area'].includes(t));
+  };
+
+  // Helper to normalize severities from URL or state
+  const parseUrlSeverities = (params) => {
+    return params.getAll('severity')
+      .flatMap(s => s.split(','))
+      .map(s => s.toLowerCase().trim())
+      .filter(s => ['critical', 'high', 'medium', 'low'].includes(s));
+  };
+
   const initialSearch = searchParams.get('search') || '';
-  const initialTypes = searchParams.getAll('type');
-  const initialSeverities = searchParams.getAll('severity');
+  const initialTypes = parseUrlTypes(searchParams);
+  const initialSeverities = parseUrlSeverities(searchParams);
   const initialRange = searchParams.get('range') || '30d';
 
   const [searchQuery, setSearchQuery] = useState(initialSearch);
@@ -56,12 +79,13 @@ export const EventsPage = () => {
     return () => clearTimeout(handler);
   }, [searchQuery]);
 
+  // Keep URL search params in sync with active filters
   useEffect(() => {
     const params = new URLSearchParams();
     if (debouncedQuery) params.set('search', debouncedQuery);
     selectedTypes.forEach((t) => params.append('type', t));
     selectedSeverities.forEach((s) => params.append('severity', s));
-    if (dateRange !== '30d') params.set('range', dateRange);
+    if (dateRange && dateRange !== '30d') params.set('range', dateRange);
     setSearchParams(params, { replace: true });
   }, [debouncedQuery, selectedTypes, selectedSeverities, dateRange, setSearchParams]);
 
@@ -81,11 +105,13 @@ export const EventsPage = () => {
           page,
           limit: pageSize
         });
-        setEvents(res.events);
-        setTotalCount(res.total);
-        setTotalPages(res.totalPages);
+        setEvents(res.events || []);
+        setTotalCount(res.total || 0);
+        setTotalPages(res.totalPages || 1);
       } catch (err) {
         console.error('Failed to fetch events', err);
+        setEvents([]);
+        setTotalCount(0);
       } finally {
         setLoading(false);
       }
@@ -103,17 +129,25 @@ export const EventsPage = () => {
     setPage(1);
   };
 
-  const toggleType = (type) => {
-    setSelectedTypes((prev) =>
-      prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
-    );
+  const toggleType = (typeId) => {
+    if (typeId === 'all') {
+      setSelectedTypes([]);
+    } else {
+      setSelectedTypes((prev) =>
+        prev.includes(typeId) ? prev.filter((t) => t !== typeId) : [...prev, typeId]
+      );
+    }
     setPage(1);
   };
 
-  const toggleSeverity = (sev) => {
-    setSelectedSeverities((prev) =>
-      prev.includes(sev) ? prev.filter((s) => s !== sev) : [...prev, sev]
-    );
+  const toggleSeverity = (sevId) => {
+    if (sevId === 'all') {
+      setSelectedSeverities([]);
+    } else {
+      setSelectedSeverities((prev) =>
+        prev.includes(sevId) ? prev.filter((s) => s !== sevId) : [...prev, sevId]
+      );
+    }
     setPage(1);
   };
 
@@ -132,7 +166,12 @@ export const EventsPage = () => {
     { id: 'restricted_area', label: 'Restricted Area', icon: ShieldAlert }
   ];
 
-  const allSeverities = ['critical', 'high', 'medium', 'low'];
+  const allSeverities = [
+    { id: 'critical', label: 'Critical' },
+    { id: 'high', label: 'High' },
+    { id: 'medium', label: 'Medium' },
+    { id: 'low', label: 'Low' }
+  ];
 
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
@@ -171,7 +210,7 @@ export const EventsPage = () => {
 
           <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200 self-start md:self-auto">
             <Calendar className="w-3.5 h-3.5 text-slate-500 ml-2 mr-1" />
-            {['today', '24h', '7d', '30d'].map((r) => (
+            {['today', '24h', '7d', '30d', 'all'].map((r) => (
               <button
                 key={r}
                 onClick={() => {
@@ -193,6 +232,16 @@ export const EventsPage = () => {
         <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-[11px] font-mono text-slate-400 font-semibold mr-1">EVENT TYPE:</span>
+            <button
+              onClick={() => toggleType('all')}
+              className={`px-2.5 py-1 rounded-md text-xs font-mono transition-all border cursor-pointer ${
+                selectedTypes.length === 0
+                  ? 'bg-orange-50 text-[#fa5d19] border-orange-300 font-semibold shadow-2xs'
+                  : 'bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              All Types
+            </button>
             {allTypes.map(({ id, label, icon: Icon }) => {
               const active = selectedTypes.includes(id);
               return (
@@ -212,19 +261,29 @@ export const EventsPage = () => {
             })}
 
             <span className="text-[11px] font-mono text-slate-400 font-semibold ml-2 mr-1">SEVERITY:</span>
-            {allSeverities.map((sev) => {
-              const active = selectedSeverities.includes(sev);
+            <button
+              onClick={() => toggleSeverity('all')}
+              className={`px-2.5 py-1 rounded-md text-xs font-mono uppercase transition-all border cursor-pointer ${
+                selectedSeverities.length === 0
+                  ? 'bg-slate-900 text-white border-slate-900 font-bold shadow-2xs'
+                  : 'bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              ALL
+            </button>
+            {allSeverities.map(({ id, label }) => {
+              const active = selectedSeverities.includes(id);
               return (
                 <button
-                  key={sev}
-                  onClick={() => toggleSeverity(sev)}
+                  key={id}
+                  onClick={() => toggleSeverity(id)}
                   className={`px-2.5 py-1 rounded-md text-xs font-mono uppercase transition-all border cursor-pointer ${
                     active
-                      ? 'bg-slate-900 text-white border-slate-900 font-bold shadow-2xs'
+                      ? 'bg-slate-900 text-white border-slate-900 font-bold shadow-2xs ring-2 ring-slate-900/10'
                       : 'bg-slate-50 text-slate-600 border-slate-200 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
-                  {sev}
+                  {label}
                 </button>
               );
             })}
