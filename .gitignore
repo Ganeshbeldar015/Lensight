@@ -25,8 +25,12 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
-# Strictly Ignore MD files & MD file folder as requested by user
-MD file/
+# Strictly Ignore MD files & MD folder variations
+[Mm][Dd] [Ff]iles/
 [Mm][Dd] [Ff]ile/
+[Mm][Dd]/
+md/
+MD files/
+MD file/
 *.md
 **/*.md
