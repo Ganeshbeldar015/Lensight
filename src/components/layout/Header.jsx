@@ -66,11 +66,11 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
           <Menu className="w-5 h-5" />
         </button>
 
-        <div className="flex items-center gap-2 text-sm">
-          <span className="text-[#61777c] hidden sm:inline">{pageInfo.section}</span>
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs">
+          <span className="text-[#8a9b9f] font-medium hidden sm:inline">{pageInfo.section}</span>
           <ChevronRight className="w-3.5 h-3.5 text-[#8a9b9f] hidden sm:inline" />
-          <h1 className="text-base font-semibold text-[#263b40]">{pageInfo.title}</h1>
-        </div>
+          <span className="text-sm font-semibold text-[#263b40] tracking-tight">{pageInfo.title}</span>
+        </nav>
       </div>
 
       {/* Middle: Global Search bar */}
@@ -90,9 +90,9 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
       </div>
 
       {/* Right side: Live Clock, Notifications & Profile */}
-      <div className="flex items-center gap-2 sm:gap-4">
+      <div className="flex items-center gap-2 sm:gap-3">
         {/* Live Clock */}
-        <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#f0f6f6] border border-[#dce5e7] text-xs text-[#61777c] font-medium">
+        <div className="hidden xl:inline-flex items-center gap-2 h-9 px-3.5 rounded-lg bg-[#f0f6f6] border border-[#dce5e7] text-xs text-[#61777c] font-medium select-none">
           <Clock className="w-3.5 h-3.5 text-[#168a91]" />
           <span>{currentTime}</span>
         </div>
@@ -100,7 +100,7 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
         {/* Mobile Search Button */}
         <button
           onClick={onOpenSearch}
-          className="md:hidden p-2 rounded-lg text-[#61777c] hover:text-[#263b40] hover:bg-[#f0f6f6] cursor-pointer"
+          className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg text-[#61777c] hover:text-[#263b40] hover:bg-[#f0f6f6] transition-colors cursor-pointer"
           aria-label="Search"
         >
           <Search className="w-4 h-4" />
@@ -110,10 +110,10 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
         <div className="relative">
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="relative p-2 rounded-lg text-[#61777c] hover:text-[#263b40] hover:bg-[#f0f6f6] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#168a91] cursor-pointer"
+            className="relative flex items-center justify-center w-9 h-9 rounded-lg text-[#61777c] hover:text-[#263b40] hover:bg-[#f0f6f6] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#168a91] cursor-pointer"
             aria-label={`Notifications (${unreadCount} unread)`}
           >
-            <Bell className="w-5 h-5" />
+            <Bell className="w-4.5 h-4.5" />
             {unreadCount > 0 && (
               <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-[#d95757] text-white text-[10px] font-semibold rounded-full flex items-center justify-center ring-2 ring-white shadow-xs pointer-events-none">
                 {unreadCount > 9 ? '9+' : unreadCount}
@@ -192,12 +192,12 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
         </div>
 
         {/* Profile Avatar */}
-        <div className="flex items-center gap-2 pl-2 border-l border-[#dce5e7]">
-          <div className="w-8 h-8 rounded-full bg-[#ddf1f1] border border-[#168a91]/25 flex items-center justify-center text-xs font-bold text-[#168a91] select-none">
+        <div className="flex items-center gap-2.5 pl-3 border-l border-[#dce5e7] cursor-pointer group select-none">
+          <div className="w-8 h-8 rounded-full bg-[#ddf1f1] border border-[#168a91]/25 flex items-center justify-center text-xs font-bold text-[#168a91] group-hover:border-[#168a91] transition-colors shadow-2xs">
             OP
           </div>
           <div className="hidden lg:block text-left">
-            <p className="text-xs font-semibold text-[#263b40] leading-tight">Operator 01</p>
+            <p className="text-xs font-semibold text-[#263b40] leading-tight group-hover:text-[#168a91] transition-colors">Operator 01</p>
             <p className="text-[10px] text-[#61777c] font-medium">SecOps Lead</p>
           </div>
         </div>
