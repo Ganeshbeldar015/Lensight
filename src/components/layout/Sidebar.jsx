@@ -9,9 +9,9 @@ import {
   Camera, 
   ShieldAlert, 
   Settings, 
-  X,
-  ChevronRight,
-  Flame
+  X, 
+  ChevronRight, 
+  Flame 
 } from 'lucide-react';
 
 export const Sidebar = ({ isOpen, onClose }) => {
@@ -39,28 +39,28 @@ export const Sidebar = ({ isOpen, onClose }) => {
       {isOpen && (
         <div
           onClick={onClose}
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 lg:hidden transition-opacity"
+          className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-40 lg:hidden transition-opacity"
           aria-hidden="true"
         />
       )}
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-[#0e0e0e] border-r border-[#222] flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:h-[calc(100vh-4rem)] ${
+        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-white border-r border-slate-200 flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:h-[calc(100vh-4rem)] ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Mobile Header with Close button */}
-        <div className="flex items-center justify-between p-4 border-b border-[#222] lg:hidden">
+        <div className="flex items-center justify-between p-4 border-b border-slate-200 lg:hidden">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-md bg-[#fa5d19] flex items-center justify-center text-white shadow-heat-glow">
               <Flame className="w-4 h-4 fill-white/20" />
             </div>
-            <span className="font-bold text-sm tracking-wider text-white">LENSIGHT</span>
+            <span className="font-bold text-sm tracking-wider text-slate-900">LENSIGHT</span>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[#888] hover:text-white hover:bg-[#222]"
+            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 cursor-pointer"
             aria-label="Close sidebar"
           >
             <X className="w-5 h-5" />
@@ -69,7 +69,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
 
         {/* Navigation Items */}
         <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
-          <div className="px-3 py-2 text-[10px] font-mono tracking-wider uppercase text-[#666]">
+          <div className="px-3 py-2 text-[10px] font-mono tracking-wider uppercase text-slate-400 font-bold">
             WORKSPACE
           </div>
 
@@ -84,8 +84,8 @@ export const Sidebar = ({ isOpen, onClose }) => {
                 className={({ isActive }) =>
                   `flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-medium transition-all group ${
                     isActive
-                      ? 'bg-[rgba(250,93,25,0.12)] text-[#fa5d19] border border-[rgba(250,93,25,0.25)] font-semibold shadow-sm'
-                      : 'text-[#aaa] hover:text-[#f0f0f0] hover:bg-[#161616] border border-transparent'
+                      ? 'bg-orange-50 text-orange-700 border border-orange-200/80 font-semibold shadow-2xs'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 border border-transparent'
                   }`
                 }
               >
@@ -93,7 +93,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
                   <>
                     <div className="flex items-center gap-3">
                       <Icon className={`w-4 h-4 transition-colors ${
-                        isActive ? 'text-[#fa5d19]' : 'text-[#777] group-hover:text-[#ccc]'
+                        isActive ? 'text-[#fa5d19]' : 'text-slate-400 group-hover:text-slate-600'
                       }`} />
                       <span>{item.label}</span>
                     </div>
@@ -102,8 +102,8 @@ export const Sidebar = ({ isOpen, onClose }) => {
                       {item.badge !== undefined && (
                         <span className={`px-2 py-0.5 rounded-full font-mono text-[10px] font-bold ${
                           item.isCritical
-                            ? 'bg-[#eb3424] text-white animate-pulse'
-                            : 'bg-[#fa5d19]/20 text-[#fa5d19] border border-[#fa5d19]/30'
+                            ? 'bg-red-600 text-white animate-pulse'
+                            : 'bg-orange-100 text-orange-700 border border-orange-200'
                         }`}>
                           {item.badge}
                         </span>
@@ -118,19 +118,19 @@ export const Sidebar = ({ isOpen, onClose }) => {
         </nav>
 
         {/* System Status Footer */}
-        <div className="p-3.5 border-t border-[#1f1f1f] bg-[#0b0b0b]">
-          <div className="p-2.5 rounded-lg bg-[#141414] border border-[#222]">
+        <div className="p-3.5 border-t border-slate-200 bg-slate-50">
+          <div className="p-2.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
             <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[11px] font-mono text-[#888]">SYSTEM HEALTH</span>
-              <span className="flex items-center gap-1 text-[10px] font-mono text-[#22c55e]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e] animate-ping" />
+              <span className="text-[11px] font-mono text-slate-500 font-medium">SYSTEM HEALTH</span>
+              <span className="flex items-center gap-1 text-[10px] font-mono text-emerald-600 font-bold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
                 OPTIMAL
               </span>
             </div>
-            <div className="w-full bg-[#222] h-1.5 rounded-full overflow-hidden">
-              <div className="bg-[#22c55e] h-full w-[96%]" />
+            <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+              <div className="bg-emerald-500 h-full w-[96%]" />
             </div>
-            <p className="text-[10px] font-mono text-[#666] mt-1.5">
+            <p className="text-[10px] font-mono text-slate-500 mt-1.5">
               Telemetry Stream: Synced
             </p>
           </div>

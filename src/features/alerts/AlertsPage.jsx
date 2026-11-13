@@ -42,7 +42,7 @@ export const AlertsPage = () => {
         title="Alert Triage & Incident Center"
         description="Priority dispatch queue for real-time security breaches and operational boundary alarms."
         badge={
-          <span className="font-mono text-xs px-2.5 py-0.5 rounded-full bg-[rgba(235,52,36,0.12)] border border-[#eb3424]/30 text-[#eb3424] flex items-center gap-1.5 font-bold">
+          <span className="font-mono text-xs px-2.5 py-0.5 rounded-full bg-red-50 border border-red-200 text-red-700 flex items-center gap-1.5 font-bold">
             <ShieldAlert className="w-3.5 h-3.5" />
             {unreadCount} ACTIVE ALARMS
           </span>
@@ -53,7 +53,7 @@ export const AlertsPage = () => {
               variant="secondary"
               size="sm"
               onClick={acknowledgeAll}
-              leftIcon={<CheckCheck className="w-4 h-4 text-[#22c55e]" />}
+              leftIcon={<CheckCheck className="w-4 h-4 text-emerald-600" />}
             >
               Acknowledge All Unread
             </Button>
@@ -62,47 +62,53 @@ export const AlertsPage = () => {
       />
 
       {/* Tabs and Severity Filter Strip */}
-      <div className="p-3.5 rounded-xl border border-[#262626] bg-[#121212] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 shadow-md">
+      <div className="p-3.5 rounded-xl border border-slate-200 bg-white flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 shadow-xs">
         {/* Triage Tabs */}
-        <div className="flex items-center gap-1 bg-[#181818] p-1 rounded-lg border border-[#2d2d2d]">
+        <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
           <button
             onClick={() => setActiveTab('unread')}
-            className={`px-3 py-1.5 rounded-md text-xs font-mono uppercase transition-all flex items-center gap-2 ${
+            className={`px-3 py-1.5 rounded-md text-xs font-mono uppercase transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'unread'
-                ? 'bg-[#fa5d19] text-white font-bold shadow'
-                : 'text-[#888] hover:text-white'
+                ? 'bg-[#fa5d19] text-white font-bold shadow-2xs'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <span>Unread</span>
-            <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-black/40">
+            <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+              activeTab === 'unread' ? 'bg-white/30 text-white' : 'bg-slate-200 text-slate-700'
+            }`}>
               {unreadCount}
             </span>
           </button>
 
           <button
             onClick={() => setActiveTab('all')}
-            className={`px-3 py-1.5 rounded-md text-xs font-mono uppercase transition-all flex items-center gap-2 ${
+            className={`px-3 py-1.5 rounded-md text-xs font-mono uppercase transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'all'
-                ? 'bg-[#fa5d19] text-white font-bold shadow'
-                : 'text-[#888] hover:text-white'
+                ? 'bg-[#fa5d19] text-white font-bold shadow-2xs'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <span>All Alerts</span>
-            <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-black/40">
+            <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+              activeTab === 'all' ? 'bg-white/30 text-white' : 'bg-slate-200 text-slate-700'
+            }`}>
               {alerts.length}
             </span>
           </button>
 
           <button
             onClick={() => setActiveTab('acknowledged')}
-            className={`px-3 py-1.5 rounded-md text-xs font-mono uppercase transition-all flex items-center gap-2 ${
+            className={`px-3 py-1.5 rounded-md text-xs font-mono uppercase transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'acknowledged'
-                ? 'bg-[#fa5d19] text-white font-bold shadow'
-                : 'text-[#888] hover:text-white'
+                ? 'bg-[#fa5d19] text-white font-bold shadow-2xs'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <span>Acknowledged</span>
-            <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-black/40">
+            <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+              activeTab === 'acknowledged' ? 'bg-white/30 text-white' : 'bg-slate-200 text-slate-700'
+            }`}>
               {acknowledgedCount}
             </span>
           </button>
@@ -110,16 +116,16 @@ export const AlertsPage = () => {
 
         {/* Severity Filter */}
         <div className="flex items-center gap-2">
-          <span className="text-[11px] font-mono text-[#777] hidden sm:inline-block">SEVERITY:</span>
-          <div className="flex items-center gap-1 bg-[#181818] p-1 rounded-lg border border-[#2d2d2d]">
+          <span className="text-[11px] font-mono text-slate-400 font-semibold hidden sm:inline-block">SEVERITY:</span>
+          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
             {['all', 'critical', 'high', 'medium'].map((sev) => (
               <button
                 key={sev}
                 onClick={() => setSeverityFilter(sev)}
-                className={`px-2.5 py-1 rounded text-xs font-mono uppercase transition-colors ${
+                className={`px-2.5 py-1 rounded text-xs font-mono uppercase transition-colors cursor-pointer ${
                   severityFilter === sev
-                    ? 'bg-[#282828] text-white border border-[#444] font-bold'
-                    : 'text-[#777] hover:text-white'
+                    ? 'bg-slate-900 text-white font-bold shadow-2xs'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {sev}
@@ -152,22 +158,22 @@ export const AlertsPage = () => {
               <div
                 key={alert.id}
                 onClick={() => setSelectedAlert(alert)}
-                className={`p-4 rounded-xl border transition-all cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+                className={`p-4 rounded-xl border transition-all cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs ${
                   isUnread
                     ? isCritical
-                      ? 'bg-[rgba(235,52,36,0.06)] border-[rgba(235,52,36,0.35)] hover:border-[#eb3424]'
-                      : 'bg-[#151515] border-[#fa5d19]/30 hover:border-[#fa5d19]'
-                    : 'bg-[#121212] border-[#222] opacity-75 hover:opacity-100'
+                      ? 'bg-red-50/70 border-red-200 hover:border-red-400 hover:shadow-md'
+                      : 'bg-orange-50/40 border-orange-200 hover:border-orange-400 hover:shadow-md'
+                    : 'bg-white border-slate-200 opacity-80 hover:opacity-100 hover:shadow-md'
                 }`}
               >
                 <div className="flex items-start gap-3.5 min-w-0">
                   <div
                     className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${
                       isCritical
-                        ? 'bg-[#eb3424] text-white shadow-md'
+                        ? 'bg-red-600 text-white shadow-xs'
                         : alert.severity === 'high'
-                        ? 'bg-[#fa5d19] text-white'
-                        : 'bg-[#ecb730] text-black font-bold'
+                        ? 'bg-[#fa5d19] text-white shadow-xs'
+                        : 'bg-amber-500 text-white shadow-xs font-bold'
                     }`}
                   >
                     {isCritical ? <Flame className="w-5 h-5" /> : <ShieldAlert className="w-5 h-5" />}
@@ -175,18 +181,18 @@ export const AlertsPage = () => {
 
                   <div className="space-y-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-bold text-white">{alert.id}</span>
+                      <span className="font-mono text-xs font-bold text-slate-900">{alert.id}</span>
                       <SeverityBadge severity={alert.severity} size="sm" />
                       {isUnread && (
                         <span className="w-2 h-2 rounded-full bg-[#fa5d19] animate-pulse" />
                       )}
                     </div>
-                    <h4 className={`text-sm text-white ${isUnread ? 'font-bold' : 'font-medium'}`}>
+                    <h4 className={`text-sm text-slate-900 ${isUnread ? 'font-bold' : 'font-medium'}`}>
                       {alert.title}
                     </h4>
-                    <p className="text-xs text-[#888] line-clamp-1">{alert.description}</p>
-                    <div className="flex items-center gap-3 text-[11px] font-mono text-[#666] pt-0.5">
-                      <span className="flex items-center gap-1 text-[#aaa]">
+                    <p className="text-xs text-slate-600 line-clamp-1">{alert.description}</p>
+                    <div className="flex items-center gap-3 text-[11px] font-mono text-slate-400 pt-0.5">
+                      <span className="flex items-center gap-1 text-slate-600">
                         <Camera className="w-3 h-3 text-[#fa5d19]" />
                         {alert.cameraName || alert.cameraId}
                       </span>
@@ -213,7 +219,7 @@ export const AlertsPage = () => {
                       Acknowledge
                     </Button>
                   ) : (
-                    <span className="flex items-center gap-1.5 font-mono text-xs text-[#22c55e] bg-[#22c55e]/10 px-2.5 py-1 rounded-md border border-[#22c55e]/20">
+                    <span className="flex items-center gap-1.5 font-mono text-xs text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 font-semibold">
                       <Check className="w-3.5 h-3.5" /> Acknowledged
                     </span>
                   )}
@@ -226,50 +232,50 @@ export const AlertsPage = () => {
 
       {/* Alert Detail Side Panel / Modal */}
       {selectedAlert && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-          <div className="w-full max-w-xl rounded-2xl border border-[#333] bg-[#141414] shadow-2xl p-6 space-y-5">
-            <div className="flex items-center justify-between pb-3 border-b border-[#262626]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in">
+          <div className="w-full max-w-xl rounded-2xl border border-slate-200 bg-white shadow-2xl p-6 space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-sm font-bold text-[#fa5d19]">{selectedAlert.id}</span>
                 <SeverityBadge severity={selectedAlert.severity} size="sm" />
               </div>
               <button
                 onClick={() => setSelectedAlert(null)}
-                className="p-1 rounded-lg text-[#888] hover:text-white"
+                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div>
-              <h3 className="text-base font-bold text-white mb-1">{selectedAlert.title}</h3>
-              <p className="text-xs text-[#aaa] leading-relaxed bg-[#1b1b1b] p-3 rounded-lg border border-[#2a2a2a]">
+              <h3 className="text-base font-bold text-slate-900 mb-1">{selectedAlert.title}</h3>
+              <p className="text-xs text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-lg border border-slate-200">
                 {selectedAlert.description}
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-              <div className="p-3 rounded-lg bg-[#181818] border border-[#262626]">
-                <span className="text-[#666] block text-[10px]">CAMERA NODE</span>
-                <span className="text-white font-semibold">{selectedAlert.cameraName || selectedAlert.cameraId}</span>
+              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
+                <span className="text-slate-400 block text-[10px]">CAMERA NODE</span>
+                <span className="text-slate-900 font-semibold">{selectedAlert.cameraName || selectedAlert.cameraId}</span>
               </div>
-              <div className="p-3 rounded-lg bg-[#181818] border border-[#262626]">
-                <span className="text-[#666] block text-[10px]">OCCURRED AT</span>
-                <span className="text-white">{new Date(selectedAlert.timestamp).toLocaleString()}</span>
+              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
+                <span className="text-slate-400 block text-[10px]">OCCURRED AT</span>
+                <span className="text-slate-900">{new Date(selectedAlert.timestamp).toLocaleString()}</span>
               </div>
-              <div className="p-3 rounded-lg bg-[#181818] border border-[#262626]">
-                <span className="text-[#666] block text-[10px]">LINKED EVENT</span>
+              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
+                <span className="text-slate-400 block text-[10px]">LINKED EVENT</span>
                 <span className="text-[#fa5d19] font-bold">{selectedAlert.eventId}</span>
               </div>
-              <div className="p-3 rounded-lg bg-[#181818] border border-[#262626]">
-                <span className="text-[#666] block text-[10px]">STATUS</span>
-                <span className={selectedAlert.acknowledged ? 'text-[#22c55e]' : 'text-[#ef4444]'}>
+              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200">
+                <span className="text-slate-400 block text-[10px]">STATUS</span>
+                <span className={selectedAlert.acknowledged ? 'text-emerald-600 font-semibold' : 'text-rose-600 font-semibold'}>
                   {selectedAlert.acknowledged ? 'Acknowledged' : 'Pending Operator Triage'}
                 </span>
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-3 border-t border-[#262626]">
+            <div className="flex items-center justify-between pt-3 border-t border-slate-200">
               <Button
                 variant="tertiary"
                 size="sm"

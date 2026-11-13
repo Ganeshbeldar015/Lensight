@@ -57,22 +57,22 @@ export const AnalyticsPage = () => {
         title="Surveillance Analytics & Telemetry"
         description="Temporal trends, AI classification density, and camera load distribution metrics."
         badge={
-          <span className="font-mono text-xs px-2.5 py-0.5 rounded-full bg-[rgba(42,109,251,0.12)] border border-[#2a6dfb]/30 text-[#2a6dfb] flex items-center gap-1.5 font-bold">
+          <span className="font-mono text-xs px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 flex items-center gap-1.5 font-bold">
             <BarChart3 className="w-3.5 h-3.5" />
             TELEMETRY ENGINE
           </span>
         }
         actions={
-          <div className="flex items-center gap-1 bg-[#141414] p-1 rounded-lg border border-[#262626]">
-            <Calendar className="w-3.5 h-3.5 text-[#777] ml-2 mr-1" />
+          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
+            <Calendar className="w-3.5 h-3.5 text-slate-500 ml-2 mr-1" />
             {['today', '24h', '7d', '30d'].map((r) => (
               <button
                 key={r}
                 onClick={() => setRange(r)}
-                className={`px-3 py-1 rounded text-xs font-mono uppercase transition-colors ${
+                className={`px-3 py-1 rounded text-xs font-mono uppercase transition-colors cursor-pointer ${
                   range === r
-                    ? 'bg-[#fa5d19] text-white font-bold shadow'
-                    : 'text-[#888] hover:text-white'
+                    ? 'bg-[#fa5d19] text-white font-bold shadow-2xs'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {r}
@@ -101,70 +101,70 @@ export const AnalyticsPage = () => {
         <>
           {/* Summary Stats Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Card className="bg-[#121212] border-[#242424]">
-              <div className="flex items-center justify-between text-[#888] text-xs font-mono">
+            <Card className="bg-white border-slate-200 shadow-xs">
+              <div className="flex items-center justify-between text-slate-500 text-xs font-mono font-semibold">
                 <span>TOTAL DETECTIONS</span>
                 <TrendingUp className="w-4 h-4 text-[#fa5d19]" />
               </div>
-              <div className="mt-2 text-2xl font-extrabold text-white font-mono">
+              <div className="mt-2 text-2xl font-extrabold text-slate-900 font-mono">
                 {data.totalEvents}
               </div>
-              <p className="text-[11px] text-[#777] font-mono mt-1">in selected window</p>
+              <p className="text-[11px] text-slate-400 font-mono mt-1">in selected window</p>
             </Card>
 
-            <Card className="bg-[#121212] border-[#242424]">
-              <div className="flex items-center justify-between text-[#888] text-xs font-mono">
+            <Card className="bg-white border-slate-200 shadow-xs">
+              <div className="flex items-center justify-between text-slate-500 text-xs font-mono font-semibold">
                 <span>AVG CONFIDENCE</span>
-                <ShieldCheck className="w-4 h-4 text-[#22c55e]" />
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
               </div>
-              <div className="mt-2 text-2xl font-extrabold text-white font-mono">
+              <div className="mt-2 text-2xl font-extrabold text-slate-900 font-mono">
                 {data.averageConfidence}%
               </div>
-              <p className="text-[11px] text-[#22c55e] font-mono mt-1">Classification reliability</p>
+              <p className="text-[11px] text-emerald-600 font-mono mt-1 font-medium">Classification reliability</p>
             </Card>
 
-            <Card className="bg-[#121212] border-[#242424]">
-              <div className="flex items-center justify-between text-[#888] text-xs font-mono">
+            <Card className="bg-white border-slate-200 shadow-xs">
+              <div className="flex items-center justify-between text-slate-500 text-xs font-mono font-semibold">
                 <span>PEAK ACTIVITY HOUR</span>
-                <Clock className="w-4 h-4 text-[#ecb730]" />
+                <Clock className="w-4 h-4 text-amber-600" />
               </div>
-              <div className="mt-2 text-xl font-extrabold text-white font-mono truncate">
+              <div className="mt-2 text-xl font-extrabold text-slate-900 font-mono truncate">
                 {data.peakHour}
               </div>
-              <p className="text-[11px] text-[#777] font-mono mt-1">Highest detection volume</p>
+              <p className="text-[11px] text-slate-400 font-mono mt-1">Highest detection volume</p>
             </Card>
 
-            <Card className="bg-[#121212] border-[#242424]">
-              <div className="flex items-center justify-between text-[#888] text-xs font-mono">
+            <Card className="bg-white border-slate-200 shadow-xs">
+              <div className="flex items-center justify-between text-slate-500 text-xs font-mono font-semibold">
                 <span>BUSIEST SENSOR</span>
-                <Camera className="w-4 h-4 text-[#2a6dfb]" />
+                <Camera className="w-4 h-4 text-blue-600" />
               </div>
-              <div className="mt-2 text-base font-bold text-white truncate" title={data.busiestCamera.name}>
+              <div className="mt-2 text-base font-bold text-slate-900 truncate" title={data.busiestCamera.name}>
                 {data.busiestCamera.name}
               </div>
-              <p className="text-[11px] text-[#2a6dfb] font-mono mt-1">
+              <p className="text-[11px] text-blue-600 font-mono mt-1 font-medium">
                 {data.busiestCamera.count} events logged
               </p>
             </Card>
           </div>
 
           {/* Events Over Time Chart */}
-          <Card className="p-5 bg-[#121212] border-[#242424]">
+          <Card className="p-5 bg-white border-slate-200 shadow-xs">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono">
+                <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider font-mono">
                   Detection Events Over Time
                 </h3>
-                <p className="text-xs text-[#777] mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Hourly or daily event frequencies segmented by critical severity breaches.
                 </p>
               </div>
               <div className="flex items-center gap-3 text-xs font-mono">
-                <span className="flex items-center gap-1.5 text-[#fa5d19]">
+                <span className="flex items-center gap-1.5 text-[#fa5d19] font-semibold">
                   <span className="w-2 h-2 rounded-full bg-[#fa5d19]" /> Total Events
                 </span>
-                <span className="flex items-center gap-1.5 text-[#eb3424]">
-                  <span className="w-2 h-2 rounded-full bg-[#eb3424]" /> Critical
+                <span className="flex items-center gap-1.5 text-red-600 font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-red-600" /> Critical
                 </span>
               </div>
             </div>
@@ -174,19 +174,20 @@ export const AnalyticsPage = () => {
                 <AreaChart data={data.eventsOverTime}>
                   <defs>
                     <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#fa5d19" stopOpacity={0.4} />
+                      <stop offset="5%" stopColor="#fa5d19" stopOpacity={0.3} />
                       <stop offset="95%" stopColor="#fa5d19" stopOpacity={0.0} />
                     </linearGradient>
                   </defs>
-                  <XAxis dataKey="label" stroke="#666" fontSize={11} tickLine={false} />
-                  <YAxis stroke="#666" fontSize={11} tickLine={false} width={30} />
+                  <XAxis dataKey="label" stroke="#94a3b8" fontSize={11} tickLine={false} />
+                  <YAxis stroke="#94a3b8" fontSize={11} tickLine={false} width={30} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: '#171717',
-                      borderColor: '#333',
+                      backgroundColor: '#ffffff',
+                      borderColor: '#e2e8f0',
                       borderRadius: '8px',
-                      color: '#fff',
-                      fontSize: '12px'
+                      color: '#0f172a',
+                      fontSize: '12px',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                     }}
                   />
                   <Area
@@ -202,10 +203,10 @@ export const AnalyticsPage = () => {
                     type="monotone"
                     dataKey="critical"
                     name="Critical Alerts"
-                    stroke="#eb3424"
+                    stroke="#dc2626"
                     strokeWidth={2}
-                    fillOpacity={0.3}
-                    fill="#eb3424"
+                    fillOpacity={0.2}
+                    fill="#dc2626"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -215,13 +216,13 @@ export const AnalyticsPage = () => {
           {/* Bottom Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Event Categories Donut */}
-            <Card className="p-5 bg-[#121212] border-[#242424] flex flex-col justify-between">
+            <Card className="p-5 bg-white border-slate-200 shadow-xs flex flex-col justify-between">
               <div>
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono flex items-center gap-2">
+                <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider font-mono flex items-center gap-2">
                   <PieIcon className="w-4 h-4 text-[#fa5d19]" />
                   Event Category Distribution
                 </h3>
-                <p className="text-xs text-[#777] mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Proportional breakdown of classified threat categories.
                 </p>
               </div>
@@ -240,22 +241,23 @@ export const AnalyticsPage = () => {
                       paddingAngle={4}
                     >
                       {data.categoryBreakdown.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} stroke="#171717" strokeWidth={2} />
+                        <Cell key={`cell-${index}`} fill={entry.color} stroke="#ffffff" strokeWidth={2} />
                       ))}
                     </Pie>
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: '#171717',
-                        borderColor: '#333',
+                        backgroundColor: '#ffffff',
+                        borderColor: '#e2e8f0',
                         borderRadius: '8px',
                         fontSize: '12px',
-                        color: '#fff'
+                        color: '#0f172a',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                       }}
                     />
                     <Legend
                       verticalAlign="bottom"
                       height={36}
-                      formatter={(val) => <span className="text-xs text-[#bbb] font-mono">{val}</span>}
+                      formatter={(val) => <span className="text-xs text-slate-700 font-mono">{val}</span>}
                     />
                   </PieChart>
                 </ResponsiveContainer>
@@ -263,13 +265,13 @@ export const AnalyticsPage = () => {
             </Card>
 
             {/* Camera-Wise Event Count Horizontal Bar */}
-            <Card className="p-5 bg-[#121212] border-[#242424] flex flex-col justify-between">
+            <Card className="p-5 bg-white border-slate-200 shadow-xs flex flex-col justify-between">
               <div>
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono flex items-center gap-2">
+                <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider font-mono flex items-center gap-2">
                   <Camera className="w-4 h-4 text-[#fa5d19]" />
                   Camera-Wise Activity Density
                 </h3>
-                <p className="text-xs text-[#777] mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Top surveillance nodes sorted by detection frequency.
                 </p>
               </div>
@@ -277,22 +279,23 @@ export const AnalyticsPage = () => {
               <div className="h-64 w-full my-3">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={data.cameraDistribution} layout="vertical" margin={{ left: 10, right: 20 }}>
-                    <XAxis type="number" stroke="#666" fontSize={10} tickLine={false} />
+                    <XAxis type="number" stroke="#94a3b8" fontSize={10} tickLine={false} />
                     <YAxis
                       dataKey="id"
                       type="category"
-                      stroke="#888"
+                      stroke="#64748b"
                       fontSize={11}
                       tickLine={false}
                       width={65}
                     />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: '#171717',
-                        borderColor: '#333',
+                        backgroundColor: '#ffffff',
+                        borderColor: '#e2e8f0',
                         borderRadius: '8px',
                         fontSize: '12px',
-                        color: '#fff'
+                        color: '#0f172a',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                       }}
                       formatter={(val, name, item) => [
                         `${val} detections`,
