@@ -94,12 +94,15 @@ export async function getEvents(params = {}) {
 
   let filtered = [...eventsState];
 
-  // 1. Text Search (matches camera name or description)
+  // 1. Text Search (matches event id, type, camera name, camera id, or description)
   if (filter.searchQuery && filter.searchQuery.trim() !== '') {
     const q = filter.searchQuery.toLowerCase().trim();
     filtered = filtered.filter(e => 
-      e.description.toLowerCase().includes(q) ||
-      e.cameraId.toLowerCase().includes(q) ||
+      (e.id && e.id.toLowerCase().includes(q)) ||
+      (e.type && e.type.toLowerCase().includes(q)) ||
+      (e.type && e.type.replace(/_/g, ' ').toLowerCase().includes(q)) ||
+      (e.description && e.description.toLowerCase().includes(q)) ||
+      (e.cameraId && e.cameraId.toLowerCase().includes(q)) ||
       (e.cameraName && e.cameraName.toLowerCase().includes(q))
     );
   }

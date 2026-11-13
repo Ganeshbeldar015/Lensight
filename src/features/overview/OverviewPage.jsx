@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { SeverityBadge } from '@/components/ui/SeverityBadge';
+import { EventTypeBadge } from '@/components/ui/EventTypeBadge';
 import { EventDetailModal } from '@/components/events/EventDetailModal';
 import { 
   Camera, 
@@ -403,6 +404,7 @@ export const OverviewPage = () => {
                       <span className="font-mono text-[10px] text-[#fa5d19] font-bold">
                         {event.id}
                       </span>
+                      <EventTypeBadge type={event.type} size="sm" />
                       <SeverityBadge severity={event.severity} size="sm" />
                     </div>
                     <p className="text-xs text-slate-800 font-medium leading-snug line-clamp-2 group-hover:text-[#fa5d19] transition-colors">
