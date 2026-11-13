@@ -11,8 +11,7 @@ import {
   MapPin, 
   Layers, 
   Activity, 
-  Wifi, 
-  AlertTriangle 
+  Wifi
 } from 'lucide-react';
 
 export const CameraFocusModal = ({
@@ -25,7 +24,6 @@ export const CameraFocusModal = ({
   const [recentEvents, setRecentEvents] = useState([]);
   const [liveTimestamp, setLiveTimestamp] = useState('');
 
-  // Live timestamp ticking every second
   useEffect(() => {
     const update = () => {
       setLiveTimestamp(new Date().toLocaleTimeString('en-US', { hour12: false }));
@@ -35,7 +33,6 @@ export const CameraFocusModal = ({
     return () => clearInterval(interval);
   }, []);
 
-  // Fetch recent events for this camera
   useEffect(() => {
     if (camera) {
       dataProvider.getEvents({ filter: { cameraIds: [camera.id] }, limit: 5 })
@@ -44,7 +41,6 @@ export const CameraFocusModal = ({
     }
   }, [camera]);
 
-  // Handle escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
@@ -58,22 +54,22 @@ export const CameraFocusModal = ({
   const isOffline = camera.status === 'offline';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-150">
       <div 
-        className="w-full max-w-5xl rounded-2xl border border-slate-200 bg-white shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
+        className="w-full max-w-5xl rounded-2xl border border-[#E5E7EB] bg-white shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 bg-slate-50">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#E5E7EB] bg-slate-50">
           <div className="flex items-center gap-3">
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-slate-900">{camera.name}</h3>
-                <span className="font-mono text-xs text-[#fa5d19] font-bold">{camera.id}</span>
+                <h3 className="text-base font-semibold text-[#1F2937]">{camera.name}</h3>
+                <span className="text-xs font-mono text-[#64748B]">{camera.id}</span>
               </div>
-              <p className="text-xs text-slate-500 flex items-center gap-1.5 mt-0.5">
-                <MapPin className="w-3.5 h-3.5 text-[#fa5d19]" />
-                {camera.location} • <span className="font-mono font-medium">{camera.zone}</span>
+              <p className="text-xs text-[#64748B] flex items-center gap-1.5 mt-0.5">
+                <MapPin className="w-3.5 h-3.5 text-[#16845B]" />
+                {camera.location} &bull; <span className="font-medium">{camera.zone}</span>
               </p>
             </div>
           </div>
@@ -82,7 +78,7 @@ export const CameraFocusModal = ({
             <StatusBadge status={camera.status} />
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200/60 cursor-pointer"
+              className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#1F2937] hover:bg-slate-200/60 cursor-pointer"
               aria-label="Close dialog"
             >
               <X className="w-5 h-5" />
@@ -125,42 +121,41 @@ export const CameraFocusModal = ({
                     onClick={() => setShowOverlays(!showOverlays)}
                     leftIcon={<Layers className="w-3.5 h-3.5" />}
                   >
-                    {showOverlays ? 'Hide AI Bounding' : 'Show AI Bounding'}
+                    {showOverlays ? 'Hide Overlay' : 'Show Overlay'}
                   </Button>
                 </div>
 
-                <span className="font-mono text-[10px] text-amber-400/90 uppercase tracking-wider font-semibold flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-                  [Simulated Local CCTV Feed]
+                <span className="text-[11px] text-slate-300 font-mono">
+                  Simulated CCTV Stream
                 </span>
               </div>
             )}
           </div>
 
           {/* Right Column: Telemetry & Recent Events for this Camera */}
-          <div className="p-5 space-y-5 bg-slate-50/70 border-l border-slate-200 overflow-y-auto">
+          <div className="p-5 space-y-5 bg-slate-50/70 border-l border-[#E5E7EB] overflow-y-auto">
             {/* Stream Telemetry */}
             <div>
-              <h4 className="text-xs font-mono uppercase text-slate-500 font-bold tracking-wider mb-2 flex items-center gap-1.5">
-                <Wifi className="w-3.5 h-3.5 text-[#fa5d19]" />
-                TELEMETRY DATA
+              <h4 className="text-xs font-semibold uppercase text-[#64748B] tracking-wider mb-2 flex items-center gap-1.5">
+                <Wifi className="w-3.5 h-3.5 text-[#16845B]" />
+                Stream Telemetry
               </h4>
-              <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                <div className="p-2.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
-                  <span className="text-[10px] text-slate-500 block">RESOLUTION</span>
-                  <span className="text-slate-900 font-bold">{camera.resolution}</span>
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                <div className="p-2.5 rounded-lg bg-white border border-[#E5E7EB]">
+                  <span className="text-[10px] text-[#64748B] block">Resolution</span>
+                  <span className="text-[#1F2937] font-semibold">{camera.resolution}</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
-                  <span className="text-[10px] text-slate-500 block">FRAME RATE</span>
-                  <span className="text-slate-900 font-bold">{camera.fps} FPS</span>
+                <div className="p-2.5 rounded-lg bg-white border border-[#E5E7EB]">
+                  <span className="text-[10px] text-[#64748B] block">Frame Rate</span>
+                  <span className="text-[#1F2937] font-semibold">{camera.fps} FPS</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
-                  <span className="text-[10px] text-slate-500 block">BANDWIDTH</span>
-                  <span className="text-slate-900 font-bold">{isOffline ? '0 Kbps' : '4.2 Mbps'}</span>
+                <div className="p-2.5 rounded-lg bg-white border border-[#E5E7EB]">
+                  <span className="text-[10px] text-[#64748B] block">Bandwidth</span>
+                  <span className="text-[#1F2937] font-semibold">{isOffline ? '0 Kbps' : '4.2 Mbps'}</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
-                  <span className="text-[10px] text-slate-500 block">CODEC</span>
-                  <span className="text-slate-900 font-bold">H.265 / HEVC</span>
+                <div className="p-2.5 rounded-lg bg-white border border-[#E5E7EB]">
+                  <span className="text-[10px] text-[#64748B] block">Codec</span>
+                  <span className="text-[#1F2937] font-semibold">H.265 / HEVC</span>
                 </div>
               </div>
             </div>
@@ -168,8 +163,8 @@ export const CameraFocusModal = ({
             {/* Quick Status Simulation */}
             {onStatusChange && (
               <div>
-                <h4 className="text-xs font-mono uppercase text-slate-500 font-bold tracking-wider mb-2">
-                  SIMULATE CAMERA STATUS
+                <h4 className="text-xs font-semibold uppercase text-[#64748B] tracking-wider mb-2">
+                  Camera Status
                 </h4>
                 <div className="flex items-center gap-2">
                   <Button
@@ -199,32 +194,32 @@ export const CameraFocusModal = ({
 
             {/* Recent Camera Activity */}
             <div>
-              <h4 className="text-xs font-mono uppercase text-slate-500 font-bold tracking-wider mb-2 flex items-center gap-1.5">
-                <Activity className="w-3.5 h-3.5 text-[#fa5d19]" />
-                RECENT DETECTIONS
+              <h4 className="text-xs font-semibold uppercase text-[#64748B] tracking-wider mb-2 flex items-center gap-1.5">
+                <Activity className="w-3.5 h-3.5 text-[#16845B]" />
+                Recent Events
               </h4>
 
               {recentEvents.length === 0 ? (
-                <p className="text-xs text-slate-500 p-3 rounded-lg bg-white border border-slate-200">
-                  No recent detection events logged for this camera.
+                <p className="text-xs text-[#64748B] p-3 rounded-lg bg-white border border-[#E5E7EB]">
+                  No recent events logged for this camera.
                 </p>
               ) : (
                 <div className="space-y-2">
                   {recentEvents.map((e) => (
                     <div
                       key={e.id}
-                      className="p-2.5 rounded-lg bg-white border border-slate-200 text-xs shadow-2xs space-y-1.5"
+                      className="p-2.5 rounded-lg bg-white border border-[#E5E7EB] text-xs space-y-1.5"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-mono text-[10px] text-[#fa5d19] font-bold">{e.id}</span>
+                          <span className="text-[10px] text-[#64748B] font-mono">{e.id}</span>
                           <EventTypeBadge type={e.type} size="sm" />
                         </div>
-                        <span className="text-[10px] text-slate-400 font-mono">
+                        <span className="text-[10px] text-[#94A3B8]">
                           {new Date(e.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </span>
                       </div>
-                      <p className="text-slate-800 line-clamp-1 text-[11px]">{e.description}</p>
+                      <p className="text-[#1F2937] line-clamp-1 text-xs">{e.description}</p>
                     </div>
                   ))}
                 </div>
@@ -234,7 +229,7 @@ export const CameraFocusModal = ({
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-end px-6 py-3 border-t border-slate-200 bg-slate-50">
+        <div className="flex items-center justify-end px-6 py-3 border-t border-[#E5E7EB] bg-slate-50">
           <Button variant="secondary" size="sm" onClick={onClose}>
             Close Focus View
           </Button>

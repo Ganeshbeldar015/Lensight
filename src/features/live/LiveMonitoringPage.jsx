@@ -7,14 +7,10 @@ import { StatusBadge } from '@/components/ui/StatusBadge';
 import { CameraFocusModal } from '@/components/cameras/CameraFocusModal';
 import { CCTVVideoFeed } from '@/components/cameras/CCTVVideoFeed';
 import { 
-  Maximize2, 
-  Play, 
-  Pause, 
   Grid, 
   Filter, 
-  AlertTriangle,
-  Layers,
-  Info
+  Radio,
+  ArrowRight
 } from 'lucide-react';
 
 export const LiveMonitoringPage = () => {
@@ -28,7 +24,6 @@ export const LiveMonitoringPage = () => {
   const [focusCamera, setFocusCamera] = useState(null);
   const [detectionsByCamera, setDetectionsByCamera] = useState({});
 
-  // Connect live camera tiles to centralized detection events mock data
   useEffect(() => {
     async function loadDetectionEvents() {
       try {
@@ -82,34 +77,34 @@ export const LiveMonitoringPage = () => {
   }[layout] || 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-200">
+    <div className="space-y-6">
       <PageHeader
-        title="Live Camera Monitoring Wall"
-        description="Real-time multi-tile surveillance feeds with simulated AI detection bounding overlays and telemetry status."
+        title="Live Monitoring"
+        description="Real-time multi-tile surveillance feeds with simulated detection overlays and stream telemetry."
         badge={
-          <span className="font-mono text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center gap-1.5 font-semibold">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-            LIVE RTSP/CCTV SIMULATOR
+          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#EAF5EF] border border-[#16845B]/20 text-[#16845B] flex items-center gap-1.5 font-semibold">
+            <Radio className="w-3.5 h-3.5 text-[#16845B] animate-pulse" />
+            Live Surveillance Wall
           </span>
         }
       />
 
       {/* Control Strip */}
-      <div className="p-3.5 rounded-xl border border-slate-200 bg-white flex flex-wrap items-center justify-between gap-4 shadow-xs">
+      <div className="p-3.5 rounded-xl border border-[#E5E7EB] bg-white flex flex-wrap items-center justify-between gap-4 shadow-xs">
         {/* Layout Buttons */}
-        <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
-          <span className="text-[11px] font-mono text-slate-500 px-2 flex items-center gap-1 font-semibold">
-            <Grid className="w-3.5 h-3.5 text-[#fa5d19]" />
-            GRID:
+        <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-[#E5E7EB]">
+          <span className="text-xs text-[#64748B] px-2 flex items-center gap-1 font-semibold">
+            <Grid className="w-3.5 h-3.5 text-[#16845B]" />
+            Grid:
           </span>
           {['auto', '3x3', '2x2', '1x1'].map((l) => (
             <button
               key={l}
               onClick={() => setLayout(l)}
-              className={`px-2.5 py-1 rounded text-xs font-mono uppercase transition-colors cursor-pointer ${
+              className={`px-2.5 py-1 rounded text-xs font-medium uppercase transition-colors cursor-pointer ${
                 layout === l
-                  ? 'bg-[#fa5d19] text-white font-bold shadow-2xs'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-[#16845B] text-white font-semibold shadow-xs'
+                  : 'text-[#64748B] hover:text-[#1F2937]'
               }`}
             >
               {l}
@@ -119,26 +114,26 @@ export const LiveMonitoringPage = () => {
 
         {/* Status & Zone Filters */}
         <div className="flex flex-wrap items-center gap-2">
-          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
-            <Filter className="w-3.5 h-3.5 text-slate-400 ml-1.5" />
+          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-[#E5E7EB]">
+            <Filter className="w-3.5 h-3.5 text-[#94A3B8] ml-1.5" />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-transparent text-xs text-slate-700 py-1 px-2 focus:outline-none font-mono cursor-pointer"
+              className="bg-transparent text-xs text-[#1F2937] py-1 px-2 focus:outline-none cursor-pointer"
             >
               <option value="all">All Statuses ({cameras.length})</option>
-              <option value="online">Online Only</option>
-              <option value="warning">Warning Only</option>
-              <option value="offline">Offline Only</option>
+              <option value="online">Online</option>
+              <option value="warning">Warning</option>
+              <option value="offline">Offline</option>
             </select>
           </div>
 
           {zones.length > 0 && (
-            <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
+            <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-[#E5E7EB]">
               <select
                 value={selectedZone}
                 onChange={(e) => setSelectedZone(e.target.value)}
-                className="bg-transparent text-xs text-slate-700 py-1 px-2 focus:outline-none font-mono cursor-pointer"
+                className="bg-transparent text-xs text-[#1F2937] py-1 px-2 focus:outline-none cursor-pointer"
               >
                 <option value="all">All Zones</option>
                 {zones.map((z) => (
@@ -150,23 +145,20 @@ export const LiveMonitoringPage = () => {
             </div>
           )}
 
-          <div className="font-mono text-xs text-slate-500 px-2 py-1 rounded bg-slate-100 border border-slate-200">
+          <div className="text-xs text-[#64748B] px-2.5 py-1.5 rounded-lg bg-slate-50 border border-[#E5E7EB]">
             Showing {filteredCameras.length} of {cameras.length}
           </div>
         </div>
       </div>
 
-      {/* Mandatory Demonstration Disclosure Banner */}
-      <div className="p-3 rounded-xl border border-amber-200/90 bg-amber-50/70 flex items-start sm:items-center justify-between gap-3 text-xs text-amber-900 font-mono shadow-xs">
+      {/* Demonstration Disclosure Banner */}
+      <div className="p-3 rounded-xl border border-amber-200 bg-amber-50/70 flex items-start sm:items-center justify-between gap-3 text-xs text-amber-900 shadow-xs">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse shrink-0" />
+          <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
           <span>
-            <strong className="font-bold">DEMO SIMULATION DISCLOSURE:</strong> Video streams are simulated CCTV channels mapped to local files in <code className="bg-amber-100/80 px-1.5 py-0.5 rounded text-[11px] font-bold">public/demo-videos/</code>. Bounding boxes and confidence scores are simulated demonstrations, not real-time camera telemetry or live AI model inference.
+            <strong>Simulation Disclosure:</strong> Video streams are simulated CCTV feeds mapped to local files in <code className="bg-amber-100 px-1.5 py-0.5 rounded font-mono text-[11px]">public/demo-videos/</code>. Bounding overlays and confidence scores demonstrate platform capabilities.
           </span>
         </div>
-        <span className="text-[10px] text-amber-700 uppercase tracking-wider shrink-0 font-bold hidden lg:inline-block">
-          Offline & Local Safe
-        </span>
       </div>
 
       {/* Multi-Tile Camera Grid */}
@@ -178,20 +170,20 @@ export const LiveMonitoringPage = () => {
           return (
             <div
               key={camera.id}
-              className="group rounded-xl border border-slate-200 bg-white overflow-hidden flex flex-col transition-all hover:border-orange-300 hover:shadow-md shadow-xs"
+              className="group rounded-xl border border-[#E5E7EB] bg-white overflow-hidden flex flex-col transition-all hover:shadow-md"
             >
-              <div className="p-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+              <div className="p-3 bg-slate-50 border-b border-[#E5E7EB] flex items-center justify-between">
                 <div className="truncate">
-                  <p className="text-xs font-bold text-slate-900 truncate flex items-center gap-2">
+                  <p className="text-xs font-semibold text-[#1F2937] truncate flex items-center gap-2">
                     <span>{camera.name}</span>
-                    <span className="font-mono text-[10px] text-slate-400 font-medium">{camera.id}</span>
+                    <span className="text-[11px] text-[#94A3B8] font-mono">{camera.id}</span>
                   </p>
-                  <p className="text-[10px] text-slate-500 font-mono truncate">{camera.location}</p>
+                  <p className="text-[11px] text-[#64748B] truncate">{camera.location}</p>
                 </div>
                 <StatusBadge status={camera.status} size="sm" />
               </div>
 
-              {/* CCTV Video Feed with Autoplay, Muted, Loop, PlaysInline, Error Fallback & AI Bounding Overlay */}
+              {/* CCTV Video Feed */}
               <CCTVVideoFeed
                 camera={camera}
                 latestDetection={detectionsByCamera[camera.id]}
@@ -202,13 +194,13 @@ export const LiveMonitoringPage = () => {
                 onFocus={() => setFocusCamera(camera)}
               />
 
-              <div className="px-3 py-2 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-[11px] font-mono text-slate-500">
+              <div className="px-3 py-2 bg-slate-50 border-t border-[#E5E7EB] flex items-center justify-between text-xs text-[#64748B]">
                 <span className="truncate max-w-[60%]">{camera.zone || 'General Zone'}</span>
                 <button
                   onClick={() => setFocusCamera(camera)}
-                  className="text-[#fa5d19] hover:underline flex items-center gap-1 font-semibold cursor-pointer shrink-0"
+                  className="text-xs font-medium text-[#16845B] hover:text-[#116B49] flex items-center gap-1 cursor-pointer shrink-0"
                 >
-                  Inspect Feed →
+                  Inspect Feed <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
             </div>

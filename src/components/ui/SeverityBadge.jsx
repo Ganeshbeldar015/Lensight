@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flame, AlertOctagon, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { AlertOctagon, AlertTriangle, AlertCircle, ShieldCheck } from 'lucide-react';
 
 export const SeverityBadge = ({
   severity,
@@ -9,29 +9,31 @@ export const SeverityBadge = ({
 }) => {
   const isSm = size === 'sm';
 
+  const normalized = (severity || '').toLowerCase();
+
   const config = {
     critical: {
       bg: 'bg-red-50',
       border: 'border-red-200',
-      text: 'text-red-700',
-      dot: 'bg-red-600',
-      icon: Flame,
+      text: 'text-[#dc5656]',
+      dot: 'bg-[#dc5656]',
+      icon: AlertOctagon,
       label: 'CRITICAL'
     },
     high: {
-      bg: 'bg-orange-50',
-      border: 'border-orange-200',
-      text: 'text-orange-700',
-      dot: 'bg-orange-600',
-      icon: AlertOctagon,
+      bg: 'bg-amber-50',
+      border: 'border-amber-200',
+      text: 'text-[#b47a16]',
+      dot: 'bg-[#d99a26]',
+      icon: AlertTriangle,
       label: 'HIGH'
     },
     medium: {
-      bg: 'bg-amber-50',
-      border: 'border-amber-200',
-      text: 'text-amber-700',
-      dot: 'bg-amber-600',
-      icon: AlertTriangle,
+      bg: 'bg-amber-50/60',
+      border: 'border-amber-200/80',
+      text: 'text-[#b47a16]',
+      dot: 'bg-[#d99a26]',
+      icon: AlertCircle,
       label: 'MEDIUM'
     },
     low: {
@@ -42,7 +44,7 @@ export const SeverityBadge = ({
       icon: ShieldCheck,
       label: 'LOW'
     }
-  }[severity] || {
+  }[normalized] || {
     bg: 'bg-slate-100',
     border: 'border-slate-200',
     text: 'text-slate-600',
@@ -55,7 +57,7 @@ export const SeverityBadge = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border font-semibold ${config.bg} ${config.border} ${config.text} ${
+      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border font-medium ${config.bg} ${config.border} ${config.text} ${
         isSm ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs'
       } ${className}`}
     >

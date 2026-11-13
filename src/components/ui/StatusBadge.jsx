@@ -9,32 +9,34 @@ export const StatusBadge = ({
 }) => {
   const isSm = size === 'sm';
 
+  const normalized = (status || '').toLowerCase();
+
   const config = {
     online: {
-      bg: 'bg-emerald-50',
-      border: 'border-emerald-200',
-      text: 'text-emerald-700',
-      dot: 'bg-emerald-500',
+      bg: 'bg-[#eaf5ef]',
+      border: 'border-[#16845b]/25',
+      text: 'text-[#16845b]',
+      dot: 'bg-[#16845b]',
       icon: Wifi,
       label: 'ONLINE'
     },
     warning: {
       bg: 'bg-amber-50',
       border: 'border-amber-200',
-      text: 'text-amber-700',
-      dot: 'bg-amber-500',
+      text: 'text-[#b47a16]',
+      dot: 'bg-[#d99a26]',
       icon: AlertTriangle,
       label: 'WARNING'
     },
     offline: {
-      bg: 'bg-rose-50',
-      border: 'border-rose-200',
-      text: 'text-rose-700',
-      dot: 'bg-rose-500',
+      bg: 'bg-red-50',
+      border: 'border-red-200',
+      text: 'text-[#dc5656]',
+      dot: 'bg-[#dc5656]',
       icon: WifiOff,
       label: 'OFFLINE'
     }
-  }[status] || {
+  }[normalized] || {
     bg: 'bg-slate-100',
     border: 'border-slate-300',
     text: 'text-slate-600',
@@ -47,7 +49,7 @@ export const StatusBadge = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border font-semibold ${config.bg} ${config.border} ${config.text} ${
+      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border font-medium ${config.bg} ${config.border} ${config.text} ${
         isSm ? 'px-2 py-0.5 text-[11px]' : 'px-2.5 py-1 text-xs'
       } ${className}`}
     >

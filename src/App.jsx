@@ -4,7 +4,7 @@ import { ToastProvider } from '@/context/ToastContext';
 import { CameraProvider } from '@/context/CameraContext';
 import { AlertProvider } from '@/context/AlertContext';
 import { Layout } from '@/components/layout/Layout';
-import { Flame } from 'lucide-react';
+import { Shield } from 'lucide-react';
 
 const OverviewPage = lazy(() => import('@/features/overview/OverviewPage').then(m => ({ default: m.OverviewPage })));
 const LiveMonitoringPage = lazy(() => import('@/features/live/LiveMonitoringPage').then(m => ({ default: m.LiveMonitoringPage })));
@@ -17,11 +17,11 @@ const NotFoundPage = lazy(() => import('@/features/NotFoundPage').then(m => ({ d
 
 const RouteLoadingFallback = () => (
   <div className="h-[60vh] flex flex-col items-center justify-center space-y-3">
-    <div className="w-10 h-10 rounded-xl bg-[#fa5d19]/20 border border-[#fa5d19]/40 flex items-center justify-center text-[#fa5d19] animate-pulse">
-      <Flame className="w-5 h-5" />
+    <div className="w-10 h-10 rounded-xl bg-[#EAF5EF] border border-[#16845B]/30 flex items-center justify-center text-[#16845B] animate-pulse">
+      <Shield className="w-5 h-5" />
     </div>
-    <span className="font-mono text-xs text-[#888] tracking-widest uppercase">
-      Loading Telemetry Stream...
+    <span className="text-xs text-slate-500 font-medium">
+      Loading dashboard...
     </span>
   </div>
 );
