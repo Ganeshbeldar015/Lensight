@@ -352,10 +352,10 @@ export async function getAnalyticsData(range) {
   });
 
   const categoryBreakdown = [
-    { name: 'Person', value: categoryCounts.person, color: '#fa5d19' },
-    { name: 'Vehicle', value: categoryCounts.vehicle, color: '#2a6dfb' },
-    { name: 'Motion', value: categoryCounts.motion, color: '#ecb730' },
-    { name: 'Restricted Area', value: categoryCounts.restricted_area, color: '#eb3424' }
+    { name: 'Person', value: categoryCounts.person, color: '#16845B' },
+    { name: 'Vehicle', value: categoryCounts.vehicle, color: '#4B83C5' },
+    { name: 'Motion', value: categoryCounts.motion, color: '#D99A26' },
+    { name: 'Restricted Area', value: categoryCounts.restricted_area, color: '#DC5656' }
   ];
 
   // Events over time buckets

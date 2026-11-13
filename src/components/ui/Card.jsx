@@ -9,11 +9,11 @@ export const Card = ({
 }) => {
   return (
     <div
-      className={`rounded-xl border border-slate-200/90 ${
+      className={`rounded-xl border border-slate-200 ${
         raised ? 'bg-slate-50' : 'bg-white'
       } p-5 shadow-xs transition-all duration-200 ${
         hoverable
-          ? 'hover:border-orange-300 hover:shadow-md cursor-pointer'
+          ? 'hover:border-slate-300 hover:shadow-sm cursor-pointer'
           : ''
       } ${className}`}
       {...props}

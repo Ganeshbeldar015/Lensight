@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCameras } from '@/context/CameraContext';
 import { useAlerts } from '@/context/AlertContext';
 import rawEvents from '@/data/events.json';
-import { Search, Camera, ShieldAlert, ScanLine, X, ArrowRight } from 'lucide-react';
+import { Search, Camera, Bell, Activity, X, ArrowRight } from 'lucide-react';
 
 export const OmniSearchModal = ({ isOpen, onClose }) => {
   const [query, setQuery] = useState('');
@@ -20,7 +20,6 @@ export const OmniSearchModal = ({ isOpen, onClose }) => {
     }
   }, [isOpen]);
 
-  // Global keydown handler for Escape & Ctrl+K
   useEffect(() => {
     const handleKeyDown = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -54,28 +53,28 @@ export const OmniSearchModal = ({ isOpen, onClose }) => {
   const hasResults = matchedCameras.length > 0 || matchedAlerts.length > 0 || matchedEvents.length > 0;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-150">
       <div 
-        className="w-full max-w-2xl rounded-2xl border border-slate-200 bg-white shadow-2xl overflow-hidden flex flex-col"
+        className="w-full max-w-2xl rounded-2xl border border-[#E5E7EB] bg-white shadow-xl overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 py-3.5 border-b border-slate-200 gap-3">
-          <Search className="w-5 h-5 text-[#fa5d19] shrink-0" />
+        <div className="flex items-center px-4 py-3.5 border-b border-[#E5E7EB] gap-3">
+          <Search className="w-5 h-5 text-[#16845B] shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search all cameras, detection events, alerts..."
-            className="flex-1 bg-transparent text-sm text-slate-900 placeholder-slate-400 focus:outline-none"
+            placeholder="Search all cameras, events, alerts..."
+            className="flex-1 bg-transparent text-sm text-[#1F2937] placeholder-[#94A3B8] focus:outline-none"
           />
           {query && (
-            <button onClick={() => setQuery('')} className="text-slate-400 hover:text-slate-700 cursor-pointer">
+            <button onClick={() => setQuery('')} className="text-[#94A3B8] hover:text-[#1F2937] cursor-pointer">
               <X className="w-4 h-4" />
             </button>
           )}
-          <kbd className="font-mono text-[10px] bg-slate-100 border border-slate-300 px-2 py-0.5 rounded text-slate-500 font-medium">
+          <kbd className="text-[11px] bg-slate-100 border border-[#E5E7EB] px-2 py-0.5 rounded text-[#64748B] font-medium">
             ESC
           </kbd>
         </div>
@@ -83,19 +82,19 @@ export const OmniSearchModal = ({ isOpen, onClose }) => {
         {/* Results Container */}
         <div className="p-4 max-h-[60vh] overflow-y-auto space-y-4">
           {!q ? (
-            <div className="py-8 text-center text-xs text-slate-500">
+            <div className="py-8 text-center text-xs text-[#64748B]">
               Type a camera name (e.g. &ldquo;Entrance&rdquo;), event type (e.g. &ldquo;Restricted&rdquo;), or alert ID...
             </div>
           ) : !hasResults ? (
-            <div className="py-8 text-center text-xs text-slate-500">
-              No matches found for &ldquo;<span className="text-slate-900 font-semibold">{query}</span>&rdquo;.
+            <div className="py-8 text-center text-xs text-[#64748B]">
+              No matches found for &ldquo;<span className="text-[#1F2937] font-semibold">{query}</span>&rdquo;.
             </div>
           ) : (
             <>
               {/* Cameras */}
               {matchedCameras.length > 0 && (
                 <div>
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-[#fa5d19] mb-2 flex items-center gap-1.5 font-bold">
+                  <div className="text-xs font-semibold text-[#16845B] mb-2 flex items-center gap-1.5">
                     <Camera className="w-3.5 h-3.5" />
                     <span>Cameras ({matchedCameras.length})</span>
                   </div>
@@ -107,16 +106,16 @@ export const OmniSearchModal = ({ isOpen, onClose }) => {
                           onClose();
                           navigate('/cameras');
                         }}
-                        className="w-full p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 flex items-center justify-between text-left transition-colors cursor-pointer"
+                        className="w-full p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-[#E5E7EB] flex items-center justify-between text-left transition-colors cursor-pointer"
                       >
                         <div>
-                          <div className="text-xs font-semibold text-slate-900 flex items-center gap-2">
+                          <div className="text-xs font-semibold text-[#1F2937] flex items-center gap-2">
                             <span>{c.name}</span>
-                            <span className="font-mono text-[10px] text-slate-500">{c.id}</span>
+                            <span className="text-[11px] text-[#64748B] font-mono">{c.id}</span>
                           </div>
-                          <p className="text-[11px] text-slate-500">{c.location}</p>
+                          <p className="text-[11px] text-[#64748B]">{c.location}</p>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-slate-400" />
+                        <ArrowRight className="w-4 h-4 text-[#94A3B8]" />
                       </button>
                     ))}
                   </div>
@@ -126,8 +125,8 @@ export const OmniSearchModal = ({ isOpen, onClose }) => {
               {/* Alerts */}
               {matchedAlerts.length > 0 && (
                 <div>
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-red-600 mb-2 flex items-center gap-1.5 font-bold">
-                    <ShieldAlert className="w-3.5 h-3.5" />
+                  <div className="text-xs font-semibold text-[#DC5656] mb-2 flex items-center gap-1.5">
+                    <Bell className="w-3.5 h-3.5" />
                     <span>Alerts ({matchedAlerts.length})</span>
                   </div>
                   <div className="space-y-1">
@@ -138,32 +137,32 @@ export const OmniSearchModal = ({ isOpen, onClose }) => {
                           onClose();
                           navigate('/alerts');
                         }}
-                        className="w-full p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 flex items-center justify-between text-left transition-colors cursor-pointer"
+                        className="w-full p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-[#E5E7EB] flex items-center justify-between text-left transition-colors cursor-pointer"
                       >
                         <div>
-                          <div className="text-xs font-semibold text-slate-900 flex items-center gap-2">
-                            <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded font-bold uppercase ${
-                              a.severity === 'critical' ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-orange-50 text-orange-700 border border-orange-200'
+                          <div className="text-xs font-semibold text-[#1F2937] flex items-center gap-2">
+                            <span className={`text-[10px] px-1.5 py-0.5 rounded font-semibold uppercase ${
+                              a.severity === 'critical' ? 'bg-red-50 text-[#DC5656] border border-red-100' : 'bg-amber-50 text-[#D99A26] border border-amber-100'
                             }`}>
                               {a.severity}
                             </span>
                             <span>{a.title}</span>
                           </div>
-                          <p className="text-[11px] text-slate-500 line-clamp-1">{a.description}</p>
+                          <p className="text-[11px] text-[#64748B] line-clamp-1">{a.description}</p>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-slate-400" />
+                        <ArrowRight className="w-4 h-4 text-[#94A3B8]" />
                       </button>
                     ))}
                   </div>
                 </div>
               )}
 
-              {/* Detections */}
+              {/* Events */}
               {matchedEvents.length > 0 && (
                 <div>
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-blue-600 mb-2 flex items-center gap-1.5 font-bold">
-                    <ScanLine className="w-3.5 h-3.5" />
-                    <span>Detection Events ({matchedEvents.length})</span>
+                  <div className="text-xs font-semibold text-[#4B83C5] mb-2 flex items-center gap-1.5">
+                    <Activity className="w-3.5 h-3.5" />
+                    <span>Events ({matchedEvents.length})</span>
                   </div>
                   <div className="space-y-1">
                     {matchedEvents.map((e) => (
@@ -173,17 +172,17 @@ export const OmniSearchModal = ({ isOpen, onClose }) => {
                           onClose();
                           navigate(`/events?search=${encodeURIComponent(e.id)}`);
                         }}
-                        className="w-full p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 flex items-center justify-between text-left transition-colors cursor-pointer"
+                        className="w-full p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-[#E5E7EB] flex items-center justify-between text-left transition-colors cursor-pointer"
                       >
                         <div>
-                          <div className="text-xs font-semibold text-slate-900 flex items-center gap-2">
-                            <span className="font-mono text-[10px] text-[#fa5d19] font-bold">{e.id}</span>
+                          <div className="text-xs font-semibold text-[#1F2937] flex items-center gap-2">
+                            <span className="text-[11px] text-[#16845B] font-mono font-medium">{e.id}</span>
                             <span className="capitalize">{e.type.replace('_', ' ')}</span>
-                            <span className="text-[10px] text-slate-500">({(e.confidence * 100).toFixed(0)}% conf)</span>
+                            <span className="text-[11px] text-[#64748B]">({(e.confidence * 100).toFixed(0)}% conf)</span>
                           </div>
-                          <p className="text-[11px] text-slate-500 line-clamp-1">{e.description}</p>
+                          <p className="text-[11px] text-[#64748B] line-clamp-1">{e.description}</p>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-slate-400" />
+                        <ArrowRight className="w-4 h-4 text-[#94A3B8]" />
                       </button>
                     ))}
                   </div>

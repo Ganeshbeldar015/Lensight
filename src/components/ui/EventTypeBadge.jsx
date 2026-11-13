@@ -13,34 +13,30 @@ export const EventTypeBadge = ({
 
   const config = {
     person: {
-      bg: 'bg-blue-50',
-      border: 'border-blue-200',
-      text: 'text-blue-700',
-      dot: 'bg-blue-500',
+      bg: 'bg-sky-50',
+      border: 'border-sky-200',
+      text: 'text-sky-800',
       icon: User,
       label: 'Person'
     },
     vehicle: {
-      bg: 'bg-indigo-50',
-      border: 'border-indigo-200',
-      text: 'text-indigo-700',
-      dot: 'bg-indigo-500',
+      bg: 'bg-slate-100',
+      border: 'border-slate-200',
+      text: 'text-slate-800',
       icon: Car,
       label: 'Vehicle'
     },
     motion: {
       bg: 'bg-emerald-50',
       border: 'border-emerald-200',
-      text: 'text-emerald-700',
-      dot: 'bg-emerald-500',
+      text: 'text-emerald-800',
       icon: Activity,
       label: 'Motion'
     },
     restricted_area: {
       bg: 'bg-rose-50',
       border: 'border-rose-200',
-      text: 'text-rose-700',
-      dot: 'bg-rose-500',
+      text: 'text-rose-800',
       icon: ShieldAlert,
       label: 'Restricted Area'
     }
@@ -48,7 +44,6 @@ export const EventTypeBadge = ({
     bg: 'bg-slate-100',
     border: 'border-slate-200',
     text: 'text-slate-700',
-    dot: 'bg-slate-400',
     icon: ScanLine,
     label: (type || 'Unknown').replace(/_/g, ' ')
   };
@@ -68,4 +63,3 @@ export const EventTypeBadge = ({
     </span>
   );
 };
-

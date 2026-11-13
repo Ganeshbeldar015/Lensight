@@ -8,13 +8,13 @@ export const NotFoundPage = () => {
 
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center text-center p-6 space-y-4">
-      <div className="w-16 h-16 rounded-2xl bg-orange-50 border border-orange-200 flex items-center justify-center text-[#fa5d19] mb-2 shadow-xs">
+      <div className="w-16 h-16 rounded-2xl bg-[#EAF5EF] border border-[#16845B]/20 flex items-center justify-center text-[#16845B] mb-2 shadow-xs">
         <AlertTriangle className="w-8 h-8" />
       </div>
 
-      <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">404: Node Not Found</h1>
-      <p className="text-sm text-slate-500 max-w-md leading-relaxed">
-        The telemetry endpoint or route you requested does not exist on the Lensight monitoring network.
+      <h1 className="text-3xl font-bold text-[#1F2937] tracking-tight">404: Page Not Found</h1>
+      <p className="text-sm text-[#64748B] max-w-md leading-relaxed">
+        The route you requested does not exist on the Lensight monitoring network.
       </p>
 
       <Button
