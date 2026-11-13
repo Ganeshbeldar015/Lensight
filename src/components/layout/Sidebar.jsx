@@ -46,7 +46,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-white border-r border-slate-200 flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:h-[calc(100vh-4rem)] ${
+        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-white border-r border-slate-200 flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:shrink-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -68,7 +68,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
         </div>
 
         {/* Navigation Items */}
-        <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+        <nav className="flex-1 p-3 space-y-1 overflow-y-auto no-scrollbar">
           <div className="px-3 py-2 text-[10px] font-mono tracking-wider uppercase text-slate-400 font-bold">
             WORKSPACE
           </div>
@@ -118,7 +118,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
         </nav>
 
         {/* System Status Footer */}
-        <div className="p-3.5 border-t border-slate-200 bg-slate-50">
+        <div className="p-3.5 border-t border-slate-200 bg-slate-50 shrink-0">
           <div className="p-2.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-[11px] font-mono text-slate-500 font-medium">SYSTEM HEALTH</span>
