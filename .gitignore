@@ -28,5 +28,9 @@ Thumbs.db
 # Strictly Ignore MD files & MD file folder as requested by user
 MD file/
 [Mm][Dd] [Ff]ile/
+MD files/
+[Mm][Dd] [Ff]iles/
+md/
+[Mm][Dd]/
 *.md
 **/*.md
