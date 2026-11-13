@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBadge } from '@/components/ui/StatusBadge';
+import { EventTypeBadge } from '@/components/ui/EventTypeBadge';
 import { Button } from '@/components/ui/Button';
 import { dataProvider } from '@/services/dataProvider';
 import { 
@@ -255,15 +256,18 @@ export const CameraFocusModal = ({
                   {recentEvents.map((e) => (
                     <div
                       key={e.id}
-                      className="p-2.5 rounded-lg bg-white border border-slate-200 text-xs shadow-2xs"
+                      className="p-2.5 rounded-lg bg-white border border-slate-200 text-xs shadow-2xs space-y-1.5"
                     >
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="font-mono text-[10px] text-[#fa5d19] font-bold">{e.id}</span>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-mono text-[10px] text-[#fa5d19] font-bold">{e.id}</span>
+                          <EventTypeBadge type={e.type} size="sm" />
+                        </div>
                         <span className="text-[10px] text-slate-400 font-mono">
                           {new Date(e.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </span>
                       </div>
-                      <p className="text-slate-800 line-clamp-1">{e.description}</p>
+                      <p className="text-slate-800 line-clamp-1 text-[11px]">{e.description}</p>
                     </div>
                   ))}
                 </div>
