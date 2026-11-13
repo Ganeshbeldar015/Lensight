@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flame, AlertOctagon, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { AlertOctagon, AlertTriangle, AlertCircle, ShieldCheck } from 'lucide-react';
 
 export const SeverityBadge = ({
   severity,
@@ -9,44 +9,46 @@ export const SeverityBadge = ({
 }) => {
   const isSm = size === 'sm';
 
+  const normalized = (severity || '').toLowerCase();
+
   const config = {
     critical: {
-      bg: 'bg-red-50',
-      border: 'border-red-200',
-      text: 'text-red-700',
-      dot: 'bg-red-600',
-      icon: Flame,
+      bg: 'bg-[#fdf0f0]',
+      border: 'border-[#d95757]/25',
+      text: 'text-[#d95757]',
+      dot: 'bg-[#d95757]',
+      icon: AlertOctagon,
       label: 'CRITICAL'
     },
     high: {
-      bg: 'bg-orange-50',
-      border: 'border-orange-200',
-      text: 'text-orange-700',
-      dot: 'bg-orange-600',
-      icon: AlertOctagon,
+      bg: 'bg-[#fdf6ea]',
+      border: 'border-[#d69a38]/30',
+      text: 'text-[#d69a38]',
+      dot: 'bg-[#d69a38]',
+      icon: AlertTriangle,
       label: 'HIGH'
     },
     medium: {
-      bg: 'bg-amber-50',
-      border: 'border-amber-200',
-      text: 'text-amber-700',
-      dot: 'bg-amber-600',
-      icon: AlertTriangle,
+      bg: 'bg-[#fdf6ea]/70',
+      border: 'border-[#d69a38]/25',
+      text: 'text-[#d69a38]',
+      dot: 'bg-[#d69a38]',
+      icon: AlertCircle,
       label: 'MEDIUM'
     },
     low: {
-      bg: 'bg-slate-100',
-      border: 'border-slate-200',
-      text: 'text-slate-700',
-      dot: 'bg-slate-500',
+      bg: 'bg-[#f0f5fa]',
+      border: 'border-[#4b83c5]/25',
+      text: 'text-[#4b83c5]',
+      dot: 'bg-[#4b83c5]',
       icon: ShieldCheck,
       label: 'LOW'
     }
-  }[severity] || {
-    bg: 'bg-slate-100',
-    border: 'border-slate-200',
-    text: 'text-slate-600',
-    dot: 'bg-slate-400',
+  }[normalized] || {
+    bg: 'bg-[#f0f6f6]',
+    border: 'border-[#dce5e7]',
+    text: 'text-[#61777c]',
+    dot: 'bg-[#8a9b9f]',
     icon: ShieldCheck,
     label: (severity || 'INFO').toUpperCase()
   };
@@ -55,7 +57,7 @@ export const SeverityBadge = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border font-semibold ${config.bg} ${config.border} ${config.text} ${
+      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border font-medium ${config.bg} ${config.border} ${config.text} ${
         isSm ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs'
       } ${className}`}
     >

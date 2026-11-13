@@ -31,7 +31,7 @@ export const AlertProvider = ({ children }) => {
       setAlerts((prev) => [newAlert, ...prev]);
       showToast({
         type: newAlert.severity === 'critical' ? 'error' : 'warning',
-        title: `🚨 ${newAlert.title}`,
+        title: newAlert.title,
         message: `${newAlert.cameraName || newAlert.cameraId}: ${newAlert.description}`
       });
     });

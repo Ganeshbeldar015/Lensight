@@ -1,64 +1,53 @@
 @import "tailwindcss";
 
 @theme {
-  --color-heat-4: rgba(250, 93, 25, 0.04);
-  --color-heat-8: rgba(250, 93, 25, 0.08);
-  --color-heat-12: rgba(250, 93, 25, 0.12);
-  --color-heat-16: rgba(250, 93, 25, 0.16);
-  --color-heat-20: rgba(250, 93, 25, 0.20);
-  --color-heat-40: rgba(250, 93, 25, 0.40);
-  --color-heat-90: rgba(250, 93, 25, 0.90);
-  --color-heat-100: #fa5d19;
+  --color-primary: #168a91;
+  --color-primary-hover: #11747a;
+  --color-primary-light: #ddf1f1;
+  --color-secondary-teal: #69aeb0;
 
-  --color-bg-base: #f8fafc;
-  --color-bg-lighter: #ffffff;
-  --color-surface: #ffffff;
-  --color-surface-raised: #f1f5f9;
-  
-  --color-border-faint: #f1f5f9;
-  --color-border-muted: #e2e8f0;
-  --color-border-loud: #cbd5e1;
+  --color-bg-app: #f3f7f8;
+  --color-bg-card: #ffffff;
+  --color-bg-sidebar: #ffffff;
+  --color-bg-hover: #f0f6f6;
+  --color-bg-selected: #e7f3f3;
 
-  --color-accent-text: #0f172a;
-  --color-accent-subtext: #64748b;
-  --color-accent-white: #ffffff;
+  --color-text-main: #263b40;
+  --color-text-secondary: #61777c;
+  --color-text-muted: #8a9b9f;
 
-  --color-accent-bluetron: #2563eb;
-  --color-accent-crimson: #dc2626;
-  --color-accent-forest: #16a34a;
-  --color-accent-honey: #d97706;
-  --color-accent-amethyst: #7c3aed;
+  --color-border-main: #dce5e7;
+  --color-border-subtle: #e9eff0;
+
+  --color-status-online: #299b72;
+  --color-status-warning: #d69a38;
+  --color-status-critical: #d95757;
+  --color-status-info: #4b83c5;
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'Geist Mono', 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-full: 999px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
 }
 
 :root {
   color-scheme: light;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #f3f7f8;
+  color: #263b40;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--color-bg-base);
-  color: var(--color-accent-text);
+  background-color: #f3f7f8;
+  color: #263b40;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Custom Heat Button Glow Shadow */
-.shadow-heat-glow {
-  box-shadow: 
-    0 1px 2px 0 rgba(250, 93, 25, 0.2),
-    0 4px 12px 0 rgba(250, 93, 25, 0.25);
 }
 
 /* Scrollbar styling */
@@ -67,14 +56,14 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f3f7f8;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #dce5e7;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #8a9b9f;
 }
 
 /* Hide scrollbar for clean static sidebars */
@@ -85,4 +74,3 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
