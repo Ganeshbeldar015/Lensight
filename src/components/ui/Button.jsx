@@ -16,7 +16,7 @@ export const Button = React.forwardRef(
     ref
   ) => {
     // Base styles
-    const base = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fa5d19] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] disabled:opacity-50 disabled:cursor-not-allowed select-none active:scale-[0.985] cursor-pointer';
+    const base = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fa5d19] focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed select-none active:scale-[0.985] cursor-pointer';
 
     // Size variants
     const sizes = {
@@ -25,14 +25,14 @@ export const Button = React.forwardRef(
       lg: 'h-12 px-6 text-base gap-2.5'
     }[size] || 'h-10 px-4 text-sm gap-2';
 
-    // Style variants from design.md
+    // Style variants for modern light UI
     const variants = {
-      primary: 'bg-[#fa5d19] hover:bg-[#ff6826] active:bg-[#e04e0e] text-white shadow-heat-glow border border-transparent font-semibold',
-      secondary: 'bg-[#1f1f1f] hover:bg-[#282828] active:bg-[#161616] text-[#f5f5f5] border border-[#333333]',
-      tertiary: 'bg-transparent hover:bg-[rgba(255,255,255,0.06)] active:bg-[rgba(255,255,255,0.09)] text-[#e0e0e0]',
-      destructive: 'bg-[#eb3424] hover:bg-[#d62617] text-white border border-transparent font-semibold',
-      outline: 'bg-transparent hover:bg-[rgba(250,93,25,0.08)] text-[#fa5d19] border border-[rgba(250,93,25,0.35)]'
-    }[variant] || 'bg-[#1f1f1f] text-white border border-[#333]';
+      primary: 'bg-[#fa5d19] hover:bg-[#ea580c] active:bg-[#c2410c] text-white shadow-heat-glow border border-transparent font-semibold',
+      secondary: 'bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-300 shadow-xs font-medium',
+      tertiary: 'bg-transparent hover:bg-slate-100 active:bg-slate-200 text-slate-600 hover:text-slate-900 border border-transparent',
+      destructive: 'bg-red-600 hover:bg-red-700 active:bg-red-800 text-white shadow-xs border border-transparent font-semibold',
+      outline: 'bg-white hover:bg-orange-50 active:bg-orange-100 text-[#fa5d19] border border-orange-300 shadow-xs font-semibold'
+    }[variant] || 'bg-white text-slate-700 border border-slate-300';
 
     return (
       <button

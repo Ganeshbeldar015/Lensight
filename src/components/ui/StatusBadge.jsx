@@ -11,34 +11,34 @@ export const StatusBadge = ({
 
   const config = {
     online: {
-      bg: 'bg-[rgba(34,197,94,0.12)]',
-      border: 'border-[rgba(34,197,94,0.25)]',
-      text: 'text-[#42c366]',
-      dot: 'bg-[#22c55e]',
+      bg: 'bg-emerald-50',
+      border: 'border-emerald-200',
+      text: 'text-emerald-700',
+      dot: 'bg-emerald-500',
       icon: Wifi,
       label: 'ONLINE'
     },
     warning: {
-      bg: 'bg-[rgba(245,158,11,0.12)]',
-      border: 'border-[rgba(245,158,11,0.25)]',
-      text: 'text-[#ecb730]',
-      dot: 'bg-[#f59e0b]',
+      bg: 'bg-amber-50',
+      border: 'border-amber-200',
+      text: 'text-amber-700',
+      dot: 'bg-amber-500',
       icon: AlertTriangle,
       label: 'WARNING'
     },
     offline: {
-      bg: 'bg-[rgba(239,68,68,0.12)]',
-      border: 'border-[rgba(239,68,68,0.25)]',
-      text: 'text-[#ef4444]',
-      dot: 'bg-[#ef4444]',
+      bg: 'bg-rose-50',
+      border: 'border-rose-200',
+      text: 'text-rose-700',
+      dot: 'bg-rose-500',
       icon: WifiOff,
       label: 'OFFLINE'
     }
   }[status] || {
-    bg: 'bg-[#222]',
-    border: 'border-[#444]',
-    text: 'text-[#aaa]',
-    dot: 'bg-[#888]',
+    bg: 'bg-slate-100',
+    border: 'border-slate-300',
+    text: 'text-slate-600',
+    dot: 'bg-slate-400',
     icon: Wifi,
     label: (status || 'UNKNOWN').toUpperCase()
   };
@@ -47,7 +47,7 @@ export const StatusBadge = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border ${config.bg} ${config.border} ${config.text} ${
+      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border font-semibold ${config.bg} ${config.border} ${config.text} ${
         isSm ? 'px-2 py-0.5 text-[11px]' : 'px-2.5 py-1 text-xs'
       } ${className}`}
     >
