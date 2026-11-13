@@ -80,9 +80,9 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
       </div>
 
       {/* Right side: Live Clock, Demo Data Pill, Notifications & Profile */}
-      <div className="flex items-center gap-2.5 sm:gap-4">
+      <div className="flex items-center gap-2 sm:gap-3">
         {/* Live Clock */}
-        <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 font-mono text-xs text-slate-700">
+        <div className="hidden xl:inline-flex items-center gap-2 h-8 px-3 rounded-full bg-slate-100/90 border border-slate-200/90 font-mono text-xs text-slate-700 select-none">
           <Clock className="w-3.5 h-3.5 text-[#fa5d19]" />
           <span>{currentTime}</span>
         </div>
@@ -90,16 +90,20 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
         {/* Permanent Honesty Rule: Demo Data Pill */}
         <div 
           title="Demo Data: Running in frontend-simulated mode. No actual video telemetry is streamed to external AI models."
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-orange-50 border border-orange-200 text-[#fa5d19] font-mono text-[11px] font-bold"
+          className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full bg-orange-50 border border-orange-200 text-[#fa5d19] font-mono text-[11px] font-bold select-none shadow-2xs"
         >
-          <Database className="w-3 h-3 animate-pulse" />
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fa5d19] opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#fa5d19]" />
+          </span>
+          <Database className="w-3.5 h-3.5" />
           <span>DEMO DATA</span>
         </div>
 
         {/* Mobile Search Button */}
         <button
           onClick={onOpenSearch}
-          className="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 cursor-pointer"
+          className="md:hidden flex items-center justify-center w-8 h-8 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 cursor-pointer"
           aria-label="Search"
         >
           <Search className="w-4 h-4" />
@@ -109,87 +113,97 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
         <div className="relative">
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="relative p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fa5d19] cursor-pointer"
+            className="relative flex items-center justify-center w-8 h-8 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#fa5d19] cursor-pointer"
             aria-label={`Notifications (${unreadCount} unread)`}
           >
-            <Bell className="w-5 h-5" />
+            <Bell className="w-4.5 h-4.5" />
             {unreadCount > 0 && (
-              <span className="absolute top-1.5 right-1.5 min-w-[18px] h-[18px] px-1 bg-red-600 text-white font-mono text-[10px] font-bold rounded-full flex items-center justify-center animate-pulse">
+              <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-red-600 text-white font-mono text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-white shadow-xs pointer-events-none">
                 {unreadCount > 9 ? '9+' : unreadCount}
               </span>
             )}
           </button>
 
-          {/* Notifications Dropdown Menu */}
+          {/* Notifications Dropdown Backdrop & Menu */}
           {showNotifications && (
-            <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl border border-slate-200 bg-white shadow-2xl z-50 p-3 animate-in fade-in zoom-in-95 duration-150">
-              <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-200">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-slate-900">Alert Notifications</span>
-                  <span className="px-1.5 py-0.5 rounded text-[10px] font-mono bg-red-50 text-red-700 border border-red-200 font-bold">
-                    {unreadCount} unread
-                  </span>
+            <>
+              <div 
+                className="fixed inset-0 z-40" 
+                onClick={() => setShowNotifications(false)}
+                aria-hidden="true"
+              />
+              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl border border-slate-200 bg-white shadow-2xl z-50 p-3 animate-in fade-in zoom-in-95 duration-150">
+                <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-200">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-semibold text-slate-900">Alert Notifications</span>
+                    <span className="px-1.5 py-0.5 rounded text-[10px] font-mono bg-red-50 text-red-700 border border-red-200 font-bold">
+                      {unreadCount} unread
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setShowNotifications(false);
+                      navigate('/alerts');
+                    }}
+                    className="text-[11px] text-[#fa5d19] hover:underline flex items-center gap-1 font-semibold cursor-pointer"
+                  >
+                    View All <ExternalLink className="w-3 h-3" />
+                  </button>
                 </div>
-                <button
-                  onClick={() => {
-                    setShowNotifications(false);
-                    navigate('/alerts');
-                  }}
-                  className="text-[11px] text-[#fa5d19] hover:underline flex items-center gap-1 font-semibold cursor-pointer"
-                >
-                  View All <ExternalLink className="w-3 h-3" />
-                </button>
-              </div>
 
-              {unreadAlerts.length === 0 ? (
-                <div className="py-6 text-center text-xs text-slate-500">
-                  <CheckCircle2 className="w-6 h-6 mx-auto mb-1 text-emerald-600" />
-                  All security alerts acknowledged.
-                </div>
-              ) : (
-                <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
-                  {unreadAlerts.map((a) => (
-                    <div
-                      key={a.id}
-                      className="p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100/90 border border-slate-200 transition-all flex flex-col gap-1 text-left"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded font-bold uppercase ${
-                          a.severity === 'critical' 
-                            ? 'bg-red-50 text-red-700 border border-red-200' 
-                            : 'bg-orange-50 text-orange-700 border border-orange-200'
-                        }`}>
-                          {a.severity}
-                        </span>
-                        <span className="text-[10px] font-mono text-slate-500">
-                          {new Date(a.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                        </span>
+                {unreadAlerts.length === 0 ? (
+                  <div className="py-6 text-center text-xs text-slate-500">
+                    <CheckCircle2 className="w-6 h-6 mx-auto mb-1 text-emerald-600" />
+                    All security alerts acknowledged.
+                  </div>
+                ) : (
+                  <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
+                    {unreadAlerts.map((a) => (
+                      <div
+                        key={a.id}
+                        className="p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100/90 border border-slate-200 transition-all flex flex-col gap-1 text-left"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded font-bold uppercase ${
+                            a.severity === 'critical' 
+                              ? 'bg-red-50 text-red-700 border border-red-200' 
+                              : 'bg-orange-50 text-orange-700 border border-orange-200'
+                          }`}>
+                            {a.severity}
+                          </span>
+                          <span className="text-[10px] font-mono text-slate-500">
+                            {new Date(a.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                          </span>
+                        </div>
+                        <p className="text-xs text-slate-900 font-medium leading-tight">{a.title}</p>
+                        <div className="flex items-center justify-between pt-1">
+                          <span className="text-[11px] text-slate-500 truncate">{a.cameraName || a.cameraId}</span>
+                          <button
+                            onClick={() => acknowledgeAlert(a.id)}
+                            className="text-[10px] font-semibold text-[#fa5d19] hover:text-[#ea580c] transition-colors cursor-pointer"
+                          >
+                            Acknowledge
+                          </button>
+                        </div>
                       </div>
-                      <p className="text-xs text-slate-900 font-medium leading-tight">{a.title}</p>
-                      <div className="flex items-center justify-between pt-1">
-                        <span className="text-[11px] text-slate-500 truncate">{a.cameraName || a.cameraId}</span>
-                        <button
-                          onClick={() => acknowledgeAlert(a.id)}
-                          className="text-[10px] font-semibold text-[#fa5d19] hover:text-[#ea580c] transition-colors cursor-pointer"
-                        >
-                          Acknowledge
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </>
           )}
         </div>
 
+        {/* Vertical Divider */}
+        <div className="h-5 w-px bg-slate-200 hidden sm:block" />
+
         {/* Profile Avatar */}
-        <div className="flex items-center gap-2 pl-2 border-l border-slate-200">
-          <div className="w-8 h-8 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center text-xs font-bold text-slate-700 select-none">
+        <div className="flex items-center gap-2 pl-0.5 cursor-pointer group select-none">
+          <div className="w-8 h-8 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center text-xs font-bold text-slate-700 shadow-2xs group-hover:border-[#fa5d19]/40 transition-colors">
             OP
           </div>
           <div className="hidden lg:block text-left">
-            <p className="text-xs font-semibold text-slate-900 leading-tight">Operator 01</p>
+            <p className="text-xs font-semibold text-slate-900 leading-tight group-hover:text-[#fa5d19] transition-colors">Operator 01</p>
             <p className="text-[10px] text-slate-500 font-mono">SecOps Lead</p>
           </div>
         </div>
