@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { DetectionEvent } from '@/types';
 import { EventTypeBadge } from '@/components/common/EventTypeBadge';
 import { SeverityBadge } from '@/components/common/SeverityBadge';
 import { EmptyState } from '@/components/common/EmptyState';
-import { Eye } from 'lucide-react';
+import { Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface EventTableProps {
   events: DetectionEvent[];
@@ -16,6 +16,9 @@ export const EventTable: React.FC<EventTableProps> = ({
   onSelectEvent,
   onResetFilters,
 }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 12;
+
   if (events.length === 0) {
     return (
       <EmptyState
@@ -26,6 +29,16 @@ export const EventTable: React.FC<EventTableProps> = ({
       />
     );
   }
+
+  const totalPages = Math.ceil(events.length / pageSize);
+  const startIndex = (currentPage - 1) * pageSize;
+  const paginatedEvents = events.slice(startIndex, startIndex + pageSize);
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
 
   return (
     <div className="rounded-2xl border border-[#374151] overflow-hidden bg-[#1F2937]">
@@ -44,7 +57,7 @@ export const EventTable: React.FC<EventTableProps> = ({
             </tr>
           </thead>
           <tbody className="divide-y divide-[#374151]/50 text-[#F9FAFB]">
-            {events.map((evt) => {
+            {paginatedEvents.map((evt) => {
               const confPercent = Math.round(evt.confidence * 100);
               const eventDate = new Date(evt.timestamp);
 
@@ -133,6 +146,43 @@ export const EventTable: React.FC<EventTableProps> = ({
           </tbody>
         </table>
       </div>
+
+      {/* Pagination Footer */}
+      {totalPages > 1 && (
+        <div className="px-4 py-3 bg-[#151E2D] border-t border-[#374151] flex items-center justify-between text-xs text-[#9CA3AF]">
+          <span className="font-mono">
+            Showing <strong className="text-[#F9FAFB]">{startIndex + 1}</strong> to{' '}
+            <strong className="text-[#F9FAFB]">
+              {Math.min(startIndex + pageSize, events.length)}
+            </strong>{' '}
+            of <strong className="text-[#F9FAFB]">{events.length}</strong> events
+          </span>
+
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="p-1.5 rounded-lg bg-[#1F2937] border border-[#374151] text-[#9CA3AF] hover:text-[#F9FAFB] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              title="Previous Page"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            <span className="px-3 py-1 font-mono text-[11px] text-[#F9FAFB] bg-[#111827] rounded-lg border border-[#374151]">
+              Page {currentPage} of {totalPages}
+            </span>
+
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="p-1.5 rounded-lg bg-[#1F2937] border border-[#374151] text-[#9CA3AF] hover:text-[#F9FAFB] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              title="Next Page"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
