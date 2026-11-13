@@ -152,15 +152,17 @@ export const LiveMonitoringPage = () => {
           return (
             <div
               key={camera.id}
-              className="group rounded-xl border border-[#dce5e7] bg-white overflow-hidden flex flex-col transition-all hover:shadow-md"
+              className="group rounded-xl border border-[#dce5e7] bg-white overflow-hidden flex flex-col transition-all hover:shadow-md hover:border-[#168a91]/30"
             >
-              <div className="p-3 bg-[#f0f6f6] border-b border-[#dce5e7] flex items-center justify-between">
-                <div className="truncate">
-                  <p className="text-xs font-semibold text-[#263b40] truncate flex items-center gap-2">
-                    <span>{camera.name}</span>
-                    <span className="text-[11px] text-[#8a9b9f] font-mono">{camera.id}</span>
-                  </p>
-                  <p className="text-[11px] text-[#61777c] truncate">{camera.location}</p>
+              <div className="px-4 py-3 bg-white border-b border-[#dce5e7] flex items-center justify-between">
+                <div className="truncate pr-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-semibold text-[#263b40] truncate leading-tight">{camera.name}</span>
+                    <span className="text-[10px] text-[#8a9b9f] font-mono px-1.5 py-0.2 bg-[#f0f6f6] rounded border border-[#dce5e7] shrink-0">
+                      {camera.id}
+                    </span>
+                  </div>
+                  <p className="text-xs text-[#61777c] truncate mt-0.5">{camera.location}</p>
                 </div>
                 <StatusBadge status={camera.status} size="sm" />
               </div>
@@ -176,13 +178,13 @@ export const LiveMonitoringPage = () => {
                 onFocus={() => setFocusCamera(camera)}
               />
 
-              <div className="px-3 py-2 bg-[#f0f6f6] border-t border-[#dce5e7] flex items-center justify-between text-xs text-[#61777c]">
-                <span className="truncate max-w-[60%]">{camera.zone || 'General Zone'}</span>
+              <div className="px-4 py-2.5 bg-[#f0f6f6] border-t border-[#dce5e7] flex items-center justify-between text-xs text-[#61777c]">
+                <span className="truncate max-w-[60%] font-medium">{camera.zone || 'General Zone'}</span>
                 <button
                   onClick={() => setFocusCamera(camera)}
-                  className="text-xs font-medium text-[#168a91] hover:text-[#11747a] flex items-center gap-1 cursor-pointer shrink-0"
+                  className="text-xs font-semibold text-[#168a91] hover:text-[#11747a] flex items-center gap-1 cursor-pointer shrink-0 transition-colors"
                 >
-                  Inspect Feed <ArrowRight className="w-3 h-3" />
+                  Inspect Feed <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>

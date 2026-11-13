@@ -208,74 +208,75 @@ export const CCTVVideoFeed = ({
       )}
 
       {/* 5. Live CCTV HUD Header (Top-Left) */}
-      <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-900/80 backdrop-blur-xs border border-white/10 text-[10px] text-white shadow pointer-events-none font-mono">
+      <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-950/80 backdrop-blur-xs border border-white/10 text-[10px] text-white shadow-xs pointer-events-none font-mono">
         <span className={`w-1.5 h-1.5 rounded-full ${isOffline ? 'bg-[#d95757]' : 'bg-[#299b72] animate-pulse'}`} />
-        <span className="font-semibold">{isOffline ? 'OFFLINE' : 'LIVE'}</span>
+        <span className="font-bold tracking-wider">{isOffline ? 'OFFLINE' : 'LIVE'}</span>
         <span className="text-white/40">&bull;</span>
         <span className="text-slate-300">{liveTimestamp}</span>
       </div>
 
       {/* 6. Technical Telemetry Tag (Top-Right) */}
-      <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-slate-900/80 border border-white/10 text-[10px] text-slate-300 shadow pointer-events-none font-mono">
+      <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-slate-950/80 backdrop-blur-xs border border-white/10 text-[10px] text-slate-300 shadow-xs pointer-events-none font-mono">
         {camera?.resolution || '1080p'} &bull; {camera?.fps || 30} FPS
       </div>
 
-      {/* 7. Mandatory Honesty Disclaimer (Bottom-Right) */}
-      <div className="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-slate-900/85 border border-white/10 text-[9px] text-slate-300 flex items-center gap-1 pointer-events-none shadow font-mono">
-        <span>Simulated CCTV</span>
-      </div>
+      {/* 7. Bottom Floating Action Toolbar (Clean hover controls, never blocks center of feed) */}
+      {!isOffline && (
+        <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950/85 backdrop-blur-md border border-white/15 opacity-0 group-hover:opacity-100 transition-all duration-200 z-10 shadow-lg">
+          {/* Feed Zone / Status Info */}
+          <div className="flex items-center gap-2 text-[11px] text-slate-300 font-mono truncate max-w-[45%]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#299b72] animate-pulse shrink-0" />
+            <span className="truncate">{camera?.zone || camera?.location || 'Live Channel'}</span>
+          </div>
 
-      {/* 8. Camera Zone Badge (Bottom-Left) */}
-      <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-slate-900/80 border border-white/10 text-[10px] text-slate-300 shadow pointer-events-none max-w-[50%] truncate font-mono">
-        {camera?.zone || camera?.location || 'Zone 01'}
-      </div>
+          {/* Quick Control Actions */}
+          <div className="flex items-center gap-1.5 shrink-0">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onTogglePlay?.();
+              }}
+              className="h-7 px-2 rounded-md bg-white/10 hover:bg-white/20 text-white flex items-center gap-1.5 text-xs font-medium transition-colors cursor-pointer"
+              title={isPlaying ? 'Pause feed' : 'Play feed'}
+              aria-label={isPlaying ? 'Pause feed' : 'Play feed'}
+            >
+              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+              <span className="text-[11px]">{isPlaying ? 'Pause' : 'Play'}</span>
+            </button>
 
-      {/* 9. Interactive Hover Action Overlay Controls */}
-      <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2.5">
-        {!isOffline && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onTogglePlay?.();
-            }}
-            className="w-9 h-9 rounded-full bg-white text-[#263b40] hover:bg-[#168a91] hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
-            title={isPlaying ? 'Pause feed' : 'Play feed'}
-            aria-label={isPlaying ? 'Pause feed' : 'Play feed'}
-          >
-            {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
-          </button>
-        )}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleOverlay?.();
+              }}
+              className={`h-7 px-2 rounded-md text-xs font-medium flex items-center gap-1.5 transition-colors cursor-pointer ${
+                showOverlay
+                  ? 'bg-[#168a91] text-white hover:bg-[#11747a]'
+                  : 'bg-white/10 hover:bg-white/20 text-white'
+              }`}
+              title={showOverlay ? 'Hide AI Detection Box' : 'Show AI Detection Box'}
+              aria-label="Toggle detection overlay"
+            >
+              {showOverlay ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+              <span className="text-[11px]">AI Box</span>
+            </button>
 
-        {!isOffline && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onToggleOverlay?.();
-            }}
-            className={`w-9 h-9 rounded-full ${
-              showOverlay ? 'bg-[#168a91] text-white' : 'bg-white text-[#263b40]'
-            } hover:bg-[#11747a] hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md`}
-            title={showOverlay ? 'Hide detection overlay' : 'Show detection overlay'}
-            aria-label="Toggle detection overlay"
-          >
-            {showOverlay ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
-          </button>
-        )}
-
-        {onFocus && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onFocus();
-            }}
-            className="w-9 h-9 rounded-full bg-white text-[#263b40] hover:bg-[#168a91] hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
-            title="Focus camera"
-            aria-label="Focus camera"
-          >
-            <Maximize2 className="w-4 h-4" />
-          </button>
-        )}
-      </div>
+            {onFocus && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onFocus();
+                }}
+                className="h-7 w-7 rounded-md bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+                title="Fullscreen Focus"
+                aria-label="Fullscreen Focus"
+              >
+                <Maximize2 className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

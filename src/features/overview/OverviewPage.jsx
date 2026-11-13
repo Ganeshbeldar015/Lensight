@@ -236,12 +236,12 @@ export const OverviewPage = () => {
               return (
                 <div
                   key={camera.id}
-                  className="group rounded-xl border border-[#dce5e7] bg-white overflow-hidden flex flex-col transition-all hover:shadow-md"
+                  className="group rounded-xl border border-[#dce5e7] bg-white overflow-hidden flex flex-col transition-all hover:shadow-md hover:border-[#168a91]/30"
                 >
-                  <div className="p-3 bg-[#f0f6f6] border-b border-[#dce5e7] flex items-center justify-between">
-                    <div className="truncate">
-                      <p className="text-xs font-semibold text-[#263b40] truncate">{camera.name}</p>
-                      <p className="text-[11px] text-[#61777c] truncate">{camera.location}</p>
+                  <div className="px-4 py-3 bg-white border-b border-[#dce5e7] flex items-center justify-between">
+                    <div className="truncate pr-2">
+                      <p className="text-sm font-semibold text-[#263b40] truncate leading-tight">{camera.name}</p>
+                      <p className="text-xs text-[#61777c] truncate mt-0.5">{camera.location}</p>
                     </div>
                     <StatusBadge status={camera.status} size="sm" />
                   </div>
