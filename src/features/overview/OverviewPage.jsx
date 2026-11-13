@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { SeverityBadge } from '@/components/ui/SeverityBadge';
 import { EventTypeBadge } from '@/components/ui/EventTypeBadge';
+import { CCTVVideoFeed } from '@/components/cameras/CCTVVideoFeed';
 import { EventDetailModal } from '@/components/events/EventDetailModal';
 import { 
   Camera, 
@@ -257,50 +258,12 @@ export const OverviewPage = () => {
                     <StatusBadge status={camera.status} size="sm" />
                   </div>
 
-                  <div className="relative aspect-video bg-slate-950 flex items-center justify-center overflow-hidden">
-                    {isOffline ? (
-                      <div className="flex flex-col items-center justify-center p-4 text-center">
-                        <AlertTriangle className="w-8 h-8 text-rose-500 mb-2 opacity-90" />
-                        <span className="font-mono text-xs font-bold text-rose-500">NO SIGNAL</span>
-                        <span className="text-[10px] text-slate-400 font-mono mt-1">Check cable / power supply</span>
-                      </div>
-                    ) : isPlaying && camera.streamUrl ? (
-                      <video
-                        src={camera.streamUrl}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <img
-                        src={camera.thumbnail}
-                        alt={camera.name}
-                        className="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-300"
-                      />
-                    )}
-
-                    {!isOffline && (
-                      <button
-                        onClick={() => setPlayingCamera(isPlaying ? null : camera.id)}
-                        className="absolute inset-0 flex items-center justify-center bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-                        aria-label={isPlaying ? 'Pause feed' : 'Play feed'}
-                      >
-                        <div className="w-10 h-10 rounded-full bg-[#fa5d19] text-white flex items-center justify-center shadow-heat-glow">
-                          {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
-                        </div>
-                      </button>
-                    )}
-
-                    <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-slate-900/80 backdrop-blur-md border border-white/10 font-mono text-[10px] text-white">
-                      {camera.zone || 'Zone 01'}
-                    </div>
-
-                    <div className="absolute top-2 right-2 px-2 py-0.5 rounded bg-slate-900/80 font-mono text-[10px] text-slate-300">
-                      {camera.fps} FPS
-                    </div>
-                  </div>
+                  <CCTVVideoFeed
+                    camera={camera}
+                    isPlaying={playingCamera === camera.id || playingCamera === null}
+                    onTogglePlay={() => setPlayingCamera(playingCamera === camera.id ? 'PAUSED' : camera.id)}
+                    onFocus={() => navigate('/live')}
+                  />
                 </div>
               );
             })}

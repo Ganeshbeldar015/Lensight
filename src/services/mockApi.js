@@ -48,7 +48,7 @@ export async function addCamera(data) {
     location: data.location,
     status: data.status || 'online',
     lastSeen: new Date().toISOString(),
-    streamUrl: data.streamUrl || 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    streamUrl: data.streamUrl || '/demo-videos/entrance.mp4',
     thumbnail: data.thumbnail || 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80',
     zone: data.zone || 'General Sector',
     fps: data.fps || 30,
