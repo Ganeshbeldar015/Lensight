@@ -35,7 +35,7 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
         location: location.trim(),
         zone: zone.trim(),
         status,
-        streamUrl: streamUrl.trim() || 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+        streamUrl: streamUrl.trim() || '/demo-videos/entrance.mp4',
         thumbnail: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80',
         fps: 30,
         resolution: '1080p'
@@ -133,15 +133,32 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
 
           <div>
             <label className="block text-xs font-mono text-slate-600 font-medium uppercase mb-1">
-              RTSP / Stream URL <span className="text-[10px] text-slate-400 font-normal">(Optional mock feed)</span>
+              Local Demo Video / Stream Source
             </label>
-            <input
-              type="text"
-              value={streamUrl}
-              onChange={(e) => setStreamUrl(e.target.value)}
-              placeholder="rtsp://192.168.1.120:554/live/ch0 or .mp4 link"
-              className="w-full px-3.5 py-2 rounded-lg bg-white border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:border-[#fa5d19] focus:ring-2 focus:ring-orange-500/20 focus:outline-none font-mono text-xs"
-            />
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={streamUrl}
+                onChange={(e) => setStreamUrl(e.target.value)}
+                placeholder="/demo-videos/entrance.mp4 (or custom)"
+                className="flex-1 px-3.5 py-2 rounded-lg bg-white border border-slate-300 text-xs text-slate-900 placeholder-slate-400 focus:border-[#fa5d19] focus:ring-2 focus:ring-orange-500/20 focus:outline-none font-mono"
+              />
+              <select
+                onChange={(e) => { if (e.target.value) setStreamUrl(e.target.value); }}
+                className="px-2.5 py-2 rounded-lg bg-slate-50 border border-slate-300 text-xs font-mono text-slate-700 cursor-pointer"
+                defaultValue=""
+              >
+                <option value="" disabled>Presets</option>
+                <option value="/demo-videos/entrance.mp4">Entrance</option>
+                <option value="/demo-videos/reception.mp4">Reception</option>
+                <option value="/demo-videos/corridor.mp4">Corridor</option>
+                <option value="/demo-videos/parking.mp4">Parking</option>
+                <option value="/demo-videos/outside.mp4">Outside</option>
+              </select>
+            </div>
+            <p className="text-[10px] text-slate-400 font-mono mt-1">
+              Simulated CCTV feed mapped to local public MP4 assets.
+            </p>
           </div>
 
           <div>
