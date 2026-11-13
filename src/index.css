@@ -65,3 +65,13 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #8a9b9f;
 }
+
+/* Hide scrollbar for clean static sidebars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

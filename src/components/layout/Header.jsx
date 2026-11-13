@@ -55,6 +55,8 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
   const unreadAlerts = alerts.filter(a => !a.acknowledged).slice(0, 5);
 
   return (
+    <header className="h-16 shrink-0 border-b border-slate-200 bg-white/95 backdrop-blur-md sticky top-0 z-30 px-4 lg:px-6 flex items-center justify-between gap-4 shadow-2xs">
+      {/* Left side: Hamburger (mobile/tablet) + Brand */}
     <header className="h-16 border-b border-[#dce5e7] bg-white sticky top-0 z-30 px-4 lg:px-6 flex items-center justify-between gap-4">
       {/* Left side: Hamburger (mobile/tablet) + Breadcrumbs */}
       <div className="flex items-center gap-3">
