@@ -52,22 +52,22 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#263b40]/30 backdrop-blur-xs animate-in fade-in duration-150">
       <div 
-        className="w-full max-w-lg rounded-2xl border border-[#E5E7EB] bg-white shadow-xl overflow-hidden flex flex-col"
+        className="w-full max-w-lg rounded-2xl border border-[#dce5e7] bg-white shadow-xl overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#E5E7EB]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#dce5e7]">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#EAF5EF] text-[#16845B] border border-[#16845B]/20 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#ddf1f1] text-[#168a91] border border-[#168a91]/20 flex items-center justify-center">
               <Plus className="w-4 h-4" />
             </div>
-            <h3 className="text-base font-semibold text-[#1F2937]">Register New Camera</h3>
+            <h3 className="text-base font-semibold text-[#263b40]">Register New Camera</h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-[#94A3B8] hover:text-[#1F2937] hover:bg-slate-100 cursor-pointer"
+            className="p-1 rounded-lg text-[#8a9b9f] hover:text-[#263b40] hover:bg-[#f0f6f6] cursor-pointer"
             aria-label="Close dialog"
           >
             <X className="w-5 h-5" />
@@ -77,18 +77,18 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
         {/* Modal Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label className="block text-xs uppercase font-medium text-[#64748B] mb-1">
-              Camera Name <span className="text-[#DC5656]">*</span>
+            <label className="block text-xs uppercase font-medium text-[#61777c] mb-1">
+              Camera Name <span className="text-[#d95757]">*</span>
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. West Loading Bay Gate 3"
-              className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#E5E7EB] text-sm text-[#1F2937] placeholder-[#94A3B8] focus:border-[#16845B] focus:ring-1 focus:ring-[#16845B] focus:outline-none transition-colors"
+              className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#dce5e7] text-sm text-[#263b40] placeholder-[#8a9b9f] focus:border-[#168a91] focus:ring-1 focus:ring-[#168a91] focus:outline-none transition-colors"
             />
             {errors.name && (
-              <p className="text-xs text-[#DC5656] mt-1 flex items-center gap-1">
+              <p className="text-xs text-[#d95757] mt-1 flex items-center gap-1">
                 <AlertCircle className="w-3 h-3" /> {errors.name}
               </p>
             )}
@@ -96,31 +96,31 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs uppercase font-medium text-[#64748B] mb-1">
-                Location <span className="text-[#DC5656]">*</span>
+              <label className="block text-xs uppercase font-medium text-[#61777c] mb-1">
+                Location <span className="text-[#d95757]">*</span>
               </label>
               <input
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 placeholder="e.g. Warehouse B - Floor 1"
-                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#E5E7EB] text-sm text-[#1F2937] placeholder-[#94A3B8] focus:border-[#16845B] focus:ring-1 focus:ring-[#16845B] focus:outline-none transition-colors"
+                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#dce5e7] text-sm text-[#263b40] placeholder-[#8a9b9f] focus:border-[#168a91] focus:ring-1 focus:ring-[#168a91] focus:outline-none transition-colors"
               />
               {errors.location && (
-                <p className="text-xs text-[#DC5656] mt-1 flex items-center gap-1">
+                <p className="text-xs text-[#d95757] mt-1 flex items-center gap-1">
                   <AlertCircle className="w-3 h-3" /> {errors.location}
                 </p>
               )}
             </div>
 
             <div>
-              <label className="block text-xs uppercase font-medium text-[#64748B] mb-1">
+              <label className="block text-xs uppercase font-medium text-[#61777c] mb-1">
                 Security Zone
               </label>
               <select
                 value={zone}
                 onChange={(e) => setZone(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#E5E7EB] text-sm text-[#1F2937] focus:border-[#16845B] focus:ring-1 focus:ring-[#16845B] focus:outline-none"
+                className="w-full px-3.5 py-2 rounded-lg bg-white border border-[#dce5e7] text-sm text-[#263b40] focus:border-[#168a91] focus:ring-1 focus:ring-[#168a91] focus:outline-none"
               >
                 <option value="Perimeter">Perimeter Entry</option>
                 <option value="Restricted">Restricted Tier 4</option>
@@ -132,7 +132,7 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
           </div>
 
           <div>
-            <label className="block text-xs uppercase font-medium text-[#64748B] mb-1">
+            <label className="block text-xs uppercase font-medium text-[#61777c] mb-1">
               Local Demo Video / Stream Source
             </label>
             <div className="flex gap-2">
@@ -141,11 +141,11 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
                 value={streamUrl}
                 onChange={(e) => setStreamUrl(e.target.value)}
                 placeholder="/demo-videos/entrance.mp4"
-                className="flex-1 px-3.5 py-2 rounded-lg bg-white border border-[#E5E7EB] text-xs text-[#1F2937] placeholder-[#94A3B8] focus:border-[#16845B] focus:ring-1 focus:ring-[#16845B] focus:outline-none font-mono"
+                className="flex-1 px-3.5 py-2 rounded-lg bg-white border border-[#dce5e7] text-xs text-[#263b40] placeholder-[#8a9b9f] focus:border-[#168a91] focus:ring-1 focus:ring-[#168a91] focus:outline-none font-mono"
               />
               <select
                 onChange={(e) => { if (e.target.value) setStreamUrl(e.target.value); }}
-                className="px-2.5 py-2 rounded-lg bg-slate-50 border border-[#E5E7EB] text-xs text-[#1F2937] cursor-pointer"
+                className="px-2.5 py-2 rounded-lg bg-[#f0f6f6] border border-[#dce5e7] text-xs text-[#263b40] cursor-pointer"
                 defaultValue=""
               >
                 <option value="" disabled>Presets</option>
@@ -156,25 +156,25 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
                 <option value="/demo-videos/outside.mp4">Outside</option>
               </select>
             </div>
-            <p className="text-[11px] text-[#64748B] mt-1">
+            <p className="text-[11px] text-[#61777c] mt-1">
               Simulated CCTV feed mapped to local public MP4 assets.
             </p>
           </div>
 
           <div>
-            <label className="block text-xs uppercase font-medium text-[#64748B] mb-1">
+            <label className="block text-xs uppercase font-medium text-[#61777c] mb-1">
               Initial Status
             </label>
             <div className="flex items-center gap-4">
               {['online', 'warning', 'offline'].map((s) => (
-                <label key={s} className="flex items-center gap-2 cursor-pointer text-xs capitalize text-[#1F2937]">
+                <label key={s} className="flex items-center gap-2 cursor-pointer text-xs capitalize text-[#263b40]">
                   <input
                     type="radio"
                     name="cameraStatus"
                     value={s}
                     checked={status === s}
                     onChange={() => setStatus(s)}
-                    className="accent-[#16845B]"
+                    className="accent-[#168a91]"
                   />
                   <span>{s}</span>
                 </label>
@@ -182,7 +182,7 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-[#EAF5EF] border border-[#16845B]/20 text-xs text-[#16845B] flex items-start gap-2">
+          <div className="p-3 rounded-lg bg-[#ddf1f1] border border-[#168a91]/20 text-xs text-[#168a91] flex items-start gap-2">
             <Video className="w-4 h-4 shrink-0 mt-0.5" />
             <p className="leading-relaxed">
               Upon registration, this camera will synchronize with the Live Monitoring wall and Overview metrics.
@@ -190,7 +190,7 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
           </div>
 
           {/* Form Actions */}
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#E5E7EB]">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-[#dce5e7]">
             <Button variant="secondary" size="sm" type="button" onClick={onClose}>
               Cancel
             </Button>

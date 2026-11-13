@@ -17,10 +17,10 @@ const NotFoundPage = lazy(() => import('@/features/NotFoundPage').then(m => ({ d
 
 const RouteLoadingFallback = () => (
   <div className="h-[60vh] flex flex-col items-center justify-center space-y-3">
-    <div className="w-10 h-10 rounded-xl bg-[#EAF5EF] border border-[#16845B]/30 flex items-center justify-center text-[#16845B] animate-pulse">
+    <div className="w-10 h-10 rounded-xl bg-[#DDF1F1] border border-[#168A91]/30 flex items-center justify-center text-[#168A91] animate-pulse">
       <Shield className="w-5 h-5" />
     </div>
-    <span className="text-xs text-slate-500 font-medium">
+    <span className="text-xs text-[#61777C] font-medium">
       Loading dashboard...
     </span>
   </div>

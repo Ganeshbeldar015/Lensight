@@ -13,34 +13,34 @@ export const StatusBadge = ({
 
   const config = {
     online: {
-      bg: 'bg-[#eaf5ef]',
-      border: 'border-[#16845b]/25',
-      text: 'text-[#16845b]',
-      dot: 'bg-[#16845b]',
+      bg: 'bg-[#eaf7f2]',
+      border: 'border-[#299b72]/25',
+      text: 'text-[#299b72]',
+      dot: 'bg-[#299b72]',
       icon: Wifi,
       label: 'ONLINE'
     },
     warning: {
-      bg: 'bg-amber-50',
-      border: 'border-amber-200',
-      text: 'text-[#b47a16]',
-      dot: 'bg-[#d99a26]',
+      bg: 'bg-[#fdf6ea]',
+      border: 'border-[#d69a38]/30',
+      text: 'text-[#d69a38]',
+      dot: 'bg-[#d69a38]',
       icon: AlertTriangle,
       label: 'WARNING'
     },
     offline: {
-      bg: 'bg-red-50',
-      border: 'border-red-200',
-      text: 'text-[#dc5656]',
-      dot: 'bg-[#dc5656]',
+      bg: 'bg-[#fdf0f0]',
+      border: 'border-[#d95757]/25',
+      text: 'text-[#d95757]',
+      dot: 'bg-[#d95757]',
       icon: WifiOff,
       label: 'OFFLINE'
     }
   }[normalized] || {
-    bg: 'bg-slate-100',
-    border: 'border-slate-300',
-    text: 'text-slate-600',
-    dot: 'bg-slate-400',
+    bg: 'bg-[#f0f6f6]',
+    border: 'border-[#dce5e7]',
+    text: 'text-[#61777c]',
+    dot: 'bg-[#8a9b9f]',
     icon: Wifi,
     label: (status || 'UNKNOWN').toUpperCase()
   };

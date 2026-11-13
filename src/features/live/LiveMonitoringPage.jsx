@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useCameras } from '@/context/CameraContext';
 import { dataProvider } from '@/services/dataProvider';
 import { PageHeader } from '@/components/layout/PageHeader';
-import { Button } from '@/components/ui/Button';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { CameraFocusModal } from '@/components/cameras/CameraFocusModal';
 import { CCTVVideoFeed } from '@/components/cameras/CCTVVideoFeed';
@@ -82,19 +81,19 @@ export const LiveMonitoringPage = () => {
         title="Live Monitoring"
         description="Real-time multi-tile surveillance feeds with simulated detection overlays and stream telemetry."
         badge={
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#EAF5EF] border border-[#16845B]/20 text-[#16845B] flex items-center gap-1.5 font-semibold">
-            <Radio className="w-3.5 h-3.5 text-[#16845B] animate-pulse" />
+          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#ddf1f1] border border-[#168a91]/20 text-[#168a91] flex items-center gap-1.5 font-semibold">
+            <Radio className="w-3.5 h-3.5 text-[#168a91] animate-pulse" />
             Live Surveillance Wall
           </span>
         }
       />
 
       {/* Control Strip */}
-      <div className="p-3.5 rounded-xl border border-[#E5E7EB] bg-white flex flex-wrap items-center justify-between gap-4 shadow-xs">
+      <div className="p-3.5 rounded-xl border border-[#dce5e7] bg-white flex flex-wrap items-center justify-between gap-4 shadow-xs">
         {/* Layout Buttons */}
-        <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-[#E5E7EB]">
-          <span className="text-xs text-[#64748B] px-2 flex items-center gap-1 font-semibold">
-            <Grid className="w-3.5 h-3.5 text-[#16845B]" />
+        <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7]">
+          <span className="text-xs text-[#61777c] px-2 flex items-center gap-1 font-semibold">
+            <Grid className="w-3.5 h-3.5 text-[#168a91]" />
             Grid:
           </span>
           {['auto', '3x3', '2x2', '1x1'].map((l) => (
@@ -103,8 +102,8 @@ export const LiveMonitoringPage = () => {
               onClick={() => setLayout(l)}
               className={`px-2.5 py-1 rounded text-xs font-medium uppercase transition-colors cursor-pointer ${
                 layout === l
-                  ? 'bg-[#16845B] text-white font-semibold shadow-xs'
-                  : 'text-[#64748B] hover:text-[#1F2937]'
+                  ? 'bg-[#168a91] text-white font-semibold shadow-xs'
+                  : 'text-[#61777c] hover:text-[#263b40]'
               }`}
             >
               {l}
@@ -114,12 +113,12 @@ export const LiveMonitoringPage = () => {
 
         {/* Status & Zone Filters */}
         <div className="flex flex-wrap items-center gap-2">
-          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-[#E5E7EB]">
-            <Filter className="w-3.5 h-3.5 text-[#94A3B8] ml-1.5" />
+          <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7]">
+            <Filter className="w-3.5 h-3.5 text-[#8a9b9f] ml-1.5" />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-transparent text-xs text-[#1F2937] py-1 px-2 focus:outline-none cursor-pointer"
+              className="bg-transparent text-xs text-[#263b40] py-1 px-2 focus:outline-none cursor-pointer"
             >
               <option value="all">All Statuses ({cameras.length})</option>
               <option value="online">Online</option>
@@ -129,11 +128,11 @@ export const LiveMonitoringPage = () => {
           </div>
 
           {zones.length > 0 && (
-            <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-[#E5E7EB]">
+            <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7]">
               <select
                 value={selectedZone}
                 onChange={(e) => setSelectedZone(e.target.value)}
-                className="bg-transparent text-xs text-[#1F2937] py-1 px-2 focus:outline-none cursor-pointer"
+                className="bg-transparent text-xs text-[#263b40] py-1 px-2 focus:outline-none cursor-pointer"
               >
                 <option value="all">All Zones</option>
                 {zones.map((z) => (
@@ -145,18 +144,18 @@ export const LiveMonitoringPage = () => {
             </div>
           )}
 
-          <div className="text-xs text-[#64748B] px-2.5 py-1.5 rounded-lg bg-slate-50 border border-[#E5E7EB]">
+          <div className="text-xs text-[#61777c] px-2.5 py-1.5 rounded-lg bg-[#f0f6f6] border border-[#dce5e7]">
             Showing {filteredCameras.length} of {cameras.length}
           </div>
         </div>
       </div>
 
       {/* Demonstration Disclosure Banner */}
-      <div className="p-3 rounded-xl border border-amber-200 bg-amber-50/70 flex items-start sm:items-center justify-between gap-3 text-xs text-amber-900 shadow-xs">
+      <div className="p-3 rounded-xl border border-[#dce5e7] bg-[#f0f6f6] flex items-start sm:items-center justify-between gap-3 text-xs text-[#263b40] shadow-xs">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+          <span className="w-2 h-2 rounded-full bg-[#168a91] shrink-0" />
           <span>
-            <strong>Simulation Disclosure:</strong> Video streams are simulated CCTV feeds mapped to local files in <code className="bg-amber-100 px-1.5 py-0.5 rounded font-mono text-[11px]">public/demo-videos/</code>. Bounding overlays and confidence scores demonstrate platform capabilities.
+            <strong className="font-semibold text-[#168a91]">Simulation Disclosure:</strong> Video streams are simulated CCTV feeds mapped to local files in <code className="bg-white border border-[#dce5e7] px-1.5 py-0.5 rounded font-mono text-[11px] text-[#263b40]">public/demo-videos/</code>. Bounding overlays and confidence scores demonstrate platform capabilities.
           </span>
         </div>
       </div>
@@ -170,15 +169,15 @@ export const LiveMonitoringPage = () => {
           return (
             <div
               key={camera.id}
-              className="group rounded-xl border border-[#E5E7EB] bg-white overflow-hidden flex flex-col transition-all hover:shadow-md"
+              className="group rounded-xl border border-[#dce5e7] bg-white overflow-hidden flex flex-col transition-all hover:shadow-md"
             >
-              <div className="p-3 bg-slate-50 border-b border-[#E5E7EB] flex items-center justify-between">
+              <div className="p-3 bg-[#f0f6f6] border-b border-[#dce5e7] flex items-center justify-between">
                 <div className="truncate">
-                  <p className="text-xs font-semibold text-[#1F2937] truncate flex items-center gap-2">
+                  <p className="text-xs font-semibold text-[#263b40] truncate flex items-center gap-2">
                     <span>{camera.name}</span>
-                    <span className="text-[11px] text-[#94A3B8] font-mono">{camera.id}</span>
+                    <span className="text-[11px] text-[#8a9b9f] font-mono">{camera.id}</span>
                   </p>
-                  <p className="text-[11px] text-[#64748B] truncate">{camera.location}</p>
+                  <p className="text-[11px] text-[#61777c] truncate">{camera.location}</p>
                 </div>
                 <StatusBadge status={camera.status} size="sm" />
               </div>
@@ -194,11 +193,11 @@ export const LiveMonitoringPage = () => {
                 onFocus={() => setFocusCamera(camera)}
               />
 
-              <div className="px-3 py-2 bg-slate-50 border-t border-[#E5E7EB] flex items-center justify-between text-xs text-[#64748B]">
+              <div className="px-3 py-2 bg-[#f0f6f6] border-t border-[#dce5e7] flex items-center justify-between text-xs text-[#61777c]">
                 <span className="truncate max-w-[60%]">{camera.zone || 'General Zone'}</span>
                 <button
                   onClick={() => setFocusCamera(camera)}
-                  className="text-xs font-medium text-[#16845B] hover:text-[#116B49] flex items-center gap-1 cursor-pointer shrink-0"
+                  className="text-xs font-medium text-[#168a91] hover:text-[#11747a] flex items-center gap-1 cursor-pointer shrink-0"
                 >
                   Inspect Feed <ArrowRight className="w-3 h-3" />
                 </button>

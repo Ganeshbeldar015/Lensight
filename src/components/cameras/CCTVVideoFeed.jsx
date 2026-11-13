@@ -78,37 +78,37 @@ export const CCTVVideoFeed = ({
   // Color theme mapping for detection overlay
   const detectionTheme = {
     person: {
-      border: 'border-[#4B83C5]',
-      bg: 'bg-[#4B83C5]/15',
-      badge: 'bg-[#4B83C5] text-white',
+      border: 'border-[#168a91]',
+      bg: 'bg-[#168a91]/15',
+      badge: 'bg-[#168a91] text-white',
       icon: User,
       label: 'PERSON'
     },
     vehicle: {
-      border: 'border-indigo-400',
-      bg: 'bg-indigo-500/15',
-      badge: 'bg-indigo-600 text-white',
+      border: 'border-[#69aeb0]',
+      bg: 'bg-[#69aeb0]/15',
+      badge: 'bg-[#69aeb0] text-white',
       icon: Car,
       label: 'VEHICLE'
     },
     restricted_area: {
-      border: 'border-[#DC5656]',
-      bg: 'bg-[#DC5656]/20',
-      badge: 'bg-[#DC5656] text-white',
+      border: 'border-[#d95757]',
+      bg: 'bg-[#d95757]/20',
+      badge: 'bg-[#d95757] text-white',
       icon: ShieldAlert,
       label: 'RESTRICTED AREA'
     },
     motion: {
-      border: 'border-[#16845B]',
-      bg: 'bg-[#16845B]/15',
-      badge: 'bg-[#16845B] text-white',
+      border: 'border-[#299b72]',
+      bg: 'bg-[#299b72]/15',
+      badge: 'bg-[#299b72] text-white',
       icon: Activity,
       label: 'MOTION'
     }
   }[activeDetection.type] || {
-    border: 'border-[#16845B]',
-    bg: 'bg-[#16845B]/15',
-    badge: 'bg-[#16845B] text-white',
+    border: 'border-[#168a91]',
+    bg: 'bg-[#168a91]/15',
+    badge: 'bg-[#168a91] text-white',
     icon: Activity,
     label: 'DETECTION'
   };
@@ -127,8 +127,8 @@ export const CCTVVideoFeed = ({
       {/* 1. Offline CCTV Diagnostic Screen */}
       {isOffline ? (
         <div className="w-full h-full flex flex-col items-center justify-center p-4 text-center bg-slate-950 relative overflow-hidden">
-          <AlertTriangle className="w-9 h-9 text-[#DC5656] mb-2 opacity-90 animate-pulse" />
-          <span className="font-mono text-xs font-bold text-[#DC5656] tracking-wider">
+          <AlertTriangle className="w-9 h-9 text-[#d95757] mb-2 opacity-90 animate-pulse" />
+          <span className="font-mono text-xs font-bold text-[#d95757] tracking-wider">
             NO SIGNAL
           </span>
           <span className="text-[11px] text-slate-400 font-mono mt-1">
@@ -163,9 +163,9 @@ export const CCTVVideoFeed = ({
 
           <div className="w-11 h-11 rounded-full border border-slate-700 bg-slate-800 flex items-center justify-center text-slate-400 mb-2 shadow-inner">
             {videoError ? (
-              <VideoOff className="w-5 h-5 text-[#D99A26]" />
+              <VideoOff className="w-5 h-5 text-[#d69a38]" />
             ) : (
-              <Camera className="w-5 h-5 text-[#16845B]" />
+              <Camera className="w-5 h-5 text-[#168a91]" />
             )}
           </div>
 
@@ -209,7 +209,7 @@ export const CCTVVideoFeed = ({
 
       {/* 5. Live CCTV HUD Header (Top-Left) */}
       <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-900/80 backdrop-blur-xs border border-white/10 text-[10px] text-white shadow pointer-events-none font-mono">
-        <span className={`w-1.5 h-1.5 rounded-full ${isOffline ? 'bg-[#DC5656]' : 'bg-[#16845B] animate-pulse'}`} />
+        <span className={`w-1.5 h-1.5 rounded-full ${isOffline ? 'bg-[#d95757]' : 'bg-[#299b72] animate-pulse'}`} />
         <span className="font-semibold">{isOffline ? 'OFFLINE' : 'LIVE'}</span>
         <span className="text-white/40">&bull;</span>
         <span className="text-slate-300">{liveTimestamp}</span>
@@ -238,7 +238,7 @@ export const CCTVVideoFeed = ({
               e.stopPropagation();
               onTogglePlay?.();
             }}
-            className="w-9 h-9 rounded-full bg-white text-[#1F2937] hover:bg-[#16845B] hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
+            className="w-9 h-9 rounded-full bg-white text-[#263b40] hover:bg-[#168a91] hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
             title={isPlaying ? 'Pause feed' : 'Play feed'}
             aria-label={isPlaying ? 'Pause feed' : 'Play feed'}
           >
@@ -253,8 +253,8 @@ export const CCTVVideoFeed = ({
               onToggleOverlay?.();
             }}
             className={`w-9 h-9 rounded-full ${
-              showOverlay ? 'bg-[#16845B] text-white' : 'bg-white text-[#1F2937]'
-            } hover:bg-[#116B49] hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md`}
+              showOverlay ? 'bg-[#168a91] text-white' : 'bg-white text-[#263b40]'
+            } hover:bg-[#11747a] hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md`}
             title={showOverlay ? 'Hide detection overlay' : 'Show detection overlay'}
             aria-label="Toggle detection overlay"
           >
@@ -268,7 +268,7 @@ export const CCTVVideoFeed = ({
               e.stopPropagation();
               onFocus();
             }}
-            className="w-9 h-9 rounded-full bg-white text-[#1F2937] hover:bg-[#16845B] hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
+            className="w-9 h-9 rounded-full bg-white text-[#263b40] hover:bg-[#168a91] hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
             title="Focus camera"
             aria-label="Focus camera"
           >
