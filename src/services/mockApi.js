@@ -48,7 +48,7 @@ export async function addCamera(data) {
     location: data.location,
     status: data.status || 'online',
     lastSeen: new Date().toISOString(),
-    streamUrl: data.streamUrl || 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    streamUrl: data.streamUrl || '/demo-videos/entrance.mp4',
     thumbnail: data.thumbnail || 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80',
     zone: data.zone || 'General Sector',
     fps: data.fps || 30,
@@ -94,24 +94,50 @@ export async function getEvents(params = {}) {
 
   let filtered = [...eventsState];
 
-  // 1. Text Search (matches camera name or description)
+  // 1. Text Search (matches event id, type, camera name, camera id, or description)
   if (filter.searchQuery && filter.searchQuery.trim() !== '') {
     const q = filter.searchQuery.toLowerCase().trim();
     filtered = filtered.filter(e => 
-      e.description.toLowerCase().includes(q) ||
-      e.cameraId.toLowerCase().includes(q) ||
+      (e.id && e.id.toLowerCase().includes(q)) ||
+      (e.type && e.type.toLowerCase().includes(q)) ||
+      (e.type && e.type.replace(/_/g, ' ').toLowerCase().includes(q)) ||
+      (e.description && e.description.toLowerCase().includes(q)) ||
+      (e.cameraId && e.cameraId.toLowerCase().includes(q)) ||
       (e.cameraName && e.cameraName.toLowerCase().includes(q))
     );
   }
 
   // 2. Event Types
-  if (filter.types && filter.types.length > 0) {
-    filtered = filtered.filter(e => filter.types.includes(e.type));
+  const rawTypes = filter.types || (filter.type ? [filter.type] : []);
+  if (rawTypes && rawTypes.length > 0) {
+    const normalizedTypes = (Array.isArray(rawTypes) ? rawTypes : [rawTypes])
+      .flatMap(t => typeof t === 'string' ? t.split(',') : t)
+      .map(t => {
+        const lower = String(t).toLowerCase().trim();
+        if (lower === 'person_detected' || lower === 'face_recognized' || lower === 'crowd_gathering' || lower === 'loitering_detected') return 'person';
+        if (lower === 'vehicle_detected') return 'vehicle';
+        if (lower === 'motion_detected') return 'motion';
+        if (lower === 'intrusion_alert') return 'restricted_area';
+        return lower;
+      })
+      .filter(t => Boolean(t) && t !== 'all');
+
+    if (normalizedTypes.length > 0) {
+      filtered = filtered.filter(e => e.type && normalizedTypes.includes(e.type.toLowerCase().trim()));
+    }
   }
 
   // 3. Severities
-  if (filter.severities && filter.severities.length > 0) {
-    filtered = filtered.filter(e => filter.severities.includes(e.severity));
+  const rawSeverities = filter.severities || (filter.severity ? [filter.severity] : []);
+  if (rawSeverities && rawSeverities.length > 0) {
+    const normalizedSeverities = (Array.isArray(rawSeverities) ? rawSeverities : [rawSeverities])
+      .flatMap(s => typeof s === 'string' ? s.split(',') : s)
+      .map(s => String(s).toLowerCase().trim())
+      .filter(s => Boolean(s) && s !== 'all');
+
+    if (normalizedSeverities.length > 0) {
+      filtered = filtered.filter(e => e.severity && normalizedSeverities.includes(e.severity.toLowerCase().trim()));
+    }
   }
 
   // 4. Cameras
@@ -120,7 +146,7 @@ export async function getEvents(params = {}) {
   }
 
   // 5. Date Range
-  if (filter.dateRange) {
+  if (filter.dateRange && filter.dateRange !== 'all') {
     const nowMs = Date.now();
     let threshold = 0;
 
