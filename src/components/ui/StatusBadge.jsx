@@ -9,36 +9,38 @@ export const StatusBadge = ({
 }) => {
   const isSm = size === 'sm';
 
+  const normalized = (status || '').toLowerCase();
+
   const config = {
     online: {
-      bg: 'bg-emerald-50',
-      border: 'border-emerald-200',
-      text: 'text-emerald-700',
-      dot: 'bg-emerald-500',
+      bg: 'bg-[#eaf7f2]',
+      border: 'border-[#299b72]/25',
+      text: 'text-[#299b72]',
+      dot: 'bg-[#299b72]',
       icon: Wifi,
       label: 'ONLINE'
     },
     warning: {
-      bg: 'bg-amber-50',
-      border: 'border-amber-200',
-      text: 'text-amber-700',
-      dot: 'bg-amber-500',
+      bg: 'bg-[#fdf6ea]',
+      border: 'border-[#d69a38]/30',
+      text: 'text-[#d69a38]',
+      dot: 'bg-[#d69a38]',
       icon: AlertTriangle,
       label: 'WARNING'
     },
     offline: {
-      bg: 'bg-rose-50',
-      border: 'border-rose-200',
-      text: 'text-rose-700',
-      dot: 'bg-rose-500',
+      bg: 'bg-[#fdf0f0]',
+      border: 'border-[#d95757]/25',
+      text: 'text-[#d95757]',
+      dot: 'bg-[#d95757]',
       icon: WifiOff,
       label: 'OFFLINE'
     }
-  }[status] || {
-    bg: 'bg-slate-100',
-    border: 'border-slate-300',
-    text: 'text-slate-600',
-    dot: 'bg-slate-400',
+  }[normalized] || {
+    bg: 'bg-[#f0f6f6]',
+    border: 'border-[#dce5e7]',
+    text: 'text-[#61777c]',
+    dot: 'bg-[#8a9b9f]',
     icon: Wifi,
     label: (status || 'UNKNOWN').toUpperCase()
   };
@@ -47,7 +49,7 @@ export const StatusBadge = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border font-semibold ${config.bg} ${config.border} ${config.text} ${
+      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border font-medium ${config.bg} ${config.border} ${config.text} ${
         isSm ? 'px-2 py-0.5 text-[11px]' : 'px-2.5 py-1 text-xs'
       } ${className}`}
     >
