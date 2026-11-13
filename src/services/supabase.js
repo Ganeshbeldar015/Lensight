@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js';
-import type { Camera, DetectionEvent, Alert } from '@/types';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
@@ -13,7 +12,7 @@ export const supabase = isSupabaseConfigured
 /**
  * Realtime subscription helper for new alerts
  */
-export function subscribeToLiveAlerts(onNewAlert: (alert: Alert) => void) {
+export function subscribeToLiveAlerts(onNewAlert) {
   if (!supabase) return null;
 
   return supabase
@@ -22,7 +21,7 @@ export function subscribeToLiveAlerts(onNewAlert: (alert: Alert) => void) {
       'postgres_changes',
       { event: 'INSERT', schema: 'public', table: 'alerts' },
       (payload) => {
-        onNewAlert(payload.new as Alert);
+        onNewAlert(payload.new);
       }
     )
     .subscribe();
@@ -31,7 +30,7 @@ export function subscribeToLiveAlerts(onNewAlert: (alert: Alert) => void) {
 /**
  * Realtime subscription helper for camera connectivity changes
  */
-export function subscribeToCameraUpdates(onUpdate: (camera: Camera) => void) {
+export function subscribeToCameraUpdates(onUpdate) {
   if (!supabase) return null;
 
   return supabase
@@ -40,7 +39,7 @@ export function subscribeToCameraUpdates(onUpdate: (camera: Camera) => void) {
       'postgres_changes',
       { event: 'UPDATE', schema: 'public', table: 'cameras' },
       (payload) => {
-        onUpdate(payload.new as Camera);
+        onUpdate(payload.new);
       }
     )
     .subscribe();
@@ -49,7 +48,7 @@ export function subscribeToCameraUpdates(onUpdate: (camera: Camera) => void) {
 /**
  * Realtime subscription helper for AI detection events
  */
-export function subscribeToLiveEvents(onNewEvent: (event: DetectionEvent) => void) {
+export function subscribeToLiveEvents(onNewEvent) {
   if (!supabase) return null;
 
   return supabase
@@ -58,7 +57,7 @@ export function subscribeToLiveEvents(onNewEvent: (event: DetectionEvent) => voi
       'postgres_changes',
       { event: 'INSERT', schema: 'public', table: 'events' },
       (payload) => {
-        onNewEvent(payload.new as DetectionEvent);
+        onNewEvent(payload.new);
       }
     )
     .subscribe();
