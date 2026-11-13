@@ -1,0 +1,6 @@
+# Enforce GitHub Linguist language detection
+*.js linguist-language=JavaScript
+*.jsx linguist-language=JavaScript
+
+# Exclude mock data from language statistics
+src/data/*.json linguist-detectable=false
