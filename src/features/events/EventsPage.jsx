@@ -175,11 +175,6 @@ export const EventsPage = () => {
       <PageHeader
         title="Detection Events"
         description="Comprehensive audit log of classified surveillance detections with confidence metrics and event parameters."
-        badge={
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#ddf1f1] border border-[#168a91]/20 text-[#168a91] font-semibold">
-            Security Audit
-          </span>
-        }
       />
 
       {/* Filter and Search Panel */}

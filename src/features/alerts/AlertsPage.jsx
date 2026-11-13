@@ -41,12 +41,6 @@ export const AlertsPage = () => {
       <PageHeader
         title="Alert Center"
         description="Priority dispatch queue for real-time security breaches and operational alarms."
-        badge={
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#fdf0f0] border border-[#d95757]/20 text-[#d95757] flex items-center gap-1.5 font-semibold">
-            <ShieldAlert className="w-3.5 h-3.5" />
-            {unreadCount} Active {unreadCount === 1 ? 'Alert' : 'Alerts'}
-          </span>
-        }
         actions={
           unreadCount > 0 ? (
             <Button

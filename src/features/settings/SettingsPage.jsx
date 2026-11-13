@@ -51,12 +51,6 @@ export const SettingsPage = () => {
       <PageHeader
         title="Settings"
         description="Configure client parameters, inspect database connections, and control simulation latency."
-        badge={
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#ddf1f1] border border-[#168a91]/20 text-[#168a91] flex items-center gap-1.5 font-semibold">
-            <SettingsIcon className="w-3.5 h-3.5" />
-            v1.0.0 Stable
-          </span>
-        }
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

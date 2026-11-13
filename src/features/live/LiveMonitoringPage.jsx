@@ -8,7 +8,6 @@ import { CCTVVideoFeed } from '@/components/cameras/CCTVVideoFeed';
 import { 
   Grid, 
   Filter, 
-  Radio,
   ArrowRight
 } from 'lucide-react';
 
@@ -80,12 +79,6 @@ export const LiveMonitoringPage = () => {
       <PageHeader
         title="Live Monitoring"
         description="Real-time multi-tile surveillance feeds with simulated detection overlays and stream telemetry."
-        badge={
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#ddf1f1] border border-[#168a91]/20 text-[#168a91] flex items-center gap-1.5 font-semibold">
-            <Radio className="w-3.5 h-3.5 text-[#168a91] animate-pulse" />
-            Live Surveillance Wall
-          </span>
-        }
       />
 
       {/* Control Strip */}
@@ -147,16 +140,6 @@ export const LiveMonitoringPage = () => {
           <div className="text-xs text-[#61777c] px-2.5 py-1.5 rounded-lg bg-[#f0f6f6] border border-[#dce5e7]">
             Showing {filteredCameras.length} of {cameras.length}
           </div>
-        </div>
-      </div>
-
-      {/* Demonstration Disclosure Banner */}
-      <div className="p-3 rounded-xl border border-[#dce5e7] bg-[#f0f6f6] flex items-start sm:items-center justify-between gap-3 text-xs text-[#263b40] shadow-xs">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#168a91] shrink-0" />
-          <span>
-            <strong className="font-semibold text-[#168a91]">Simulation Disclosure:</strong> Video streams are simulated CCTV feeds mapped to local files in <code className="bg-white border border-[#dce5e7] px-1.5 py-0.5 rounded font-mono text-[11px] text-[#263b40]">public/demo-videos/</code>. Bounding overlays and confidence scores demonstrate platform capabilities.
-          </span>
         </div>
       </div>
 

@@ -49,12 +49,6 @@ export const CamerasPage = () => {
       <PageHeader
         title="Cameras"
         description="Configure, inspect status, and manage surveillance cameras across all facilities."
-        badge={
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#ddf1f1] border border-[#168a91]/20 text-[#168a91] flex items-center gap-1.5 font-semibold">
-            <CameraIcon className="w-3.5 h-3.5" />
-            {cameras.length} Cameras Configured
-          </span>
-        }
         actions={
           <Button
             variant="primary"

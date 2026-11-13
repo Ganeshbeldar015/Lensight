@@ -18,8 +18,7 @@ import {
   ArrowRight, 
   Video, 
   TrendingUp, 
-  AlertTriangle,
-  Radio
+  AlertTriangle
 } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -64,12 +63,6 @@ export const OverviewPage = () => {
       <PageHeader
         title="Security Operations Overview"
         description="Unified monitoring dashboard for multi-camera feeds, security alerts, and detection telemetry."
-        badge={
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#ddf1f1] border border-[#168a91]/20 text-[#168a91] flex items-center gap-1.5 font-semibold">
-            <Radio className="w-3.5 h-3.5 animate-pulse text-[#168a91]" />
-            Live System
-          </span>
-        }
         actions={
           <Button
             variant="primary"

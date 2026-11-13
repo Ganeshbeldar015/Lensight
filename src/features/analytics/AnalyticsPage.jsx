@@ -56,12 +56,6 @@ export const AnalyticsPage = () => {
       <PageHeader
         title="Analytics & Insights"
         description="Temporal trends, detection volume distribution, and camera load metrics."
-        badge={
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#ddf1f1] border border-[#168a91]/20 text-[#168a91] font-semibold flex items-center gap-1.5">
-            <BarChart3 className="w-3.5 h-3.5" />
-            Security Intelligence
-          </span>
-        }
         actions={
           <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7]">
             <Calendar className="w-3.5 h-3.5 text-[#61777c] ml-2 mr-1" />
