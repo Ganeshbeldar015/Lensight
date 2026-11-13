@@ -15,13 +15,11 @@ import {
   Camera, 
   Activity, 
   ShieldAlert, 
-  Flame, 
   ArrowRight, 
   Video, 
   TrendingUp, 
   AlertTriangle,
-  Play,
-  Pause
+  Radio
 } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -62,14 +60,14 @@ export const OverviewPage = () => {
   const previewCameras = cameras.slice(0, 4);
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-200">
+    <div className="space-y-6">
       <PageHeader
         title="Security Operations Overview"
-        description="Unified monitoring dashboard for multi-camera feeds, critical triage alerts, and AI detection telemetry."
+        description="Unified monitoring dashboard for multi-camera feeds, security alerts, and detection telemetry."
         badge={
-          <span className="font-mono text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center gap-1.5 font-semibold">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            LIVE FEED
+          <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#ddf1f1] border border-[#168a91]/20 text-[#168a91] flex items-center gap-1.5 font-semibold">
+            <Radio className="w-3.5 h-3.5 animate-pulse text-[#168a91]" />
+            Live System
           </span>
         }
         actions={
@@ -84,24 +82,24 @@ export const OverviewPage = () => {
         }
       />
 
-      {/* Urgent Critical Alerts Ribbon */}
+      {/* Critical Alerts Banner if any */}
       {urgentAlerts.length > 0 && (
-        <div className="p-4 rounded-xl border border-red-200 bg-red-50/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+        <div className="p-4 rounded-xl border border-[#d95757]/30 bg-[#fdf0f0] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-red-600 flex items-center justify-center text-white shrink-0 shadow-xs animate-pulse">
-              <Flame className="w-5 h-5" />
+            <div className="w-9 h-9 rounded-lg bg-[#d95757] flex items-center justify-center text-white shrink-0">
+              <AlertTriangle className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-sm text-red-950">
+                <span className="font-semibold text-sm text-[#263b40]">
                   {urgentAlerts.length} Critical Security {urgentAlerts.length === 1 ? 'Alert' : 'Alerts'} Pending
                 </span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-100 text-red-700 border border-red-200 font-bold">
-                  ACTION REQUIRED
+                <span className="text-[10px] px-2 py-0.5 rounded bg-[#fdf0f0] text-[#d95757] border border-[#d95757]/30 font-semibold">
+                  Action Required
                 </span>
               </div>
-              <p className="text-xs text-red-800 mt-0.5">
-                {urgentAlerts[0].title} on <span className="font-semibold text-red-950">{urgentAlerts[0].cameraName || urgentAlerts[0].cameraId}</span>
+              <p className="text-xs text-[#61777c] mt-0.5">
+                {urgentAlerts[0].title} &bull; <span className="font-medium text-[#263b40]">{urgentAlerts[0].cameraName || urgentAlerts[0].cameraId}</span>
               </p>
             </div>
           </div>
@@ -119,7 +117,7 @@ export const OverviewPage = () => {
               size="sm"
               onClick={() => navigate('/alerts')}
             >
-              View Alert Center
+              View Alerts
             </Button>
           </div>
         </div>
@@ -130,63 +128,63 @@ export const OverviewPage = () => {
         {/* Total Cameras */}
         <Card hoverable onClick={() => navigate('/cameras')} className="relative overflow-hidden group">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono uppercase text-slate-500 font-semibold">TOTAL CAMERAS</span>
-            <div className="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 group-hover:text-[#fa5d19] group-hover:border-orange-300 transition-colors">
+            <span className="text-xs uppercase tracking-wider text-[#61777c] font-semibold">Total Cameras</span>
+            <div className="w-8 h-8 rounded-lg bg-[#f0f6f6] border border-[#dce5e7] flex items-center justify-center text-[#61777c] group-hover:text-[#168a91] group-hover:border-[#168a91]/30 transition-colors">
               <Camera className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-slate-900 font-mono">
+            <span className="text-3xl font-bold text-[#263b40]">
               {camerasLoading ? '...' : kpis?.totalCameras || cameras.length}
             </span>
-            <span className="text-xs text-slate-500">devices linked</span>
+            <span className="text-xs text-[#61777c]">devices configured</span>
           </div>
-          <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500 font-medium">
-            <span className="text-emerald-600 font-semibold">{kpis?.onlineCount || 0} Online</span>
-            <span className="text-amber-600 font-semibold">{kpis?.warningCount || 0} Warn</span>
-            <span className="text-rose-600 font-semibold">{kpis?.offlineCount || 0} Offline</span>
+          <div className="mt-3 pt-3 border-t border-[#dce5e7] flex items-center justify-between text-xs text-[#61777c]">
+            <span className="text-[#299b72] font-medium">{kpis?.onlineCount || 0} Online</span>
+            <span className="text-[#d69a38] font-medium">{kpis?.warningCount || 0} Warning</span>
+            <span className="text-[#d95757] font-medium">{kpis?.offlineCount || 0} Offline</span>
           </div>
         </Card>
 
-        {/* Active Cameras */}
+        {/* Active Streams */}
         <Card hoverable onClick={() => navigate('/live')} className="relative overflow-hidden group">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono uppercase text-slate-500 font-semibold">ACTIVE STREAMS</span>
-            <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 transition-colors">
+            <span className="text-xs uppercase tracking-wider text-[#61777c] font-semibold">Active Streams</span>
+            <div className="w-8 h-8 rounded-lg bg-[#ddf1f1] border border-[#168a91]/20 flex items-center justify-center text-[#168a91] transition-colors">
               <Video className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-slate-900 font-mono">
+            <span className="text-3xl font-bold text-[#263b40]">
               {camerasLoading ? '...' : kpis?.activeCameras || 0}
             </span>
-            <span className="text-xs text-emerald-600 font-mono font-semibold">
+            <span className="text-xs text-[#168a91] font-medium">
               {kpis?.totalCameras ? `${Math.round(((kpis.onlineCount) / kpis.totalCameras) * 100)}%` : '0%'} uptime
             </span>
           </div>
-          <div className="mt-3 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono text-slate-500">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-            <span>Streaming 1080p & 4K feeds</span>
+          <div className="mt-3 pt-3 border-t border-[#dce5e7] flex items-center gap-1.5 text-xs text-[#61777c]">
+            <span className="w-2 h-2 rounded-full bg-[#299b72] animate-pulse" />
+            <span>Streaming simulated CCTV feeds</span>
           </div>
         </Card>
 
         {/* Events Today */}
         <Card hoverable onClick={() => navigate('/events')} className="relative overflow-hidden group">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono uppercase text-slate-500 font-semibold">EVENTS TODAY</span>
-            <div className="w-8 h-8 rounded-lg bg-orange-50 border border-orange-200 flex items-center justify-center text-[#fa5d19] transition-colors">
+            <span className="text-xs uppercase tracking-wider text-[#61777c] font-semibold">Events Today</span>
+            <div className="w-8 h-8 rounded-lg bg-[#ddf1f1] border border-[#168a91]/20 flex items-center justify-center text-[#168a91] transition-colors">
               <Activity className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-slate-900 font-mono">
+            <span className="text-3xl font-bold text-[#263b40]">
               {kpis?.eventsToday ?? recentEvents.length}
             </span>
-            <span className="text-xs text-[#fa5d19] font-mono font-semibold">since 00:00</span>
+            <span className="text-xs text-[#168a91] font-medium">since 00:00</span>
           </div>
-          <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-            <span>AI detections classified</span>
-            <TrendingUp className="w-3.5 h-3.5 text-[#fa5d19]" />
+          <div className="mt-3 pt-3 border-t border-[#dce5e7] flex items-center justify-between text-xs text-[#61777c]">
+            <span>Security detections logged</span>
+            <TrendingUp className="w-3.5 h-3.5 text-[#168a91]" />
           </div>
         </Card>
 
@@ -196,25 +194,25 @@ export const OverviewPage = () => {
           onClick={() => navigate('/alerts')} 
           className={`relative overflow-hidden group ${
             (kpis?.criticalAlerts || 0) > 0 
-              ? 'border-red-200 bg-red-50/50 hover:border-red-400' 
-              : 'border-slate-200'
+              ? 'border-[#d95757]/30 bg-[#fdf0f0]/60' 
+              : ''
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono uppercase text-red-700 font-bold">CRITICAL ALERTS</span>
-            <div className="w-8 h-8 rounded-lg bg-red-100 border border-red-200 flex items-center justify-center text-red-600">
+            <span className="text-xs uppercase tracking-wider text-[#d95757] font-semibold">Critical Alerts</span>
+            <div className="w-8 h-8 rounded-lg bg-[#fdf0f0] border border-[#d95757]/20 flex items-center justify-center text-[#d95757]">
               <ShieldAlert className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-extrabold text-red-600 font-mono">
+            <span className="text-3xl font-bold text-[#d95757]">
               {kpis?.criticalAlerts || 0}
             </span>
-            <span className="text-xs text-red-600 font-mono font-medium">unacknowledged</span>
+            <span className="text-xs text-[#d95757] font-medium">unacknowledged</span>
           </div>
-          <div className="mt-3 pt-3 border-t border-red-200/60 flex items-center justify-between text-[11px] font-mono text-red-700">
-            <span>Requires SecOps review</span>
-            <ArrowRight className="w-3.5 h-3.5 text-red-600" />
+          <div className="mt-3 pt-3 border-t border-[#dce5e7] flex items-center justify-between text-xs text-[#61777c]">
+            <span>Requires operational review</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#d95757]" />
           </div>
         </Card>
       </div>
@@ -225,8 +223,8 @@ export const OverviewPage = () => {
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Video className="w-4 h-4 text-[#fa5d19]" />
-              <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wider font-mono">
+              <Video className="w-4 h-4 text-[#168a91]" />
+              <h2 className="text-sm font-semibold text-[#263b40]">
                 Live Monitoring Preview
               </h2>
             </div>
@@ -242,18 +240,15 @@ export const OverviewPage = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {previewCameras.map((camera) => {
-              const isPlaying = playingCamera === camera.id;
-              const isOffline = camera.status === 'offline';
-
               return (
                 <div
                   key={camera.id}
-                  className="group rounded-xl border border-slate-200 bg-white overflow-hidden flex flex-col transition-all hover:border-orange-300 hover:shadow-md shadow-xs"
+                  className="group rounded-xl border border-[#dce5e7] bg-white overflow-hidden flex flex-col transition-all hover:shadow-md"
                 >
-                  <div className="p-2.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                  <div className="p-3 bg-[#f0f6f6] border-b border-[#dce5e7] flex items-center justify-between">
                     <div className="truncate">
-                      <p className="text-xs font-semibold text-slate-900 truncate">{camera.name}</p>
-                      <p className="text-[10px] text-slate-500 font-mono truncate">{camera.location}</p>
+                      <p className="text-xs font-semibold text-[#263b40] truncate">{camera.name}</p>
+                      <p className="text-[11px] text-[#61777c] truncate">{camera.location}</p>
                     </div>
                     <StatusBadge status={camera.status} size="sm" />
                   </div>
@@ -270,11 +265,11 @@ export const OverviewPage = () => {
           </div>
 
           {/* Mini Events-Over-Time Chart */}
-          <Card className="p-4 bg-white border-slate-200 shadow-xs">
+          <Card className="p-4 bg-white border-[#dce5e7]">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-[#fa5d19]" />
-                <span className="text-xs font-bold text-slate-900 uppercase tracking-wider font-mono">
+                <TrendingUp className="w-4 h-4 text-[#168a91]" />
+                <span className="text-sm font-semibold text-[#263b40]">
                   Detection Activity Trend (Last 12 Hours)
                 </span>
               </div>
@@ -283,45 +278,45 @@ export const OverviewPage = () => {
                 size="sm"
                 onClick={() => navigate('/analytics')}
               >
-                Deep Analytics
+                Analytics
               </Button>
             </div>
 
-            <div className="h-36 w-full">
+            <div className="h-40 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={trendData}>
                   <defs>
                     <linearGradient id="eventGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#fa5d19" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#fa5d19" stopOpacity={0.0} />
+                      <stop offset="5%" stopColor="#168a91" stopOpacity={0.25} />
+                      <stop offset="95%" stopColor="#168a91" stopOpacity={0.0} />
                     </linearGradient>
                   </defs>
                   <XAxis 
                     dataKey="hour" 
-                    stroke="#94a3b8" 
-                    fontSize={10} 
+                    stroke="#8a9b9f" 
+                    fontSize={11} 
                     tickLine={false} 
                   />
                   <YAxis 
-                    stroke="#94a3b8" 
-                    fontSize={10} 
+                    stroke="#8a9b9f" 
+                    fontSize={11} 
                     tickLine={false} 
-                    width={24} 
+                    width={28} 
                   />
                   <Tooltip 
                     contentStyle={{ 
-                      backgroundColor: '#ffffff', 
-                      borderColor: '#e2e8f0', 
+                      backgroundColor: '#FFFFFF', 
+                      borderColor: '#dce5e7', 
                       borderRadius: '8px',
-                      fontSize: '11px',
-                      color: '#0f172a',
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                      fontSize: '12px',
+                      color: '#263b40',
+                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
                     }} 
                   />
                   <Area
                     type="monotone"
                     dataKey="count"
-                    stroke="#fa5d19"
+                    stroke="#168a91"
                     strokeWidth={2}
                     fillOpacity={1}
                     fill="url(#eventGradient)"
@@ -336,9 +331,9 @@ export const OverviewPage = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Activity className="w-4 h-4 text-[#fa5d19]" />
-              <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wider font-mono">
-                Recent Detections
+              <Activity className="w-4 h-4 text-[#168a91]" />
+              <h2 className="text-sm font-semibold text-[#263b40]">
+                Recent Events
               </h2>
             </div>
             <Button
@@ -350,37 +345,37 @@ export const OverviewPage = () => {
             </Button>
           </div>
 
-          <Card className="p-3 bg-white border-slate-200 divide-y divide-slate-100 shadow-xs">
+          <Card className="p-3 bg-white border-[#dce5e7] divide-y divide-[#dce5e7]">
             {recentEvents.length === 0 ? (
-              <div className="py-12 text-center text-xs text-slate-400">
-                Scanning for incoming detections...
+              <div className="py-12 text-center text-xs text-[#61777c]">
+                Monitoring for security events...
               </div>
             ) : (
               recentEvents.map((event) => (
                 <div
                   key={event.id}
                   onClick={() => setSelectedEvent(event)}
-                  className="py-3 px-2 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer flex items-start justify-between gap-3 group"
+                  className="py-3 px-2 rounded-lg hover:bg-[#f0f6f6] transition-colors cursor-pointer flex items-start justify-between gap-3 group"
                 >
                   <div className="space-y-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-[10px] text-[#fa5d19] font-bold">
+                      <span className="text-[11px] font-mono text-[#61777c]">
                         {event.id}
                       </span>
                       <EventTypeBadge type={event.type} size="sm" />
                       <SeverityBadge severity={event.severity} size="sm" />
                     </div>
-                    <p className="text-xs text-slate-800 font-medium leading-snug line-clamp-2 group-hover:text-[#fa5d19] transition-colors">
+                    <p className="text-xs text-[#263b40] font-medium leading-snug line-clamp-2 group-hover:text-[#168a91] transition-colors">
                       {event.description}
                     </p>
-                    <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400">
+                    <div className="flex items-center gap-2 text-[11px] text-[#61777c]">
                       <span>{event.cameraName || event.cameraId}</span>
-                      <span>•</span>
+                      <span>&bull;</span>
                       <span>{(event.confidence * 100).toFixed(0)}% conf</span>
                     </div>
                   </div>
 
-                  <span className="text-[10px] font-mono text-slate-400 shrink-0 pt-0.5">
+                  <span className="text-[11px] text-[#8a9b9f] shrink-0 pt-0.5">
                     {new Date(event.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>

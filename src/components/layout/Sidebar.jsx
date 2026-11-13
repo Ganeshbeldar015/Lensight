@@ -4,33 +4,31 @@ import { useAlerts } from '@/context/AlertContext';
 import { 
   LayoutDashboard, 
   Video, 
-  ScanLine, 
+  Activity, 
   BarChart3, 
   Camera, 
-  ShieldAlert, 
+  Bell, 
   Settings, 
   X, 
-  ChevronRight, 
-  Flame 
+  ShieldCheck
 } from 'lucide-react';
 
 export const Sidebar = ({ isOpen, onClose }) => {
   const { unreadCount, criticalCount } = useAlerts();
 
-  const navItems = [
+  const mainNavItems = [
     { to: '/', label: 'Overview', icon: LayoutDashboard },
     { to: '/live', label: 'Live Monitoring', icon: Video },
-    { to: '/events', label: 'Detection Events', icon: ScanLine },
+    { to: '/events', label: 'Events', icon: Activity },
     { to: '/analytics', label: 'Analytics', icon: BarChart3 },
     { to: '/cameras', label: 'Cameras', icon: Camera },
     { 
       to: '/alerts', 
-      label: 'Alert Center', 
-      icon: ShieldAlert,
+      label: 'Alerts', 
+      icon: Bell,
       badge: unreadCount > 0 ? unreadCount : undefined,
       isCritical: criticalCount > 0
     },
-    { to: '/settings', label: 'Settings', icon: Settings }
   ];
 
   return (
@@ -39,28 +37,36 @@ export const Sidebar = ({ isOpen, onClose }) => {
       {isOpen && (
         <div
           onClick={onClose}
-          className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-40 lg:hidden transition-opacity"
+          className="fixed inset-0 bg-[#263b40]/30 backdrop-blur-xs z-40 lg:hidden transition-opacity"
           aria-hidden="true"
         />
       )}
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-white border-r border-slate-200 flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:h-[calc(100vh-4rem)] ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-white border-r border-[#dce5e7] flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:h-screen ${
+          isOpen ? 'translate-x-0 shadow-lg' : '-translate-x-full'
         }`}
       >
-        {/* Mobile Header with Close button */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-200 lg:hidden">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-md bg-[#fa5d19] flex items-center justify-center text-white shadow-heat-glow">
-              <Flame className="w-4 h-4 fill-white/20" />
+        {/* Brand Header */}
+        <div className="h-16 px-5 border-b border-[#dce5e7] flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-[#ddf1f1] text-[#168a91] flex items-center justify-center border border-[#168a91]/20 shadow-xs">
+              <ShieldCheck className="w-5 h-5 text-[#168a91]" />
             </div>
-            <span className="font-bold text-sm tracking-wider text-slate-900">LENSIGHT</span>
+            <div>
+              <div className="text-base font-bold tracking-tight text-[#263b40]">
+                Lensight
+              </div>
+              <p className="text-[11px] text-[#61777c] font-medium leading-none">
+                Video Intelligence
+              </p>
+            </div>
           </div>
+
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 cursor-pointer"
+            className="p-1.5 rounded-lg text-[#8a9b9f] hover:text-[#263b40] hover:bg-[#f0f6f6] lg:hidden cursor-pointer"
             aria-label="Close sidebar"
           >
             <X className="w-5 h-5" />
@@ -68,71 +74,88 @@ export const Sidebar = ({ isOpen, onClose }) => {
         </div>
 
         {/* Navigation Items */}
-        <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
-          <div className="px-3 py-2 text-[10px] font-mono tracking-wider uppercase text-slate-400 font-bold">
-            WORKSPACE
-          </div>
+        <div className="flex-1 px-3 py-4 flex flex-col justify-between overflow-y-auto">
+          <div className="space-y-1">
+            <div className="px-3 pb-2 text-[11px] font-semibold tracking-wider uppercase text-[#8a9b9f]">
+              Main Navigation
+            </div>
 
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                onClick={() => onClose()}
-                end={item.to === '/'}
-                className={({ isActive }) =>
-                  `flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-medium transition-all group ${
-                    isActive
-                      ? 'bg-orange-50 text-orange-700 border border-orange-200/80 font-semibold shadow-2xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 border border-transparent'
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    <div className="flex items-center gap-3">
-                      <Icon className={`w-4 h-4 transition-colors ${
-                        isActive ? 'text-[#fa5d19]' : 'text-slate-400 group-hover:text-slate-600'
-                      }`} />
-                      <span>{item.label}</span>
-                    </div>
+            {mainNavItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => onClose()}
+                  end={item.to === '/'}
+                  className={({ isActive }) =>
+                    `flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm transition-colors group ${
+                      isActive
+                        ? 'bg-[#ddf1f1] text-[#168a91] font-semibold'
+                        : 'text-[#61777c] hover:text-[#263b40] hover:bg-[#f0f6f6] font-medium'
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      <div className="flex items-center gap-3">
+                        <Icon className={`w-4 h-4 transition-colors ${
+                          isActive ? 'text-[#168a91]' : 'text-[#8a9b9f] group-hover:text-[#61777c]'
+                        }`} />
+                        <span>{item.label}</span>
+                      </div>
 
-                    <div className="flex items-center gap-1.5">
                       {item.badge !== undefined && (
-                        <span className={`px-2 py-0.5 rounded-full font-mono text-[10px] font-bold ${
+                        <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
                           item.isCritical
-                            ? 'bg-red-600 text-white animate-pulse'
-                            : 'bg-orange-100 text-orange-700 border border-orange-200'
+                            ? 'bg-[#d95757] text-white'
+                            : 'bg-[#ddf1f1] text-[#168a91] border border-[#168a91]/20'
                         }`}>
                           {item.badge}
                         </span>
                       )}
-                      {isActive && <ChevronRight className="w-3.5 h-3.5 text-[#fa5d19]" />}
-                    </div>
-                  </>
+                    </>
+                  )}
+                </NavLink>
+              );
+            })}
+          </div>
+
+          {/* Separated Settings & System Status Section */}
+          <div className="pt-4 border-t border-[#dce5e7] space-y-3">
+            <div className="space-y-1">
+              <NavLink
+                to="/settings"
+                onClick={() => onClose()}
+                className={({ isActive }) =>
+                  `flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm transition-colors group ${
+                    isActive
+                      ? 'bg-[#ddf1f1] text-[#168a91] font-semibold'
+                      : 'text-[#61777c] hover:text-[#263b40] hover:bg-[#f0f6f6] font-medium'
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <div className="flex items-center gap-3">
+                    <Settings className={`w-4 h-4 transition-colors ${
+                      isActive ? 'text-[#168a91]' : 'text-[#8a9b9f] group-hover:text-[#61777c]'
+                    }`} />
+                    <span>Settings</span>
+                  </div>
                 )}
               </NavLink>
-            );
-          })}
-        </nav>
+            </div>
 
-        {/* System Status Footer */}
-        <div className="p-3.5 border-t border-slate-200 bg-slate-50">
-          <div className="p-2.5 rounded-lg bg-white border border-slate-200 shadow-2xs">
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[11px] font-mono text-slate-500 font-medium">SYSTEM HEALTH</span>
-              <span className="flex items-center gap-1 text-[10px] font-mono text-emerald-600 font-bold">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                OPTIMAL
-              </span>
+            {/* Health Status Indicator */}
+            <div className="p-3 rounded-lg bg-[#f0f6f6] border border-[#dce5e7]">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-[#61777c] font-medium">System Status</span>
+                <span className="flex items-center gap-1.5 font-semibold text-[#299b72]">
+                  <span className="w-2 h-2 rounded-full bg-[#299b72] animate-pulse" />
+                  Operational
+                </span>
+              </div>
             </div>
-            <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-              <div className="bg-emerald-500 h-full w-[96%]" />
-            </div>
-            <p className="text-[10px] font-mono text-slate-500 mt-1.5">
-              Telemetry Stream: Synced
-            </p>
           </div>
         </div>
       </aside>
