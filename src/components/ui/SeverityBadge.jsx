@@ -57,13 +57,16 @@ export const SeverityBadge = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border font-medium ${config.bg} ${config.border} ${config.text} ${
-        isSm ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs'
+      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-full border font-semibold select-none shadow-2xs ${config.bg} ${config.border} ${config.text} ${
+        isSm ? 'px-2.5 py-0.5 text-[10px]' : 'px-3 py-1 text-xs'
       } ${className}`}
     >
-      <span className={`w-1.5 h-1.5 rounded-full ${config.dot}`} />
-      {showIcon && <IconComp className={isSm ? 'w-3 h-3' : 'w-3.5 h-3.5'} />}
-      <span>{config.label}</span>
+      {showIcon ? (
+        <IconComp className={isSm ? 'w-3 h-3 shrink-0' : 'w-3.5 h-3.5 shrink-0'} />
+      ) : (
+        <span className={`w-1.5 h-1.5 rounded-full ${config.dot}`} />
+      )}
+      <span className="leading-none">{config.label}</span>
     </span>
   );
 };
