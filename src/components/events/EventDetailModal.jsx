@@ -48,13 +48,13 @@ export const EventDetailModal = ({ event, onClose }) => {
   if (!event) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#263b40]/30 backdrop-blur-xs animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-[#263b40]/30 backdrop-blur-xs animate-in fade-in duration-150">
       <div 
-        className="w-full max-w-2xl rounded-2xl border border-[#dce5e7] bg-white shadow-2xl overflow-hidden flex flex-col"
+        className="w-full max-w-2xl rounded-2xl border border-[#dce5e7] bg-white shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#dce5e7] bg-[#f0f6f6]">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-[#dce5e7] bg-[#f0f6f6]">
           <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap">
             <span className="font-mono text-sm font-semibold text-[#168a91] shrink-0 whitespace-nowrap">{event.id}</span>
             <EventTypeBadge type={event.type} size="sm" />
@@ -70,7 +70,7 @@ export const EventDetailModal = ({ event, onClose }) => {
         </div>
 
         {/* Modal Content */}
-        <div className="p-6 space-y-6 overflow-y-auto max-h-[75vh]">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto max-h-[75vh]">
           {/* Simulated Snapshot Frame with Bounding Box */}
           <div className="relative aspect-video rounded-xl overflow-hidden border border-[#dce5e7] bg-slate-950">
             <img
@@ -98,9 +98,9 @@ export const EventDetailModal = ({ event, onClose }) => {
             )}
 
             {/* Camera Tag Overlay */}
-            <div className="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded bg-slate-900/80 backdrop-blur-md border border-white/10 font-mono text-xs text-white flex items-center gap-2">
-              <Camera className="w-3.5 h-3.5 text-[#168a91]" />
-              <span>{event.cameraName || event.cameraId}</span>
+            <div className="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded bg-slate-900/80 backdrop-blur-md border border-white/10 font-mono text-xs text-white flex items-center gap-2 max-w-[70%] truncate">
+              <Camera className="w-3.5 h-3.5 text-[#168a91] shrink-0" />
+              <span className="truncate">{event.cameraName || event.cameraId}</span>
             </div>
 
             {/* Simulated Badge */}
@@ -113,12 +113,12 @@ export const EventDetailModal = ({ event, onClose }) => {
           <div className="space-y-4">
             <div>
               <h4 className="text-sm font-semibold text-[#263b40] mb-1.5">Event Description</h4>
-              <p className="text-sm text-[#263b40] leading-relaxed bg-[#f0f6f6] p-3.5 rounded-lg border border-[#dce5e7]">
+              <p className="text-xs sm:text-sm text-[#263b40] leading-relaxed bg-[#f0f6f6] p-3 sm:p-3.5 rounded-lg border border-[#dce5e7]">
                 {event.description}
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
               <div className="p-3 rounded-lg bg-[#f0f6f6] border border-[#dce5e7]">
                 <div className="flex items-center gap-1.5 text-xs text-[#61777c] mb-1.5">
                   <Activity className="w-3.5 h-3.5 text-[#168a91]" />
@@ -175,7 +175,7 @@ export const EventDetailModal = ({ event, onClose }) => {
         </div>
 
         {/* Modal Actions */}
-        <div className="flex items-center justify-between px-6 py-4 border-t border-[#dce5e7] bg-[#f0f6f6]">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-t border-[#dce5e7] bg-[#f0f6f6]">
           <Button
             variant="tertiary"
             size="sm"

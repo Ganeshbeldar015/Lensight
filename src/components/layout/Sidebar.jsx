@@ -44,7 +44,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-white border-r border-[#dce5e7] flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:h-screen ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-white border-r border-[#dce5e7] flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:h-screen ${
           isOpen ? 'translate-x-0 shadow-lg' : '-translate-x-full'
         }`}
       >

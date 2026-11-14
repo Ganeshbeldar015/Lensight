@@ -57,13 +57,13 @@ export const AnalyticsPage = () => {
         title="Analytics & Insights"
         description="Temporal trends, detection volume distribution, and camera load metrics."
         actions={
-          <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7]">
-            <Calendar className="w-3.5 h-3.5 text-[#61777c] ml-2 mr-1" />
+          <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7] overflow-x-auto no-scrollbar max-w-full">
+            <Calendar className="w-3.5 h-3.5 text-[#61777c] ml-2 mr-1 shrink-0" />
             {['today', '24h', '7d', '30d'].map((r) => (
               <button
                 key={r}
                 onClick={() => setRange(r)}
-                className={`px-3 py-1 rounded text-xs uppercase font-medium transition-colors cursor-pointer ${
+                className={`px-3 py-1 rounded text-xs uppercase font-medium transition-colors cursor-pointer shrink-0 ${
                   range === r
                     ? 'bg-[#168a91] text-white font-semibold shadow-xs'
                     : 'text-[#61777c] hover:text-[#263b40]'

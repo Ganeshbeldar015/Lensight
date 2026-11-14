@@ -199,8 +199,8 @@ export const EventsPage = () => {
             )}
           </div>
 
-          <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7] self-start md:self-auto">
-            <Calendar className="w-3.5 h-3.5 text-[#61777c] ml-2 mr-1" />
+          <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7] overflow-x-auto no-scrollbar max-w-full self-start md:self-auto">
+            <Calendar className="w-3.5 h-3.5 text-[#61777c] ml-2 mr-1 shrink-0" />
             {['today', '24h', '7d', '30d', 'all'].map((r) => (
               <button
                 key={r}
@@ -208,7 +208,7 @@ export const EventsPage = () => {
                   setDateRange(r);
                   setPage(1);
                 }}
-                className={`px-2.5 py-1 rounded text-xs uppercase font-medium transition-colors cursor-pointer ${
+                className={`px-2.5 py-1 rounded text-xs uppercase font-medium transition-colors cursor-pointer shrink-0 ${
                   dateRange === r
                     ? 'bg-[#168a91] text-white font-semibold shadow-xs'
                     : 'text-[#61777c] hover:text-[#263b40]'
@@ -220,67 +220,73 @@ export const EventsPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-[#dce5e7]">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs uppercase text-[#61777c] font-semibold mr-1">Event Type:</span>
-            <button
-              onClick={() => toggleType('all')}
-              className={`px-2.5 py-1 rounded-md text-xs transition-colors border cursor-pointer ${
-                selectedTypes.length === 0
-                  ? 'bg-[#ddf1f1] text-[#168a91] border-[#168a91]/30 font-semibold'
-                  : 'bg-[#f0f6f6] text-[#61777c] border-[#dce5e7] hover:text-[#263b40] hover:bg-[#e7f3f3] font-medium'
-              }`}
-            >
-              All Types
-            </button>
-            {allTypes.map(({ id, label, icon: Icon }) => {
-              const active = selectedTypes.includes(id);
-              return (
-                <button
-                  key={id}
-                  onClick={() => toggleType(id)}
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs transition-colors border cursor-pointer ${
-                    active
-                      ? 'bg-[#ddf1f1] text-[#168a91] border-[#168a91]/30 font-semibold'
-                      : 'bg-[#f0f6f6] text-[#61777c] border-[#dce5e7] hover:text-[#263b40] hover:bg-[#e7f3f3] font-medium'
-                  }`}
-                >
-                  <Icon className="w-3.5 h-3.5" />
-                  <span>{label}</span>
-                </button>
-              );
-            })}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pt-3 border-t border-[#dce5e7]">
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Event Type Filters */}
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="text-xs uppercase text-[#61777c] font-semibold mr-1">Type:</span>
+              <button
+                onClick={() => toggleType('all')}
+                className={`px-2.5 py-1 rounded-md text-xs transition-colors border cursor-pointer ${
+                  selectedTypes.length === 0
+                    ? 'bg-[#ddf1f1] text-[#168a91] border-[#168a91]/30 font-semibold'
+                    : 'bg-[#f0f6f6] text-[#61777c] border-[#dce5e7] hover:text-[#263b40] hover:bg-[#e7f3f3] font-medium'
+                }`}
+              >
+                All
+              </button>
+              {allTypes.map(({ id, label, icon: Icon }) => {
+                const active = selectedTypes.includes(id);
+                return (
+                  <button
+                    key={id}
+                    onClick={() => toggleType(id)}
+                    className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs transition-colors border cursor-pointer ${
+                      active
+                        ? 'bg-[#ddf1f1] text-[#168a91] border-[#168a91]/30 font-semibold'
+                        : 'bg-[#f0f6f6] text-[#61777c] border-[#dce5e7] hover:text-[#263b40] hover:bg-[#e7f3f3] font-medium'
+                    }`}
+                  >
+                    <Icon className="w-3.5 h-3.5" />
+                    <span>{label}</span>
+                  </button>
+                );
+              })}
+            </div>
 
-            <span className="text-xs uppercase text-[#61777c] font-semibold ml-2 mr-1">Severity:</span>
-            <button
-              onClick={() => toggleSeverity('all')}
-              className={`px-2.5 py-1 rounded-md text-xs uppercase transition-colors border cursor-pointer ${
-                selectedSeverities.length === 0
-                  ? 'bg-[#263b40] text-white border-[#263b40] font-semibold'
-                  : 'bg-[#f0f6f6] text-[#61777c] border-[#dce5e7] hover:text-[#263b40] hover:bg-[#e7f3f3] font-medium'
-              }`}
-            >
-              All
-            </button>
-            {allSeverities.map(({ id, label }) => {
-              const active = selectedSeverities.includes(id);
-              return (
-                <button
-                  key={id}
-                  onClick={() => toggleSeverity(id)}
-                  className={`px-2.5 py-1 rounded-md text-xs uppercase transition-colors border cursor-pointer ${
-                    active
-                      ? 'bg-[#263b40] text-white border-[#263b40] font-semibold'
-                      : 'bg-[#f0f6f6] text-[#61777c] border-[#dce5e7] hover:text-[#263b40] hover:bg-[#e7f3f3] font-medium'
-                  }`}
-                >
-                  {label}
-                </button>
-              );
-            })}
+            {/* Severity Filters */}
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="text-xs uppercase text-[#61777c] font-semibold mr-1">Severity:</span>
+              <button
+                onClick={() => toggleSeverity('all')}
+                className={`px-2.5 py-1 rounded-md text-xs uppercase transition-colors border cursor-pointer ${
+                  selectedSeverities.length === 0
+                    ? 'bg-[#263b40] text-white border-[#263b40] font-semibold'
+                    : 'bg-[#f0f6f6] text-[#61777c] border-[#dce5e7] hover:text-[#263b40] hover:bg-[#e7f3f3] font-medium'
+                }`}
+              >
+                All
+              </button>
+              {allSeverities.map(({ id, label }) => {
+                const active = selectedSeverities.includes(id);
+                return (
+                  <button
+                    key={id}
+                    onClick={() => toggleSeverity(id)}
+                    className={`px-2.5 py-1 rounded-md text-xs uppercase transition-colors border cursor-pointer ${
+                      active
+                        ? 'bg-[#263b40] text-white border-[#263b40] font-semibold'
+                        : 'bg-[#f0f6f6] text-[#61777c] border-[#dce5e7] hover:text-[#263b40] hover:bg-[#e7f3f3] font-medium'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between lg:justify-end gap-3 pt-2 lg:pt-0 border-t lg:border-t-0 border-[#dce5e7]">
             <span className="text-xs text-[#61777c]">
               {totalCount} results
             </span>

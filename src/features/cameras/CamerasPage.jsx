@@ -3,6 +3,7 @@ import { useCameras } from '@/context/CameraContext';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { Button } from '@/components/ui/Button';
 import { StatusBadge } from '@/components/ui/StatusBadge';
+import { EmptyState } from '@/components/ui/EmptyState';
 import { AddCameraModal } from '@/components/cameras/AddCameraModal';
 import { CameraFocusModal } from '@/components/cameras/CameraFocusModal';
 import { 
@@ -74,13 +75,13 @@ export const CamerasPage = () => {
           />
         </div>
 
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7]">
+        <div className="flex items-center justify-between sm:justify-end gap-2">
+          <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7] overflow-x-auto no-scrollbar">
             {['all', 'online', 'warning', 'offline'].map((s) => (
               <button
                 key={s}
                 onClick={() => setStatusFilter(s)}
-                className={`px-3 py-1 rounded text-xs capitalize font-medium transition-colors cursor-pointer ${
+                className={`px-3 py-1 rounded text-xs capitalize font-medium transition-colors cursor-pointer shrink-0 ${
                   statusFilter === s
                     ? 'bg-[#168a91] text-white font-semibold shadow-xs'
                     : 'text-[#61777c] hover:text-[#263b40]'
@@ -91,93 +92,177 @@ export const CamerasPage = () => {
             ))}
           </div>
 
-          <span className="text-xs text-[#61777c] ml-2 hidden sm:inline-block">
+          <span className="text-xs text-[#61777c] ml-2 hidden sm:inline-block shrink-0">
             {filteredCameras.length} of {cameras.length} Cameras
           </span>
         </div>
       </div>
 
-      {/* Camera Inventory Table */}
-      <div className="rounded-xl border border-[#dce5e7] bg-white overflow-hidden shadow-xs">
-        <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="border-b border-[#dce5e7] bg-[#f0f6f6] text-xs uppercase tracking-wider text-[#61777c] font-semibold">
-              <th className="py-3 px-4">Camera ID</th>
-              <th className="py-3 px-4">Camera Name</th>
-              <th className="py-3 px-4">Location</th>
-              <th className="py-3 px-4">Zone</th>
-              <th className="py-3 px-4">Status</th>
-              <th className="py-3 px-4">Specs</th>
-              <th className="py-3 px-4">Last Seen</th>
-              <th className="py-3 px-4 text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[#dce5e7] text-xs">
+      {/* Camera Inventory Content */}
+      {filteredCameras.length === 0 ? (
+        <EmptyState
+          icon={CameraIcon}
+          title="No Cameras Found"
+          description="No surveillance nodes match your search query or filter selection."
+          actionLabel="Clear Filters"
+          onAction={() => {
+            setSearchQuery('');
+            setStatusFilter('all');
+          }}
+        />
+      ) : (
+        <>
+          {/* Desktop/Tablet Table View with Horizontal Scroll Protection */}
+          <div className="hidden md:block rounded-xl border border-[#dce5e7] bg-white overflow-hidden shadow-xs">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse min-w-[760px]">
+                <thead>
+                  <tr className="border-b border-[#dce5e7] bg-[#f0f6f6] text-xs uppercase tracking-wider text-[#61777c] font-semibold">
+                    <th className="py-3 px-4">Camera ID</th>
+                    <th className="py-3 px-4">Camera Name</th>
+                    <th className="py-3 px-4">Location</th>
+                    <th className="py-3 px-4">Zone</th>
+                    <th className="py-3 px-4">Status</th>
+                    <th className="py-3 px-4">Specs</th>
+                    <th className="py-3 px-4">Last Seen</th>
+                    <th className="py-3 px-4 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[#dce5e7] text-xs">
+                  {filteredCameras.map((camera) => (
+                    <tr
+                      key={camera.id}
+                      className="hover:bg-[#f0f6f6] transition-colors group"
+                    >
+                      <td className="py-3 px-4 font-mono font-medium text-[#168a91] whitespace-nowrap">
+                        {camera.id}
+                      </td>
+                      <td className="py-3 px-4">
+                        <div className="font-semibold text-[#263b40] group-hover:text-[#168a91] transition-colors">
+                          {camera.name}
+                        </div>
+                        <div className="text-[11px] text-[#61777c] truncate max-w-xs">
+                          {camera.streamUrl || 'Local Stream'}
+                        </div>
+                      </td>
+                      <td className="py-3 px-4 text-[#61777c]">
+                        <div className="flex items-center gap-1.5">
+                          <MapPin className="w-3.5 h-3.5 text-[#8a9b9f]" />
+                          <span>{camera.location}</span>
+                        </div>
+                      </td>
+                      <td className="py-3 px-4 text-[#61777c]">
+                        <span className="px-2 py-0.5 rounded bg-[#f0f6f6] border border-[#dce5e7] text-[#263b40] font-medium text-[11px]">
+                          {camera.zone || 'Zone 01'}
+                        </span>
+                      </td>
+                      <td className="py-3 px-4">
+                        <StatusBadge status={camera.status} size="sm" />
+                      </td>
+                      <td className="py-3 px-4 text-[#61777c] whitespace-nowrap">
+                        <span>{camera.resolution}</span> &bull; <span>{camera.fps} fps</span>
+                      </td>
+                      <td 
+                        className="py-3 px-4 text-[#61777c] whitespace-nowrap"
+                        title={new Date(camera.lastSeen).toUTCString()}
+                      >
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3 h-3 text-[#8a9b9f]" />
+                          {new Date(camera.lastSeen).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </span>
+                      </td>
+                      <td className="py-3 px-4 text-right whitespace-nowrap">
+                        <div className="flex items-center justify-end gap-1.5">
+                          <button
+                            onClick={() => setFocusCamera(camera)}
+                            className="p-1.5 rounded-lg text-[#61777c] hover:text-[#263b40] hover:bg-[#e7f3f3] transition-colors cursor-pointer"
+                            title="Inspect Feed"
+                          >
+                            <Maximize2 className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={() => setCameraToDelete(camera)}
+                            className="p-1.5 rounded-lg text-[#d95757] hover:text-red-700 hover:bg-[#fdf0f0] transition-colors cursor-pointer"
+                            title="Remove Camera"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Mobile Card List View (< md) */}
+          <div className="md:hidden space-y-3">
             {filteredCameras.map((camera) => (
-              <tr
+              <div
                 key={camera.id}
-                className="hover:bg-[#f0f6f6] transition-colors group"
+                className="p-4 rounded-xl border border-[#dce5e7] bg-white space-y-3 shadow-xs hover:border-[#168a91]/30 transition-all"
               >
-                <td className="py-3 px-4 font-mono font-medium text-[#168a91]">
-                  {camera.id}
-                </td>
-                <td className="py-3 px-4">
-                  <div className="font-semibold text-[#263b40] group-hover:text-[#168a91] transition-colors">
-                    {camera.name}
+                {/* Card Top: Name, ID and Status Badge */}
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-sm font-semibold text-[#263b40] truncate leading-tight">
+                        {camera.name}
+                      </h4>
+                      <span className="font-mono text-[10px] text-[#168a91] font-semibold px-1.5 py-0.5 rounded bg-[#ddf1f1] border border-[#168a91]/20 shrink-0">
+                        {camera.id}
+                      </span>
+                    </div>
+                    <p className="text-xs text-[#61777c] flex items-center gap-1.5 mt-1 truncate">
+                      <MapPin className="w-3.5 h-3.5 text-[#8a9b9f] shrink-0" />
+                      <span className="truncate">{camera.location}</span>
+                    </p>
                   </div>
-                  <div className="text-[11px] text-[#61777c] truncate max-w-xs">
-                    {camera.streamUrl || 'Local Stream'}
-                  </div>
-                </td>
-                <td className="py-3 px-4 text-[#61777c]">
-                  <div className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-[#8a9b9f]" />
-                    <span>{camera.location}</span>
-                  </div>
-                </td>
-                <td className="py-3 px-4 text-[#61777c]">
-                  <span className="px-2 py-0.5 rounded bg-[#f0f6f6] border border-[#dce5e7] text-[#263b40] font-medium text-[11px]">
-                    {camera.zone || 'Zone 01'}
-                  </span>
-                </td>
-                <td className="py-3 px-4">
                   <StatusBadge status={camera.status} size="sm" />
-                </td>
-                <td className="py-3 px-4 text-[#61777c]">
-                  <span>{camera.resolution}</span> &bull; <span>{camera.fps} fps</span>
-                </td>
-                <td 
-                  className="py-3 px-4 text-[#61777c]"
-                  title={new Date(camera.lastSeen).toUTCString()}
-                >
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-[#8a9b9f]" />
-                    {new Date(camera.lastSeen).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                  </span>
-                </td>
-                <td className="py-3 px-4 text-right">
-                  <div className="flex items-center justify-end gap-1.5">
-                    <button
-                      onClick={() => setFocusCamera(camera)}
-                      className="p-1.5 rounded-lg text-[#61777c] hover:text-[#263b40] hover:bg-[#e7f3f3] transition-colors cursor-pointer"
-                      title="Inspect Feed"
-                    >
-                      <Maximize2 className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => setCameraToDelete(camera)}
-                      className="p-1.5 rounded-lg text-[#d95757] hover:text-red-700 hover:bg-[#fdf0f0] transition-colors cursor-pointer"
-                      title="Remove Camera"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                </div>
+
+                {/* Card Middle: Zone, Specs, Last Seen */}
+                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[#dce5e7] text-xs text-[#61777c]">
+                  <div className="flex items-center gap-1 truncate">
+                    <span className="text-[#8a9b9f]">Zone:</span>
+                    <span className="font-medium text-[#263b40] truncate">{camera.zone || 'Zone 01'}</span>
                   </div>
-                </td>
-              </tr>
+                  <div className="flex items-center gap-1 justify-end truncate">
+                    <span className="text-[#8a9b9f]">Specs:</span>
+                    <span className="font-medium text-[#263b40]">{camera.resolution} &bull; {camera.fps} fps</span>
+                  </div>
+                  <div className="col-span-2 flex items-center gap-1 text-[11px] text-[#8a9b9f]">
+                    <Clock className="w-3 h-3 text-[#8a9b9f]" />
+                    <span>Last Seen: {new Date(camera.lastSeen).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                  </div>
+                </div>
+
+                {/* Card Bottom Actions */}
+                <div className="pt-2 border-t border-[#dce5e7] flex items-center justify-between gap-2">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="flex-1"
+                    onClick={() => setFocusCamera(camera)}
+                    leftIcon={<Maximize2 className="w-3.5 h-3.5" />}
+                  >
+                    Inspect Feed
+                  </Button>
+                  <button
+                    onClick={() => setCameraToDelete(camera)}
+                    className="px-3 py-1.5 rounded-lg text-xs font-semibold text-[#d95757] hover:text-red-700 hover:bg-[#fdf0f0] border border-[#dce5e7] transition-colors cursor-pointer flex items-center gap-1"
+                    title="Remove Camera"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                    <span>Delete</span>
+                  </button>
+                </div>
+              </div>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </div>
+        </>
+      )}
 
       {/* Add Camera Modal Dialog */}
       <AddCameraModal

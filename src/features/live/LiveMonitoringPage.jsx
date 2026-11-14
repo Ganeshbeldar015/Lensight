@@ -80,9 +80,9 @@ export const LiveMonitoringPage = () => {
       />
 
       {/* Control Strip */}
-      <div className="p-3.5 rounded-xl border border-[#dce5e7] bg-white flex flex-wrap items-center justify-between gap-4 shadow-xs">
+      <div className="p-3.5 rounded-xl border border-[#dce5e7] bg-white flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 shadow-xs">
         {/* Layout Buttons */}
-        <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7]">
+        <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7] self-start sm:self-auto">
           <span className="text-xs text-[#61777c] px-2 flex items-center gap-1 font-semibold">
             <Grid className="w-3.5 h-3.5 text-[#168a91]" />
             Grid:

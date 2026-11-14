@@ -218,11 +218,11 @@ export const CCTVVideoFeed = ({
       )}
 
       {/* 5. Live CCTV HUD Header (Top-Left) */}
-      <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-950/80 backdrop-blur-xs border border-white/10 text-[10px] text-white shadow-xs pointer-events-none font-mono">
-        <span className={`w-1.5 h-1.5 rounded-full ${isOffline ? 'bg-[#d95757]' : 'bg-[#299b72] animate-pulse'}`} />
-        <span className="font-bold tracking-wider">{isOffline ? 'OFFLINE' : 'LIVE'}</span>
-        <span className="text-white/40">&bull;</span>
-        <span className="text-slate-300 tabular-nums tracking-wide">{liveTimestamp}</span>
+      <div className="absolute top-2 left-2 flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-950/80 backdrop-blur-xs border border-white/10 text-[10px] text-white shadow-xs pointer-events-none font-mono max-w-[65%] sm:max-w-none truncate">
+        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${isOffline ? 'bg-[#d95757]' : 'bg-[#299b72] animate-pulse'}`} />
+        <span className="font-bold tracking-wider shrink-0">{isOffline ? 'OFFLINE' : 'LIVE'}</span>
+        <span className="text-white/40 shrink-0">&bull;</span>
+        <span className="text-slate-300 tabular-nums tracking-wide truncate">{liveTimestamp}</span>
       </div>
 
       {/* 6. Technical Telemetry Tag (Top-Right) */}
@@ -232,7 +232,7 @@ export const CCTVVideoFeed = ({
 
       {/* 7. Bottom Floating Action Toolbar (Clean hover controls, never blocks center of feed) */}
       {!isOffline && (
-        <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950/85 backdrop-blur-md border border-white/15 opacity-0 group-hover:opacity-100 transition-all duration-200 z-10 shadow-lg">
+        <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-slate-950/85 backdrop-blur-md border border-white/15 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-200 z-10 shadow-lg">
           {/* Feed Zone / Status Info */}
           <div className="flex items-center gap-2 text-[11px] text-slate-300 font-mono truncate max-w-[45%]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#299b72] animate-pulse shrink-0" />

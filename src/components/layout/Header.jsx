@@ -67,10 +67,10 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
           <Menu className="w-5 h-5" />
         </button>
 
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs min-w-0">
           <span className="text-[#8a9b9f] font-medium hidden sm:inline">{pageInfo.section}</span>
           <ChevronRight className="w-3.5 h-3.5 text-[#8a9b9f] hidden sm:inline" />
-          <span className="text-sm font-semibold text-[#263b40] tracking-tight">{pageInfo.title}</span>
+          <span className="text-sm font-semibold text-[#263b40] tracking-tight truncate max-w-[130px] xs:max-w-[180px] sm:max-w-none">{pageInfo.title}</span>
         </nav>
       </div>
 
@@ -132,7 +132,7 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
                 onClick={() => setShowNotifications(false)}
                 aria-hidden="true"
               />
-              <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl border border-[#dce5e7] bg-white shadow-lg z-50 p-3 animate-in fade-in duration-150">
+              <div className="fixed sm:absolute left-3 right-3 sm:left-auto sm:right-0 top-16 sm:top-full mt-1.5 sm:mt-2 sm:w-96 rounded-xl border border-[#dce5e7] bg-white shadow-xl z-50 p-3 animate-in fade-in duration-150">
               <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#dce5e7]">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-semibold text-[#263b40]">Alert Notifications</span>
