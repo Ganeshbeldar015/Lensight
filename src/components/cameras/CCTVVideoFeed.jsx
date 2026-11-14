@@ -138,19 +138,29 @@ export const CCTVVideoFeed = ({
             Last active: {camera?.lastSeen ? new Date(camera.lastSeen).toLocaleTimeString() : 'N/A'}
           </span>
         </div>
-      ) : hasStream && isPlaying ? (
-        /* 2. Active Video Feed */
-        <video
-          ref={videoRef}
-          src={camera.streamUrl}
-          autoPlay
-          muted
-          loop
-          playsInline
-          onLoadedData={() => setVideoLoaded(true)}
-          onError={() => setVideoError(true)}
-          className="w-full h-full object-cover transition-opacity duration-300"
-        />
+      ) : hasStream ? (
+        /* 2. Active / Paused Video Feed */
+        <div className="relative w-full h-full">
+          <video
+            ref={videoRef}
+            src={camera.streamUrl}
+            autoPlay
+            muted
+            loop
+            playsInline
+            onLoadedData={() => setVideoLoaded(true)}
+            onError={() => setVideoError(true)}
+            className="w-full h-full object-cover transition-opacity duration-300"
+          />
+          {!isPlaying && (
+            <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[1px] flex items-center justify-center pointer-events-none">
+              <div className="px-3 py-1.5 rounded-lg bg-slate-900/85 border border-white/20 text-white font-mono text-xs flex items-center gap-2 shadow-lg">
+                <Pause className="w-3.5 h-3.5 text-[#d69a38]" />
+                <span className="font-semibold tracking-wider">PAUSED</span>
+              </div>
+            </div>
+          )}
+        </div>
       ) : (
         /* 3. Professional CCTV-Style Placeholder */
         <div className="w-full h-full flex flex-col items-center justify-center p-4 text-center bg-slate-900 relative overflow-hidden">

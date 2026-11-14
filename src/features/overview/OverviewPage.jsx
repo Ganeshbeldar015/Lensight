@@ -31,7 +31,14 @@ export const OverviewPage = () => {
   const [recentEvents, setRecentEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [trendData, setTrendData] = useState([]);
-  const [playingCamera, setPlayingCamera] = useState(null);
+  const [playingState, setPlayingState] = useState({});
+
+  const togglePlay = (id) => {
+    setPlayingState((prev) => ({
+      ...prev,
+      [id]: prev[id] === undefined ? false : !prev[id]
+    }));
+  };
 
   useEffect(() => {
     async function loadData() {
@@ -248,8 +255,8 @@ export const OverviewPage = () => {
 
                   <CCTVVideoFeed
                     camera={camera}
-                    isPlaying={playingCamera === camera.id || playingCamera === null}
-                    onTogglePlay={() => setPlayingCamera(playingCamera === camera.id ? 'PAUSED' : camera.id)}
+                    isPlaying={playingState[camera.id] !== false}
+                    onTogglePlay={() => togglePlay(camera.id)}
                     onFocus={() => navigate('/live')}
                   />
                 </div>
