@@ -52,14 +52,14 @@ export const EventTypeBadge = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-medium rounded-full border font-mono tracking-tight transition-all select-none shadow-2xs ${config.bg} ${config.border} ${config.text} ${
+      className={`inline-flex items-center gap-1.5 font-medium rounded-full border font-mono tracking-tight transition-all select-none shadow-2xs whitespace-nowrap shrink-0 ${config.bg} ${config.border} ${config.text} ${
         isSm ? 'px-2.5 py-0.5 text-[11px]' : 'px-3 py-1 text-xs'
       } ${className}`}
     >
       {showIcon && (
         <Icon className={`shrink-0 ${isSm ? 'w-3 h-3' : 'w-3.5 h-3.5'}`} />
       )}
-      <span className="leading-none">{config.label}</span>
+      <span className="leading-none whitespace-nowrap">{config.label}</span>
     </span>
   );
 };

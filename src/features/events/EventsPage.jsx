@@ -359,7 +359,7 @@ export const EventsPage = () => {
                     onClick={() => setSelectedEvent(e)}
                     className="hover:bg-[#f0f6f6] transition-colors cursor-pointer group"
                   >
-                    <td className="py-3 px-4 font-mono font-semibold text-[#168a91]">{e.id}</td>
+                    <td className="py-3 px-4 font-mono font-semibold text-[#168a91] whitespace-nowrap">{e.id}</td>
                     <td className="py-3 px-4">
                       <EventTypeBadge type={e.type} size="sm" />
                     </td>

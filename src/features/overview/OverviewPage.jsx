@@ -357,9 +357,9 @@ export const OverviewPage = () => {
                   onClick={() => setSelectedEvent(event)}
                   className="py-3 px-2 rounded-lg hover:bg-[#f0f6f6] transition-colors cursor-pointer flex items-start justify-between gap-3 group"
                 >
-                  <div className="space-y-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[11px] font-mono text-[#61777c]">
+                  <div className="space-y-1.5 min-w-0 flex-1">
+                    <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+                      <span className="text-[11px] font-mono text-[#168a91] font-semibold shrink-0 whitespace-nowrap">
                         {event.id}
                       </span>
                       <EventTypeBadge type={event.type} size="sm" />
@@ -369,13 +369,13 @@ export const OverviewPage = () => {
                       {event.description}
                     </p>
                     <div className="flex items-center gap-2 text-[11px] text-[#61777c]">
-                      <span>{event.cameraName || event.cameraId}</span>
-                      <span>&bull;</span>
-                      <span>{(event.confidence * 100).toFixed(0)}% conf</span>
+                      <span className="truncate">{event.cameraName || event.cameraId}</span>
+                      <span className="text-[#8a9b9f]">&bull;</span>
+                      <span className="shrink-0 font-mono">{(event.confidence * 100).toFixed(0)}% conf</span>
                     </div>
                   </div>
 
-                  <span className="text-[11px] text-[#8a9b9f] shrink-0 pt-0.5">
+                  <span className="text-[11px] text-[#8a9b9f] shrink-0 pt-0.5 font-mono tabular-nums whitespace-nowrap">
                     {new Date(event.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>

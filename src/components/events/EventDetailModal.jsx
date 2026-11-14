@@ -8,6 +8,33 @@ import { useNavigate } from 'react-router-dom';
 export const EventDetailModal = ({ event, onClose }) => {
   const navigate = useNavigate();
 
+  const getSnapshot = (evt) => {
+    if (!evt) return '/snapshots/outside.jpg';
+    if (evt.thumbnailUrl && !evt.thumbnailUrl.startsWith('http')) {
+      return evt.thumbnailUrl;
+    }
+    const text = (evt.cameraName || evt.cameraId || evt.description || evt.type || '').toLowerCase();
+    if (text.includes('corridor') || text.includes('vault') || text.includes('server')) {
+      return '/snapshots/corridor.jpg';
+    }
+    if (text.includes('parking') || text.includes('dock') || text.includes('loading') || text.includes('yard')) {
+      return '/snapshots/parking.jpg';
+    }
+    if (text.includes('reception') || text.includes('lobby') || text.includes('office') || text.includes('safe')) {
+      return '/snapshots/reception.jpg';
+    }
+    if (text.includes('entrance') || text.includes('gate') || text.includes('turnstile')) {
+      return '/snapshots/entrance.jpg';
+    }
+    return '/snapshots/outside.jpg';
+  };
+
+  const [imgSrc, setImgSrc] = useState(getSnapshot(event));
+
+  useEffect(() => {
+    setImgSrc(getSnapshot(event));
+  }, [event]);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
@@ -28,8 +55,8 @@ export const EventDetailModal = ({ event, onClose }) => {
       >
         {/* Modal Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-[#dce5e7] bg-[#f0f6f6]">
-          <div className="flex items-center gap-2.5">
-            <span className="font-mono text-sm font-semibold text-[#168a91]">{event.id}</span>
+          <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap">
+            <span className="font-mono text-sm font-semibold text-[#168a91] shrink-0 whitespace-nowrap">{event.id}</span>
             <EventTypeBadge type={event.type} size="sm" />
             <SeverityBadge severity={event.severity} size="sm" />
           </div>
@@ -47,9 +74,10 @@ export const EventDetailModal = ({ event, onClose }) => {
           {/* Simulated Snapshot Frame with Bounding Box */}
           <div className="relative aspect-video rounded-xl overflow-hidden border border-[#dce5e7] bg-slate-950">
             <img
-              src={event.thumbnailUrl || 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80'}
+              src={imgSrc}
               alt={event.description}
-              className="w-full h-full object-cover opacity-90"
+              onError={() => setImgSrc('/snapshots/outside.jpg')}
+              className="w-full h-full object-cover opacity-90 transition-opacity duration-200"
             />
 
             {/* Bounding Box Overlay */}

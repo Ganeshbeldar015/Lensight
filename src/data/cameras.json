@@ -6,7 +6,7 @@
     "status": "online",
     "lastSeen": "2026-11-13T07:30:35.035Z",
     "streamUrl": "/demo-videos/entrance.mp4",
-    "thumbnail": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/outside.jpg",
     "zone": "Perimeter Entry",
     "fps": 30,
     "resolution": "1080p"
@@ -18,7 +18,7 @@
     "status": "online",
     "lastSeen": "2026-11-13T07:31:00.036Z",
     "streamUrl": "/demo-videos/reception.mp4",
-    "thumbnail": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/reception.jpg",
     "zone": "Lobby & Public",
     "fps": 30,
     "resolution": "1080p"
@@ -30,7 +30,7 @@
     "status": "online",
     "lastSeen": "2026-11-13T07:31:10.036Z",
     "streamUrl": "/demo-videos/corridor.mp4",
-    "thumbnail": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/corridor.jpg",
     "zone": "Restricted Tier 4",
     "fps": 60,
     "resolution": "4K"
@@ -42,7 +42,7 @@
     "status": "warning",
     "lastSeen": "2026-11-13T07:28:20.036Z",
     "streamUrl": "/demo-videos/outside.mp4",
-    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/outside.jpg",
     "zone": "Boundary Perimeter",
     "fps": 15,
     "resolution": "720p"
@@ -54,7 +54,7 @@
     "status": "online",
     "lastSeen": "2026-11-13T07:30:45.036Z",
     "streamUrl": "/demo-videos/parking.mp4",
-    "thumbnail": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/parking.jpg",
     "zone": "Logistics",
     "fps": 30,
     "resolution": "1080p"
@@ -66,7 +66,7 @@
     "status": "online",
     "lastSeen": "2026-11-13T07:30:30.036Z",
     "streamUrl": "/demo-videos/corridor.mp4",
-    "thumbnail": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/corridor.jpg",
     "zone": "Executive Wing",
     "fps": 30,
     "resolution": "1080p"
@@ -78,7 +78,7 @@
     "status": "online",
     "lastSeen": "2026-11-13T07:31:05.036Z",
     "streamUrl": "/demo-videos/parking.mp4",
-    "thumbnail": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/parking.jpg",
     "zone": "Parking Structure",
     "fps": 30,
     "resolution": "1080p"
@@ -90,7 +90,7 @@
     "status": "offline",
     "lastSeen": "2026-11-13T06:49:20.036Z",
     "streamUrl": "",
-    "thumbnail": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/outside.jpg",
     "zone": "Facility Infrastructure",
     "fps": 0,
     "resolution": "1080p"
@@ -102,7 +102,7 @@
     "status": "online",
     "lastSeen": "2026-11-13T07:30:55.036Z",
     "streamUrl": "/demo-videos/entrance.mp4",
-    "thumbnail": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/entrance.jpg",
     "zone": "Access Control",
     "fps": 30,
     "resolution": "1080p"
@@ -114,7 +114,7 @@
     "status": "warning",
     "lastSeen": "2026-11-13T07:29:20.036Z",
     "streamUrl": "/demo-videos/outside.mp4",
-    "thumbnail": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/outside.jpg",
     "zone": "Hazardous Materials",
     "fps": 20,
     "resolution": "1080p"
@@ -126,7 +126,7 @@
     "status": "offline",
     "lastSeen": "2026-11-13T04:31:20.036Z",
     "streamUrl": "",
-    "thumbnail": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/outside.jpg",
     "zone": "Boundary Perimeter",
     "fps": 0,
     "resolution": "720p"
@@ -138,7 +138,7 @@
     "status": "online",
     "lastSeen": "2026-11-13T07:31:02.036Z",
     "streamUrl": "/demo-videos/reception.mp4",
-    "thumbnail": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
+    "thumbnail": "/snapshots/outside.jpg",
     "zone": "Common Areas",
     "fps": 30,
     "resolution": "1080p"

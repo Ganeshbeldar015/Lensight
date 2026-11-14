@@ -8,7 +8,7 @@
     "confidence": 0.73,
     "severity": "medium",
     "description": "Security patrol vehicle logged at perimeter gate",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 62,
@@ -28,7 +28,7 @@
     "confidence": 0.92,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 333,
@@ -48,7 +48,7 @@
     "confidence": 0.77,
     "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 348,
@@ -68,7 +68,7 @@
     "confidence": 0.9,
     "severity": "high",
     "description": "Individual lingering near executive suites",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 322,
@@ -88,7 +88,7 @@
     "confidence": 0.72,
     "severity": "critical",
     "description": "Unauthorized breach inside Secure Server Room Tier 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 285,
@@ -108,7 +108,7 @@
     "confidence": 0.95,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 165,
@@ -128,7 +128,7 @@
     "confidence": 0.74,
     "severity": "critical",
     "description": "Intrusion detected in Executive Safe storage alcove",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 369,
@@ -148,7 +148,7 @@
     "confidence": 0.76,
     "severity": "high",
     "description": "Perimeter fence crossing detected on North boundary",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 131,
@@ -168,7 +168,7 @@
     "confidence": 0.92,
     "severity": "low",
     "description": "Security patrol vehicle logged at perimeter gate",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 266,
@@ -188,7 +188,7 @@
     "confidence": 0.71,
     "severity": "high",
     "description": "Breach into Chemical Storage Zone without badge authorization",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 401,
@@ -208,7 +208,7 @@
     "confidence": 0.93,
     "severity": "high",
     "description": "Unregistered passenger vehicle entered underground garage P1",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 302,
@@ -228,7 +228,7 @@
     "confidence": 0.96,
     "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 262,
@@ -248,7 +248,7 @@
     "confidence": 0.89,
     "severity": "high",
     "description": "Access violation detected at Rooftop HVAC service hatch",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 358,
@@ -268,7 +268,7 @@
     "confidence": 0.75,
     "severity": "critical",
     "description": "Intrusion detected in Executive Safe storage alcove",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 154,
@@ -288,7 +288,7 @@
     "confidence": 0.7,
     "severity": "medium",
     "description": "Sudden rapid movement detected along perimeter fence line",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 204,
@@ -308,7 +308,7 @@
     "confidence": 0.76,
     "severity": "critical",
     "description": "Perimeter fence crossing detected on North boundary",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 178,
@@ -328,7 +328,7 @@
     "confidence": 0.65,
     "severity": "high",
     "description": "Intrusion detected in Executive Safe storage alcove",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 314,
@@ -348,7 +348,7 @@
     "confidence": 0.86,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 157,
@@ -368,7 +368,7 @@
     "confidence": 0.84,
     "severity": "low",
     "description": "Lone worker detected in logistics warehouse",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/reception.jpg",
     "boundingBoxes": [
       {
         "x": 81,
@@ -388,7 +388,7 @@
     "confidence": 0.7,
     "severity": "low",
     "description": "Night-time light shift and motion in central cafeteria",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 279,
@@ -408,7 +408,7 @@
     "confidence": 0.67,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 369,
@@ -428,7 +428,7 @@
     "confidence": 0.87,
     "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 290,
@@ -448,7 +448,7 @@
     "confidence": 0.82,
     "severity": "high",
     "description": "Perimeter fence crossing detected on North boundary",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 53,
@@ -468,7 +468,7 @@
     "confidence": 0.75,
     "severity": "critical",
     "description": "Vibration anomaly registered at server rack row C",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 297,
@@ -488,7 +488,7 @@
     "confidence": 0.95,
     "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/reception.jpg",
     "boundingBoxes": [
       {
         "x": 365,
@@ -508,7 +508,7 @@
     "confidence": 0.7,
     "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 160,
@@ -528,7 +528,7 @@
     "confidence": 0.93,
     "severity": "low",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 438,
@@ -548,7 +548,7 @@
     "confidence": 0.92,
     "severity": "critical",
     "description": "Intrusion detected in Executive Safe storage alcove",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 169,
@@ -568,7 +568,7 @@
     "confidence": 0.81,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 209,
@@ -588,7 +588,7 @@
     "confidence": 0.79,
     "severity": "low",
     "description": "Motion sensor triggered near HVAC mechanical air intake",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 178,
@@ -608,7 +608,7 @@
     "confidence": 0.91,
     "severity": "medium",
     "description": "Individual lingering near executive suites",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 52,
@@ -628,7 +628,7 @@
     "confidence": 0.96,
     "severity": "low",
     "description": "Lone worker detected in logistics warehouse",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 80,
@@ -648,7 +648,7 @@
     "confidence": 0.77,
     "severity": "low",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 285,
@@ -668,7 +668,7 @@
     "confidence": 0.77,
     "severity": "low",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 323,
@@ -688,7 +688,7 @@
     "confidence": 0.66,
     "severity": "high",
     "description": "Access violation detected at Rooftop HVAC service hatch",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 309,
@@ -708,7 +708,7 @@
     "confidence": 0.69,
     "severity": "critical",
     "description": "Heavy cargo transport parked in red clearance zone",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 52,
@@ -728,7 +728,7 @@
     "confidence": 0.93,
     "severity": "medium",
     "description": "Individual lingering near executive suites",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 119,
@@ -748,7 +748,7 @@
     "confidence": 0.78,
     "severity": "high",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 227,
@@ -768,7 +768,7 @@
     "confidence": 0.78,
     "severity": "high",
     "description": "Unregistered passenger vehicle entered underground garage P1",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 86,
@@ -788,7 +788,7 @@
     "confidence": 0.86,
     "severity": "medium",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 386,
@@ -808,7 +808,7 @@
     "confidence": 0.79,
     "severity": "low",
     "description": "Object displacement detected in hazardous materials bay",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 443,
@@ -828,7 +828,7 @@
     "confidence": 0.9,
     "severity": "high",
     "description": "Electric delivery forklift active in loading area",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 163,
@@ -848,7 +848,7 @@
     "confidence": 0.78,
     "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/reception.jpg",
     "boundingBoxes": [
       {
         "x": 180,
@@ -868,7 +868,7 @@
     "confidence": 0.88,
     "severity": "critical",
     "description": "Unauthorized breach inside Secure Server Room Tier 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 228,
@@ -888,7 +888,7 @@
     "confidence": 0.7,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 236,
@@ -908,7 +908,7 @@
     "confidence": 0.74,
     "severity": "low",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 197,
@@ -928,7 +928,7 @@
     "confidence": 0.91,
     "severity": "critical",
     "description": "Intrusion detected in Executive Safe storage alcove",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 381,
@@ -948,7 +948,7 @@
     "confidence": 0.73,
     "severity": "critical",
     "description": "Vibration anomaly registered at server rack row C",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 235,
@@ -968,7 +968,7 @@
     "confidence": 0.98,
     "severity": "medium",
     "description": "Motion sensor triggered near HVAC mechanical air intake",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 425,
@@ -988,7 +988,7 @@
     "confidence": 0.85,
     "severity": "high",
     "description": "Perimeter fence crossing detected on North boundary",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 371,
@@ -1008,7 +1008,7 @@
     "confidence": 0.74,
     "severity": "critical",
     "description": "Individual lingering near executive suites",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 331,
@@ -1028,7 +1028,7 @@
     "confidence": 0.69,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 129,
@@ -1048,7 +1048,7 @@
     "confidence": 0.98,
     "severity": "critical",
     "description": "Perimeter fence crossing detected on North boundary",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 369,
@@ -1068,7 +1068,7 @@
     "confidence": 0.86,
     "severity": "high",
     "description": "Unauthorized breach inside Secure Server Room Tier 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 166,
@@ -1088,7 +1088,7 @@
     "confidence": 0.86,
     "severity": "medium",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 121,
@@ -1108,7 +1108,7 @@
     "confidence": 0.66,
     "severity": "low",
     "description": "Object displacement detected in hazardous materials bay",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 114,
@@ -1128,7 +1128,7 @@
     "confidence": 0.72,
     "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 196,
@@ -1148,7 +1148,7 @@
     "confidence": 0.94,
     "severity": "high",
     "description": "Heavy cargo transport parked in red clearance zone",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 89,
@@ -1168,7 +1168,7 @@
     "confidence": 0.77,
     "severity": "high",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 151,
@@ -1188,7 +1188,7 @@
     "confidence": 0.87,
     "severity": "low",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 240,
@@ -1208,7 +1208,7 @@
     "confidence": 0.71,
     "severity": "high",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 296,
@@ -1228,7 +1228,7 @@
     "confidence": 0.95,
     "severity": "low",
     "description": "Security patrol vehicle logged at perimeter gate",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 137,
@@ -1248,7 +1248,7 @@
     "confidence": 0.94,
     "severity": "critical",
     "description": "Intrusion detected in Executive Safe storage alcove",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 236,
@@ -1268,7 +1268,7 @@
     "confidence": 0.77,
     "severity": "critical",
     "description": "Unauthorized breach inside Secure Server Room Tier 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 367,
@@ -1288,7 +1288,7 @@
     "confidence": 0.66,
     "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 367,
@@ -1308,7 +1308,7 @@
     "confidence": 0.83,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 206,
@@ -1328,7 +1328,7 @@
     "confidence": 0.77,
     "severity": "medium",
     "description": "Electric delivery forklift active in loading area",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 96,
@@ -1348,7 +1348,7 @@
     "confidence": 0.8,
     "severity": "low",
     "description": "Lone worker detected in logistics warehouse",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 322,
@@ -1368,7 +1368,7 @@
     "confidence": 0.98,
     "severity": "low",
     "description": "Electric delivery forklift active in loading area",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 438,
@@ -1388,7 +1388,7 @@
     "confidence": 0.9,
     "severity": "low",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 231,
@@ -1408,7 +1408,7 @@
     "confidence": 0.78,
     "severity": "critical",
     "description": "Individual lingering near executive suites",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 372,
@@ -1428,7 +1428,7 @@
     "confidence": 0.77,
     "severity": "low",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 336,
@@ -1448,7 +1448,7 @@
     "confidence": 0.91,
     "severity": "high",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 133,
@@ -1468,7 +1468,7 @@
     "confidence": 0.73,
     "severity": "critical",
     "description": "Unregistered passenger vehicle entered underground garage P1",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 129,
@@ -1488,7 +1488,7 @@
     "confidence": 0.94,
     "severity": "medium",
     "description": "Night-time light shift and motion in central cafeteria",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/reception.jpg",
     "boundingBoxes": [
       {
         "x": 297,
@@ -1508,7 +1508,7 @@
     "confidence": 0.73,
     "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 75,
@@ -1528,7 +1528,7 @@
     "confidence": 0.77,
     "severity": "low",
     "description": "Night-time light shift and motion in central cafeteria",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 127,
@@ -1548,7 +1548,7 @@
     "confidence": 0.87,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 131,
@@ -1568,7 +1568,7 @@
     "confidence": 0.83,
     "severity": "high",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 347,
@@ -1588,7 +1588,7 @@
     "confidence": 0.78,
     "severity": "critical",
     "description": "Unregistered passenger vehicle entered underground garage P1",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 151,
@@ -1608,7 +1608,7 @@
     "confidence": 0.9,
     "severity": "low",
     "description": "Object displacement detected in hazardous materials bay",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 330,
@@ -1628,7 +1628,7 @@
     "confidence": 0.91,
     "severity": "low",
     "description": "Electric delivery forklift active in loading area",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 94,
@@ -1648,7 +1648,7 @@
     "confidence": 0.8,
     "severity": "medium",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 259,
@@ -1668,7 +1668,7 @@
     "confidence": 0.69,
     "severity": "critical",
     "description": "Sudden rapid movement detected along perimeter fence line",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 157,
@@ -1688,7 +1688,7 @@
     "confidence": 0.85,
     "severity": "critical",
     "description": "Perimeter fence crossing detected on North boundary",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 271,
@@ -1708,7 +1708,7 @@
     "confidence": 0.9,
     "severity": "critical",
     "description": "Individual lingering near executive suites",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 322,
@@ -1728,7 +1728,7 @@
     "confidence": 0.95,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 283,
@@ -1748,7 +1748,7 @@
     "confidence": 0.86,
     "severity": "medium",
     "description": "Object displacement detected in hazardous materials bay",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 267,
@@ -1768,7 +1768,7 @@
     "confidence": 0.94,
     "severity": "high",
     "description": "Heavy cargo transport parked in red clearance zone",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 372,
@@ -1788,7 +1788,7 @@
     "confidence": 0.97,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 83,
@@ -1808,7 +1808,7 @@
     "confidence": 0.67,
     "severity": "low",
     "description": "Electric delivery forklift active in loading area",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 251,
@@ -1828,7 +1828,7 @@
     "confidence": 0.75,
     "severity": "critical",
     "description": "Sudden rapid movement detected along perimeter fence line",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 72,
@@ -1848,7 +1848,7 @@
     "confidence": 0.82,
     "severity": "low",
     "description": "Object displacement detected in hazardous materials bay",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 67,
@@ -1868,7 +1868,7 @@
     "confidence": 0.84,
     "severity": "high",
     "description": "Unregistered passenger vehicle entered underground garage P1",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 404,
@@ -1888,7 +1888,7 @@
     "confidence": 0.85,
     "severity": "critical",
     "description": "Sudden rapid movement detected along perimeter fence line",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 307,
@@ -1908,7 +1908,7 @@
     "confidence": 0.68,
     "severity": "low",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 214,
@@ -1928,7 +1928,7 @@
     "confidence": 0.83,
     "severity": "high",
     "description": "Heavy cargo transport parked in red clearance zone",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 358,
@@ -1948,7 +1948,7 @@
     "confidence": 0.73,
     "severity": "medium",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 444,
@@ -1968,7 +1968,7 @@
     "confidence": 0.86,
     "severity": "low",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 222,
@@ -1988,7 +1988,7 @@
     "confidence": 0.89,
     "severity": "low",
     "description": "Lone worker detected in logistics warehouse",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 95,
@@ -2008,7 +2008,7 @@
     "confidence": 0.82,
     "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 349,
@@ -2028,7 +2028,7 @@
     "confidence": 0.65,
     "severity": "low",
     "description": "Lone worker detected in logistics warehouse",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 317,
@@ -2048,7 +2048,7 @@
     "confidence": 0.85,
     "severity": "low",
     "description": "Lone worker detected in logistics warehouse",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 333,
@@ -2068,7 +2068,7 @@
     "confidence": 0.79,
     "severity": "low",
     "description": "Object displacement detected in hazardous materials bay",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 424,
@@ -2088,7 +2088,7 @@
     "confidence": 0.86,
     "severity": "low",
     "description": "Lone worker detected in logistics warehouse",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 50,
@@ -2108,7 +2108,7 @@
     "confidence": 0.76,
     "severity": "critical",
     "description": "Intrusion detected in Executive Safe storage alcove",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 128,
@@ -2128,7 +2128,7 @@
     "confidence": 0.94,
     "severity": "high",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 227,
@@ -2148,7 +2148,7 @@
     "confidence": 0.97,
     "severity": "low",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 308,
@@ -2168,7 +2168,7 @@
     "confidence": 0.8,
     "severity": "medium",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 363,
@@ -2188,7 +2188,7 @@
     "confidence": 0.86,
     "severity": "low",
     "description": "Motion sensor triggered near HVAC mechanical air intake",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 342,
@@ -2208,7 +2208,7 @@
     "confidence": 0.78,
     "severity": "low",
     "description": "Object displacement detected in hazardous materials bay",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 279,
@@ -2228,7 +2228,7 @@
     "confidence": 0.73,
     "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 295,
@@ -2248,7 +2248,7 @@
     "confidence": 0.7,
     "severity": "low",
     "description": "Object displacement detected in hazardous materials bay",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 55,
@@ -2268,7 +2268,7 @@
     "confidence": 0.93,
     "severity": "low",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 149,
@@ -2288,7 +2288,7 @@
     "confidence": 0.69,
     "severity": "critical",
     "description": "Vibration anomaly registered at server rack row C",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 326,
@@ -2308,7 +2308,7 @@
     "confidence": 0.91,
     "severity": "low",
     "description": "Night-time light shift and motion in central cafeteria",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 243,
@@ -2328,7 +2328,7 @@
     "confidence": 0.76,
     "severity": "low",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 410,
@@ -2348,7 +2348,7 @@
     "confidence": 0.75,
     "severity": "high",
     "description": "Vibration anomaly registered at server rack row C",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 147,
@@ -2368,7 +2368,7 @@
     "confidence": 0.93,
     "severity": "low",
     "description": "Lone worker detected in logistics warehouse",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/reception.jpg",
     "boundingBoxes": [
       {
         "x": 377,
@@ -2388,7 +2388,7 @@
     "confidence": 0.78,
     "severity": "critical",
     "description": "Unregistered passenger vehicle entered underground garage P1",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 446,
@@ -2408,7 +2408,7 @@
     "confidence": 0.68,
     "severity": "critical",
     "description": "Breach into Chemical Storage Zone without badge authorization",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 263,
@@ -2428,7 +2428,7 @@
     "confidence": 0.94,
     "severity": "low",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 300,
@@ -2448,7 +2448,7 @@
     "confidence": 0.82,
     "severity": "medium",
     "description": "Object displacement detected in hazardous materials bay",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 203,
@@ -2468,7 +2468,7 @@
     "confidence": 0.75,
     "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 95,
@@ -2488,7 +2488,7 @@
     "confidence": 0.77,
     "severity": "low",
     "description": "Motion sensor triggered near HVAC mechanical air intake",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/reception.jpg",
     "boundingBoxes": [
       {
         "x": 246,
@@ -2508,7 +2508,7 @@
     "confidence": 0.69,
     "severity": "medium",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 390,
@@ -2528,7 +2528,7 @@
     "confidence": 0.65,
     "severity": "low",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 412,
@@ -2548,7 +2548,7 @@
     "confidence": 0.88,
     "severity": "low",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 385,
@@ -2568,7 +2568,7 @@
     "confidence": 0.65,
     "severity": "low",
     "description": "Security patrol vehicle logged at perimeter gate",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 316,
@@ -2588,7 +2588,7 @@
     "confidence": 0.7,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 149,
@@ -2608,7 +2608,7 @@
     "confidence": 0.96,
     "severity": "low",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 155,
@@ -2628,7 +2628,7 @@
     "confidence": 0.89,
     "severity": "critical",
     "description": "Intrusion detected in Executive Safe storage alcove",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 228,
@@ -2648,7 +2648,7 @@
     "confidence": 0.66,
     "severity": "medium",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 77,
@@ -2668,7 +2668,7 @@
     "confidence": 0.88,
     "severity": "medium",
     "description": "Object displacement detected in hazardous materials bay",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 203,
@@ -2688,7 +2688,7 @@
     "confidence": 0.72,
     "severity": "low",
     "description": "Motion sensor triggered near HVAC mechanical air intake",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 415,
@@ -2708,7 +2708,7 @@
     "confidence": 0.82,
     "severity": "medium",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 265,
@@ -2728,7 +2728,7 @@
     "confidence": 0.68,
     "severity": "medium",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 120,
@@ -2748,7 +2748,7 @@
     "confidence": 0.91,
     "severity": "low",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 288,
@@ -2768,7 +2768,7 @@
     "confidence": 0.66,
     "severity": "high",
     "description": "Vibration anomaly registered at server rack row C",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 211,
@@ -2788,7 +2788,7 @@
     "confidence": 0.94,
     "severity": "critical",
     "description": "Access violation detected at Rooftop HVAC service hatch",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 107,
@@ -2808,7 +2808,7 @@
     "confidence": 0.84,
     "severity": "high",
     "description": "Sudden rapid movement detected along perimeter fence line",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 247,
@@ -2828,7 +2828,7 @@
     "confidence": 0.7,
     "severity": "medium",
     "description": "Individual lingering near executive suites",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 284,
@@ -2848,7 +2848,7 @@
     "confidence": 0.88,
     "severity": "low",
     "description": "Electric delivery forklift active in loading area",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 147,
@@ -2868,7 +2868,7 @@
     "confidence": 0.87,
     "severity": "low",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 411,
@@ -2888,7 +2888,7 @@
     "confidence": 0.94,
     "severity": "low",
     "description": "Motion sensor triggered near HVAC mechanical air intake",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 232,
@@ -2908,7 +2908,7 @@
     "confidence": 0.87,
     "severity": "medium",
     "description": "Unregistered passenger vehicle entered underground garage P1",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 58,
@@ -2928,7 +2928,7 @@
     "confidence": 0.75,
     "severity": "low",
     "description": "Object displacement detected in hazardous materials bay",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/corridor.jpg",
     "boundingBoxes": [
       {
         "x": 320,
@@ -2948,7 +2948,7 @@
     "confidence": 0.88,
     "severity": "critical",
     "description": "Breach into Chemical Storage Zone without badge authorization",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 252,
@@ -2968,7 +2968,7 @@
     "confidence": 0.82,
     "severity": "high",
     "description": "Electric delivery forklift active in loading area",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 199,
@@ -2988,7 +2988,7 @@
     "confidence": 0.85,
     "severity": "low",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 221,
@@ -3008,7 +3008,7 @@
     "confidence": 0.88,
     "severity": "low",
     "description": "Night-time light shift and motion in central cafeteria",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 418,
@@ -3028,7 +3028,7 @@
     "confidence": 0.71,
     "severity": "high",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 191,
@@ -3048,7 +3048,7 @@
     "confidence": 0.86,
     "severity": "high",
     "description": "Individual lingering near executive suites",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 232,
@@ -3068,7 +3068,7 @@
     "confidence": 0.85,
     "severity": "low",
     "description": "Personnel badge scanned at secondary checkpoint",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 351,
@@ -3088,7 +3088,7 @@
     "confidence": 0.69,
     "severity": "critical",
     "description": "Unidentified individual detected traversing after hours",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/reception.jpg",
     "boundingBoxes": [
       {
         "x": 384,
@@ -3108,7 +3108,7 @@
     "confidence": 0.77,
     "severity": "medium",
     "description": "Unregistered passenger vehicle entered underground garage P1",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 244,
@@ -3128,7 +3128,7 @@
     "confidence": 0.93,
     "severity": "medium",
     "description": "Maintenance contractor detected in service corridor",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 277,
@@ -3148,7 +3148,7 @@
     "confidence": 0.83,
     "severity": "critical",
     "description": "Individual lingering near executive suites",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 98,
@@ -3168,7 +3168,7 @@
     "confidence": 0.67,
     "severity": "high",
     "description": "Heavy cargo transport parked in red clearance zone",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 134,
@@ -3188,7 +3188,7 @@
     "confidence": 0.85,
     "severity": "medium",
     "description": "Lone worker detected in logistics warehouse",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 360,
@@ -3208,7 +3208,7 @@
     "confidence": 0.7,
     "severity": "medium",
     "description": "Commercial delivery van entered logistics dock bay 4",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 53,
@@ -3228,7 +3228,7 @@
     "confidence": 0.86,
     "severity": "low",
     "description": "Night-time light shift and motion in central cafeteria",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 332,
@@ -3248,7 +3248,7 @@
     "confidence": 0.93,
     "severity": "medium",
     "description": "Lone worker detected in logistics warehouse",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/entrance.jpg",
     "boundingBoxes": [
       {
         "x": 204,
@@ -3268,7 +3268,7 @@
     "confidence": 0.93,
     "severity": "high",
     "description": "Vibration anomaly registered at server rack row C",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/parking.jpg",
     "boundingBoxes": [
       {
         "x": 168,
@@ -3288,7 +3288,7 @@
     "confidence": 0.77,
     "severity": "high",
     "description": "Individual lingering near executive suites",
-    "thumbnailUrl": "https://images.unsplash.com/photo-1508873696983-2df5293cb32b?auto=format&fit=crop&w=600&q=80",
+    "thumbnailUrl": "/snapshots/outside.jpg",
     "boundingBoxes": [
       {
         "x": 257,
