@@ -4,6 +4,7 @@ import { ToastProvider } from '@/context/ToastContext';
 import { CameraProvider } from '@/context/CameraContext';
 import { AlertProvider } from '@/context/AlertContext';
 import { Layout } from '@/components/layout/Layout';
+import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
 import { Shield } from 'lucide-react';
 
 const OverviewPage = lazy(() => import('@/features/overview/OverviewPage').then(m => ({ default: m.OverviewPage })));
@@ -32,20 +33,22 @@ export const App = () => {
       <ToastProvider>
         <CameraProvider>
           <AlertProvider>
-            <Suspense fallback={<RouteLoadingFallback />}>
-              <Routes>
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<OverviewPage />} />
-                  <Route path="live" element={<LiveMonitoringPage />} />
-                  <Route path="events" element={<EventsPage />} />
-                  <Route path="analytics" element={<AnalyticsPage />} />
-                  <Route path="cameras" element={<CamerasPage />} />
-                  <Route path="alerts" element={<AlertsPage />} />
-                  <Route path="settings" element={<SettingsPage />} />
-                  <Route path="*" element={<NotFoundPage />} />
-                </Route>
-              </Routes>
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<RouteLoadingFallback />}>
+                <Routes>
+                  <Route path="/" element={<Layout />}>
+                    <Route index element={<OverviewPage />} />
+                    <Route path="live" element={<LiveMonitoringPage />} />
+                    <Route path="events" element={<EventsPage />} />
+                    <Route path="analytics" element={<AnalyticsPage />} />
+                    <Route path="cameras" element={<CamerasPage />} />
+                    <Route path="alerts" element={<AlertsPage />} />
+                    <Route path="settings" element={<SettingsPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
+                  </Route>
+                </Routes>
+              </Suspense>
+            </ErrorBoundary>
           </AlertProvider>
         </CameraProvider>
       </ToastProvider>

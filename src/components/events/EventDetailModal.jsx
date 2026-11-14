@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SeverityBadge } from '@/components/ui/SeverityBadge';
 import { EventTypeBadge } from '@/components/ui/EventTypeBadge';
 import { Button } from '@/components/ui/Button';
