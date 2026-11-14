@@ -5,7 +5,7 @@ export const StatusBadge = ({
   status,
   showIcon = true,
   className = '',
-  size = 'md'
+  size = 'sm'
 }) => {
   const isSm = size === 'sm';
 
@@ -16,7 +16,6 @@ export const StatusBadge = ({
       bg: 'bg-[#eaf7f2]',
       border: 'border-[#299b72]/25',
       text: 'text-[#299b72]',
-      dot: 'bg-[#299b72]',
       icon: Wifi,
       label: 'ONLINE'
     },
@@ -24,7 +23,6 @@ export const StatusBadge = ({
       bg: 'bg-[#fdf6ea]',
       border: 'border-[#d69a38]/30',
       text: 'text-[#d69a38]',
-      dot: 'bg-[#d69a38]',
       icon: AlertTriangle,
       label: 'WARNING'
     },
@@ -32,7 +30,6 @@ export const StatusBadge = ({
       bg: 'bg-[#fdf0f0]',
       border: 'border-[#d95757]/25',
       text: 'text-[#d95757]',
-      dot: 'bg-[#d95757]',
       icon: WifiOff,
       label: 'OFFLINE'
     }
@@ -40,7 +37,6 @@ export const StatusBadge = ({
     bg: 'bg-[#f0f6f6]',
     border: 'border-[#dce5e7]',
     text: 'text-[#61777c]',
-    dot: 'bg-[#8a9b9f]',
     icon: Wifi,
     label: (status || 'UNKNOWN').toUpperCase()
   };
@@ -49,13 +45,12 @@ export const StatusBadge = ({
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 font-mono uppercase tracking-wider rounded-md border font-medium ${config.bg} ${config.border} ${config.text} ${
-        isSm ? 'px-2 py-0.5 text-[11px]' : 'px-2.5 py-1 text-xs'
+      className={`inline-flex items-center rounded-full border font-semibold select-none shadow-2xs ${config.bg} ${config.border} ${config.text} ${
+        isSm ? 'px-3 py-1 text-[11px] gap-1.5' : 'px-3.5 py-1.5 text-xs gap-2'
       } ${className}`}
     >
-      <span className={`w-1.5 h-1.5 rounded-full ${config.dot} ${status === 'online' ? 'animate-pulse' : ''}`} />
-      {showIcon && <IconComp className={isSm ? 'w-3 h-3' : 'w-3.5 h-3.5'} />}
-      <span>{config.label}</span>
+      {showIcon && <IconComp className={isSm ? 'w-3.5 h-3.5 shrink-0' : 'w-4 h-4 shrink-0'} />}
+      <span className="tracking-wider uppercase">{config.label}</span>
     </span>
   );
 };
