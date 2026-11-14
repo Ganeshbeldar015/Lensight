@@ -222,7 +222,7 @@ export const CCTVVideoFeed = ({
         <span className={`w-1.5 h-1.5 rounded-full ${isOffline ? 'bg-[#d95757]' : 'bg-[#299b72] animate-pulse'}`} />
         <span className="font-bold tracking-wider">{isOffline ? 'OFFLINE' : 'LIVE'}</span>
         <span className="text-white/40">&bull;</span>
-        <span className="text-slate-300">{liveTimestamp}</span>
+        <span className="text-slate-300 tabular-nums tracking-wide">{liveTimestamp}</span>
       </div>
 
       {/* 6. Technical Telemetry Tag (Top-Right) */}

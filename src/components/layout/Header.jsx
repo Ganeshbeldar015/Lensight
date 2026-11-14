@@ -16,15 +16,15 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { alerts, unreadCount, acknowledgeAlert } = useAlerts();
-  const [currentTime, setCurrentTime] = useState('');
+  const [dateStr, setDateStr] = useState('');
+  const [timeStr, setTimeStr] = useState('');
   const [showNotifications, setShowNotifications] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      const timeStr = now.toLocaleTimeString('en-US', { hour12: false });
-      const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      setCurrentTime(`${dateStr} • ${timeStr}`);
+      setTimeStr(now.toLocaleTimeString('en-US', { hour12: false }));
+      setDateStr(now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
     };
 
     updateTime();
@@ -92,10 +92,12 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
 
       {/* Right side: Live Clock, Notifications & Profile */}
       <div className="flex items-center gap-2 sm:gap-3">
-        {/* Live Clock */}
-        <div className="hidden xl:inline-flex items-center gap-2 h-9 px-3.5 rounded-lg bg-[#f0f6f6] border border-[#dce5e7] text-xs text-[#61777c] font-medium select-none">
-          <Clock className="w-3.5 h-3.5 text-[#168a91]" />
-          <span>{currentTime}</span>
+        {/* Live Clock Capsule */}
+        <div className="hidden sm:inline-flex items-center gap-2 h-8 px-3 rounded-full bg-[#f0f6f6] border border-[#dce5e7] text-xs select-none shadow-2xs">
+          <Clock className="w-3.5 h-3.5 text-[#168a91] shrink-0" />
+          <span className="text-[#61777c] font-medium">{dateStr}</span>
+          <span className="text-[#8a9b9f]">&bull;</span>
+          <span className="font-mono font-semibold text-[#263b40] tabular-nums tracking-wide">{timeStr}</span>
         </div>
 
         {/* Mobile Search Button */}

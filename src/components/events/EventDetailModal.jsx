@@ -122,7 +122,7 @@ export const EventDetailModal = ({ event, onClose }) => {
                   <Clock className="w-3.5 h-3.5 text-[#168a91]" />
                   Timestamp
                 </div>
-                <div className="text-xs text-[#263b40] font-semibold leading-tight">
+                <div className="text-xs text-[#263b40] font-semibold leading-tight font-mono tabular-nums">
                   {new Date(event.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                 </div>
                 <div className="text-[11px] text-[#61777c] mt-0.5">

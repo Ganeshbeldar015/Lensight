@@ -371,7 +371,7 @@ export const EventsPage = () => {
                       <div className="text-[#263b40] font-medium">
                         {new Date(e.timestamp).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}
                       </div>
-                      <div className="text-[11px] text-[#61777c]">
+                      <div className="text-[11px] text-[#61777c] font-mono tabular-nums">
                         {new Date(e.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                       </div>
                     </td>
