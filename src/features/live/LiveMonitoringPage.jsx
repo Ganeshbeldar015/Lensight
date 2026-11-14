@@ -14,7 +14,7 @@ import {
 export const LiveMonitoringPage = () => {
   const { cameras, updateStatus } = useCameras();
 
-  const [layout, setLayout] = useState('auto');
+  const [layout, setLayout] = useState('3x3');
   const [statusFilter, setStatusFilter] = useState('all');
   const [selectedZone, setSelectedZone] = useState('all');
   const [playingState, setPlayingState] = useState({});
@@ -69,10 +69,8 @@ export const LiveMonitoringPage = () => {
 
   const gridClass = {
     '1x1': 'grid-cols-1 max-w-4xl mx-auto',
-    '2x2': 'grid-cols-1 sm:grid-cols-2',
-    '3x3': 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
-    'auto': 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-  }[layout] || 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+    '3x3': 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+  }[layout] || 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
 
   return (
     <div className="space-y-6">
@@ -89,7 +87,7 @@ export const LiveMonitoringPage = () => {
             <Grid className="w-3.5 h-3.5 text-[#168a91]" />
             Grid:
           </span>
-          {['auto', '3x3', '2x2', '1x1'].map((l) => (
+          {['3x3', '1x1'].map((l) => (
             <button
               key={l}
               onClick={() => setLayout(l)}

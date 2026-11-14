@@ -11,7 +11,8 @@ import {
   Clock,
   ChevronRight,
   ChevronDown,
-  Lock
+  Lock,
+  User
 } from 'lucide-react';
 
 export const Header = ({ onToggleSidebar, onOpenSearch }) => {
@@ -208,8 +209,8 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
             aria-label="User Profile and Session Menu"
           >
             <div className="relative">
-              <div className="w-8 h-8 rounded-full bg-[#ddf1f1] border border-[#168a91]/30 flex items-center justify-center text-xs font-bold text-[#168a91] group-hover:border-[#168a91] transition-colors shadow-2xs">
-                OP
+              <div className="w-8 h-8 rounded-full bg-[#ddf1f1] border border-[#168a91]/30 flex items-center justify-center text-[#168a91] group-hover:border-[#168a91] transition-colors shadow-2xs">
+                <User className="w-4 h-4 text-[#168a91]" />
               </div>
               <span 
                 className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full ring-2 ring-white ${
@@ -237,8 +238,8 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
                 {/* User Identity Header */}
                 <div className="flex items-center gap-3 pb-3 border-b border-[#dce5e7]">
                   <div className="relative">
-                    <div className="w-10 h-10 rounded-full bg-[#ddf1f1] border border-[#168a91]/30 flex items-center justify-center text-sm font-bold text-[#168a91]">
-                      OP
+                    <div className="w-10 h-10 rounded-full bg-[#ddf1f1] border border-[#168a91]/30 flex items-center justify-center text-[#168a91]">
+                      <User className="w-5 h-5 text-[#168a91]" />
                     </div>
                     <span className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full ring-2 ring-white ${
                       dutyStatus === 'active' ? 'bg-[#299b72]' : 'bg-[#d69a38]'
