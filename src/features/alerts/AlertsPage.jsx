@@ -56,12 +56,12 @@ export const AlertsPage = () => {
       />
 
       {/* Tabs and Severity Filter Strip */}
-      <div className="p-3.5 rounded-xl border border-[#dce5e7] bg-white flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 shadow-xs">
+      <div className="p-3.5 rounded-xl border border-[#dce5e7] bg-white flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 shadow-xs">
         {/* Triage Tabs */}
-        <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7]">
+        <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7] overflow-x-auto no-scrollbar max-w-full">
           <button
             onClick={() => setActiveTab('unread')}
-            className={`px-3 py-1.5 rounded-md text-xs uppercase font-medium transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-3 py-1.5 rounded-md text-xs uppercase font-medium transition-all flex items-center gap-2 cursor-pointer shrink-0 ${
               activeTab === 'unread'
                 ? 'bg-[#168a91] text-white font-semibold shadow-xs'
                 : 'text-[#61777c] hover:text-[#263b40]'
@@ -77,7 +77,7 @@ export const AlertsPage = () => {
 
           <button
             onClick={() => setActiveTab('all')}
-            className={`px-3 py-1.5 rounded-md text-xs uppercase font-medium transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-3 py-1.5 rounded-md text-xs uppercase font-medium transition-all flex items-center gap-2 cursor-pointer shrink-0 ${
               activeTab === 'all'
                 ? 'bg-[#168a91] text-white font-semibold shadow-xs'
                 : 'text-[#61777c] hover:text-[#263b40]'
@@ -93,7 +93,7 @@ export const AlertsPage = () => {
 
           <button
             onClick={() => setActiveTab('acknowledged')}
-            className={`px-3 py-1.5 rounded-md text-xs uppercase font-medium transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-3 py-1.5 rounded-md text-xs uppercase font-medium transition-all flex items-center gap-2 cursor-pointer shrink-0 ${
               activeTab === 'acknowledged'
                 ? 'bg-[#168a91] text-white font-semibold shadow-xs'
                 : 'text-[#61777c] hover:text-[#263b40]'
@@ -109,14 +109,14 @@ export const AlertsPage = () => {
         </div>
 
         {/* Severity Filter */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between sm:justify-end gap-2">
           <span className="text-xs uppercase text-[#61777c] font-semibold hidden sm:inline-block">Severity:</span>
-          <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7]">
+          <div className="flex items-center gap-1 bg-[#f0f6f6] p-1 rounded-lg border border-[#dce5e7] overflow-x-auto no-scrollbar">
             {['all', 'critical', 'high', 'medium'].map((sev) => (
               <button
                 key={sev}
                 onClick={() => setSeverityFilter(sev)}
-                className={`px-2.5 py-1 rounded text-xs uppercase font-medium transition-colors cursor-pointer ${
+                className={`px-2.5 py-1 rounded text-xs uppercase font-medium transition-colors cursor-pointer shrink-0 ${
                   severityFilter === sev
                     ? 'bg-[#263b40] text-white font-semibold shadow-xs'
                     : 'text-[#61777c] hover:text-[#263b40]'
@@ -199,11 +199,12 @@ export const AlertsPage = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 self-end sm:self-center shrink-0">
+                <div className="flex items-center gap-3 w-full sm:w-auto justify-end sm:justify-start shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#dce5e7]/60">
                   {isUnread ? (
                     <Button
                       variant={isCritical ? 'destructive' : 'primary'}
                       size="sm"
+                      className="w-full sm:w-auto"
                       onClick={(e) => {
                         e.stopPropagation();
                         acknowledgeAlert(alert.id);
@@ -213,7 +214,7 @@ export const AlertsPage = () => {
                       Acknowledge
                     </Button>
                   ) : (
-                    <span className="flex items-center gap-1.5 text-xs text-[#299b72] bg-[#eaf7f2] px-2.5 py-1 rounded-md border border-[#299b72]/20 font-medium">
+                    <span className="flex items-center justify-center gap-1.5 text-xs text-[#299b72] bg-[#eaf7f2] px-2.5 py-1 rounded-md border border-[#299b72]/20 font-medium w-full sm:w-auto">
                       <Check className="w-3.5 h-3.5" /> Acknowledged
                     </span>
                   )}
@@ -227,7 +228,7 @@ export const AlertsPage = () => {
       {/* Alert Detail Modal */}
       {selectedAlert && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#263b40]/30 backdrop-blur-xs animate-in fade-in">
-          <div className="w-full max-w-xl rounded-2xl border border-[#dce5e7] bg-white shadow-2xl p-6 space-y-5">
+          <div className="w-full max-w-xl rounded-2xl border border-[#dce5e7] bg-white shadow-2xl p-4 sm:p-6 space-y-4 sm:space-y-5 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-3 border-b border-[#dce5e7]">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-sm font-semibold text-[#168a91]">{selectedAlert.id}</span>
@@ -248,7 +249,7 @@ export const AlertsPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div className="p-3 rounded-lg bg-[#f0f6f6] border border-[#dce5e7]">
                 <span className="text-[#61777c] block text-[10px] uppercase">Camera</span>
                 <span className="text-[#263b40] font-semibold">{selectedAlert.cameraName || selectedAlert.cameraId}</span>

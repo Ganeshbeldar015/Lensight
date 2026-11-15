@@ -53,9 +53,9 @@ export const OmniSearchModal = ({ isOpen, onClose }) => {
   const hasResults = matchedCameras.length > 0 || matchedAlerts.length > 0 || matchedEvents.length > 0;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-[#263b40]/30 backdrop-blur-xs animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-10 sm:pt-20 px-3 sm:px-4 bg-[#263b40]/30 backdrop-blur-xs animate-in fade-in duration-150">
       <div 
-        className="w-full max-w-2xl rounded-2xl border border-[#dce5e7] bg-white shadow-xl overflow-hidden flex flex-col"
+        className="w-full max-w-2xl rounded-2xl border border-[#dce5e7] bg-white shadow-xl overflow-hidden flex flex-col max-h-[88vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}

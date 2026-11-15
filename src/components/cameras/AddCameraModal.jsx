@@ -52,15 +52,15 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#263b40]/30 backdrop-blur-xs animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-[#263b40]/30 backdrop-blur-xs animate-in fade-in duration-150">
       <div 
-        className="w-full max-w-lg rounded-2xl border border-[#dce5e7] bg-white shadow-xl overflow-hidden flex flex-col"
+        className="w-full max-w-lg rounded-2xl border border-[#dce5e7] bg-white shadow-xl overflow-hidden flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#dce5e7]">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-[#dce5e7]">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#ddf1f1] text-[#168a91] border border-[#168a91]/20 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#ddf1f1] text-[#168a91] border border-[#168a91]/20 flex items-center justify-center shrink-0">
               <Plus className="w-4 h-4" />
             </div>
             <h3 className="text-base font-semibold text-[#263b40]">Register New Camera</h3>
@@ -75,7 +75,7 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* Modal Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 overflow-y-auto">
           <div>
             <label className="block text-xs uppercase font-medium text-[#61777c] mb-1">
               Camera Name <span className="text-[#d95757]">*</span>
@@ -135,7 +135,7 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
             <label className="block text-xs uppercase font-medium text-[#61777c] mb-1">
               Local Demo Video / Stream Source
             </label>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="text"
                 value={streamUrl}
@@ -145,7 +145,7 @@ export const AddCameraModal = ({ isOpen, onClose }) => {
               />
               <select
                 onChange={(e) => { if (e.target.value) setStreamUrl(e.target.value); }}
-                className="px-2.5 py-2 rounded-lg bg-[#f0f6f6] border border-[#dce5e7] text-xs text-[#263b40] cursor-pointer"
+                className="px-2.5 py-2 rounded-lg bg-[#f0f6f6] border border-[#dce5e7] text-xs text-[#263b40] cursor-pointer sm:w-auto w-full"
                 defaultValue=""
               >
                 <option value="" disabled>Presets</option>

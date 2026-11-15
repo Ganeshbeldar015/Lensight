@@ -55,7 +55,7 @@ export const SettingsPage = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Simulation Parameters */}
-        <Card className="p-6 bg-white border-[#dce5e7] shadow-xs space-y-5">
+        <Card className="p-4 sm:p-6 bg-white border-[#dce5e7] shadow-xs space-y-5">
           <div className="flex items-center gap-2.5 pb-3 border-b border-[#dce5e7]">
             <Sliders className="w-5 h-5 text-[#168a91]" />
             <div>
@@ -89,7 +89,7 @@ export const SettingsPage = () => {
             </div>
           </div>
 
-          <div className="pt-4 border-t border-[#dce5e7] flex items-center justify-between">
+          <div className="pt-4 border-t border-[#dce5e7] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <h4 className="text-xs font-semibold text-[#263b40]">Reset Seed Data</h4>
               <p className="text-[11px] text-[#61777c]">Restore default cameras, alerts, and events.</p>
@@ -106,7 +106,7 @@ export const SettingsPage = () => {
         </Card>
 
         {/* Database & Cloud Telemetry */}
-        <Card className="p-6 bg-white border-[#dce5e7] shadow-xs space-y-5">
+        <Card className="p-4 sm:p-6 bg-white border-[#dce5e7] shadow-xs space-y-5">
           <div className="flex items-center gap-2.5 pb-3 border-b border-[#dce5e7]">
             <Database className="w-5 h-5 text-[#168a91]" />
             <div>
