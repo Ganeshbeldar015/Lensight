@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAlerts } from '@/context/AlertContext';
+import { useToast } from '@/context/ToastContext';
 import { 
   Bell, 
   Search, 
   Menu, 
-  ExternalLink,
-  CheckCircle2,
-  Clock,
-  ChevronRight,
-  User
+  ExternalLink, 
+  CheckCircle2, 
+  Clock, 
+  ChevronRight, 
+  User,
+  Settings,
+  Shield,
+  Lock
 } from 'lucide-react';
 
 export const Header = ({ onToggleSidebar, onOpenSearch }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { alerts, unreadCount, acknowledgeAlert } = useAlerts();
+  const { showToast } = useToast();
   const [dateStr, setDateStr] = useState('');
   const [timeStr, setTimeStr] = useState('');
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [dutyStatus, setDutyStatus] = useState('active');
 
   useEffect(() => {
     const updateTime = () => {
@@ -112,7 +119,10 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
         {/* Notifications Dropdown */}
         <div className="relative">
           <button
-            onClick={() => setShowNotifications(!showNotifications)}
+            onClick={() => {
+              setShowNotifications(!showNotifications);
+              setShowProfileMenu(false);
+            }}
             className="relative flex items-center justify-center w-9 h-9 rounded-lg text-[#61777c] hover:text-[#263b40] hover:bg-[#f0f6f6] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#168a91] cursor-pointer"
             aria-label={`Notifications (${unreadCount} unread)`}
           >
@@ -194,16 +204,172 @@ export const Header = ({ onToggleSidebar, onOpenSearch }) => {
           )}
         </div>
 
-        {/* Profile Avatar */}
-        <div className="pl-3 border-l border-[#dce5e7]">
+        {/* Profile Avatar & Interactive Dropdown */}
+        <div className="relative pl-3 border-l border-[#dce5e7]">
           <button
-            onClick={() => navigate('/settings')}
-            className="w-8 h-8 rounded-full bg-[#ddf1f1] border border-[#168a91]/30 hover:border-[#168a91] flex items-center justify-center text-[#168a91] hover:bg-[#168a91] hover:text-white transition-all cursor-pointer shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#168a91]"
-            title="Operator 01 (SecOps Lead) - Settings"
-            aria-label="User Profile"
+            onClick={() => {
+              setShowProfileMenu((prev) => !prev);
+              setShowNotifications(false);
+            }}
+            className="relative w-8 h-8 rounded-full bg-[#ddf1f1] border border-[#168a91]/30 hover:border-[#168a91] flex items-center justify-center text-[#168a91] hover:bg-[#168a91] hover:text-white transition-all cursor-pointer shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#168a91]"
+            title="Operator 01 (SecOps Lead) - Profile & Session"
+            aria-label="User Profile and Session Menu"
+            aria-expanded={showProfileMenu}
           >
             <User className="w-4 h-4" />
+            <span
+              className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-white ${
+                dutyStatus === 'active' ? 'bg-[#299b72]' : 'bg-[#d69a38]'
+              }`}
+              title={`Status: ${dutyStatus === 'active' ? 'Active Surveillance' : 'Standby / Break'}`}
+            />
           </button>
+
+          {/* Profile Dropdown Menu */}
+          {showProfileMenu && (
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setShowProfileMenu(false)}
+                aria-hidden="true"
+              />
+              <div className="fixed sm:absolute left-3 right-3 sm:left-auto sm:right-0 top-16 sm:top-full mt-1.5 sm:mt-2 sm:w-80 rounded-xl border border-[#dce5e7] bg-white shadow-xl z-50 p-3.5 animate-in fade-in duration-150 text-left">
+                {/* User Identity Header */}
+                <div className="flex items-center gap-3 pb-3 border-b border-[#dce5e7]">
+                  <div className="relative shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-[#ddf1f1] border border-[#168a91]/30 flex items-center justify-center text-[#168a91]">
+                      <User className="w-5 h-5" />
+                    </div>
+                    <span
+                      className={`absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full ring-2 ring-white ${
+                        dutyStatus === 'active' ? 'bg-[#299b72]' : 'bg-[#d69a38]'
+                      }`}
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-1">
+                      <p className="text-sm font-semibold text-[#263b40] truncate">Operator 01</p>
+                      <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-[#ddf1f1] text-[#168a91] border border-[#168a91]/20 shrink-0">
+                        SOC TIER 3
+                      </span>
+                    </div>
+                    <p className="text-xs text-[#61777c] font-medium truncate">SecOps Surveillance Lead</p>
+                    <p className="text-[11px] font-mono text-[#8a9b9f] truncate">op01@lensight.internal</p>
+                  </div>
+                </div>
+
+                {/* Duty Status Selector */}
+                <div className="py-2.5 border-b border-[#dce5e7]">
+                  <label className="text-[10px] font-semibold uppercase tracking-wider text-[#8a9b9f] block mb-1.5">
+                    Surveillance Duty Status
+                  </label>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setDutyStatus('active');
+                        showToast({
+                          type: 'success',
+                          title: 'Status: Active Surveillance',
+                          message: 'Operator status set to Active. Real-time incident telemetry enabled.'
+                        });
+                      }}
+                      className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                        dutyStatus === 'active'
+                          ? 'bg-[#ddf1f1] text-[#168a91] font-semibold border border-[#168a91]/40 shadow-xs'
+                          : 'bg-[#f0f6f6] text-[#61777c] hover:bg-[#e7f3f3] border border-transparent'
+                      }`}
+                    >
+                      <span className="w-2 h-2 rounded-full bg-[#299b72] shrink-0" />
+                      <span>Active</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setDutyStatus('standby');
+                        showToast({
+                          type: 'info',
+                          title: 'Status: Standby',
+                          message: 'Operator status set to Standby / Break mode.'
+                        });
+                      }}
+                      className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                        dutyStatus === 'standby'
+                          ? 'bg-[#fdf6ea] text-[#d69a38] font-semibold border border-[#d69a38]/40 shadow-xs'
+                          : 'bg-[#f0f6f6] text-[#61777c] hover:bg-[#e7f3f3] border border-transparent'
+                      }`}
+                    >
+                      <span className="w-2 h-2 rounded-full bg-[#d69a38] shrink-0" />
+                      <span>Standby</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Workstation & Clearance Meta */}
+                <div className="py-2.5 border-b border-[#dce5e7] grid grid-cols-2 gap-2 text-[11px]">
+                  <div className="p-2 rounded-lg bg-[#f0f6f6] border border-[#dce5e7]">
+                    <span className="text-[#8a9b9f] block text-[10px]">Workstation</span>
+                    <span className="font-semibold text-[#263b40]">Console Alpha #4</span>
+                  </div>
+                  <div className="p-2 rounded-lg bg-[#f0f6f6] border border-[#dce5e7]">
+                    <span className="text-[#8a9b9f] block text-[10px]">Access Level</span>
+                    <span className="font-semibold text-[#168a91]">L4 Critical Ops</span>
+                  </div>
+                </div>
+
+                {/* Quick Navigation Items */}
+                <div className="py-2 space-y-0.5 border-b border-[#dce5e7]">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowProfileMenu(false);
+                      navigate('/settings');
+                    }}
+                    className="w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs text-[#263b40] hover:bg-[#f0f6f6] transition-colors cursor-pointer group"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Settings className="w-3.5 h-3.5 text-[#8a9b9f] group-hover:text-[#168a91] transition-colors" />
+                      <span>System Settings & Preferences</span>
+                    </span>
+                    <span className="text-[10px] text-[#8a9b9f] font-mono">/settings</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowProfileMenu(false);
+                      navigate('/events');
+                    }}
+                    className="w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs text-[#263b40] hover:bg-[#f0f6f6] transition-colors cursor-pointer group"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Shield className="w-3.5 h-3.5 text-[#8a9b9f] group-hover:text-[#168a91] transition-colors" />
+                      <span>Detection Audit Logs</span>
+                    </span>
+                    <span className="text-[10px] text-[#8a9b9f] font-mono">/events</span>
+                  </button>
+                </div>
+
+                {/* Lock Console / Sign Out */}
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowProfileMenu(false);
+                      showToast({
+                        type: 'warning',
+                        title: 'Console Locked',
+                        message: 'Terminal session suspended for Operator 01. Surveillance continues in background.'
+                      });
+                    }}
+                    className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold text-[#d95757] hover:bg-[#fdf0f0] border border-transparent hover:border-[#d95757]/20 transition-all cursor-pointer"
+                  >
+                    <Lock className="w-3.5 h-3.5" />
+                    <span>Lock Surveillance Console</span>
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </header>

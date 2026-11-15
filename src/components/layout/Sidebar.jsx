@@ -121,41 +121,28 @@ export const Sidebar = ({ isOpen, onClose }) => {
             })}
           </div>
 
-          {/* Separated Settings & System Status Section */}
-          <div className="pt-4 border-t border-[#dce5e7] space-y-3">
-            <div className="space-y-1">
-              <NavLink
-                to="/settings"
-                onClick={() => onClose()}
-                className={({ isActive }) =>
-                  `flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm transition-colors group ${
-                    isActive
-                      ? 'bg-[#ddf1f1] text-[#168a91] font-semibold'
-                      : 'text-[#61777c] hover:text-[#263b40] hover:bg-[#f0f6f6] font-medium'
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <div className="flex items-center gap-3">
-                    <Settings className={`w-4 h-4 transition-colors ${
-                      isActive ? 'text-[#168a91]' : 'text-[#8a9b9f] group-hover:text-[#61777c]'
-                    }`} />
-                    <span>Settings</span>
-                  </div>
-                )}
-              </NavLink>
-            </div>
-
-            {/* Health Status Indicator */}
-            <div className="p-3 rounded-lg bg-[#f0f6f6] border border-[#dce5e7]">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-[#61777c] font-medium">System Status</span>
-                <span className="flex items-center gap-1.5 font-semibold text-[#299b72]">
-                  <span className="w-2 h-2 rounded-full bg-[#299b72] animate-pulse" />
-                  Operational
-                </span>
-              </div>
-            </div>
+          {/* Separated Settings Section */}
+          <div className="pt-4 border-t border-[#dce5e7]">
+            <NavLink
+              to="/settings"
+              onClick={() => onClose()}
+              className={({ isActive }) =>
+                `flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm transition-colors group ${
+                  isActive
+                    ? 'bg-[#ddf1f1] text-[#168a91] font-semibold'
+                    : 'text-[#61777c] hover:text-[#263b40] hover:bg-[#f0f6f6] font-medium'
+                }`
+              }
+            >
+              {({ isActive }) => (
+                <div className="flex items-center gap-3">
+                  <Settings className={`w-4 h-4 transition-colors ${
+                    isActive ? 'text-[#168a91]' : 'text-[#8a9b9f] group-hover:text-[#61777c]'
+                  }`} />
+                  <span>Settings</span>
+                </div>
+              )}
+            </NavLink>
           </div>
         </div>
       </aside>
