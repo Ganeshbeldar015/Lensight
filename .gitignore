@@ -39,5 +39,6 @@ md/
 **/*.md
 !README.md
 
-# Archives
+# Archives & Documents
 *.zip
+*.pdf

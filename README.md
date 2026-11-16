@@ -325,7 +325,7 @@ lensight/
 ## 📄 Submission & Deliverables
 
 - **GitHub Repository:** [https://github.com/Ganeshbeldar015/Lensight](https://github.com/Ganeshbeldar015/Lensight)
-- **Executive PDF Dossier:** [Lensight_Project_Overview_and_Team_Contributions.pdf](./Lensight_Project_Overview_and_Team_Contributions.pdf) (Complete technical requirements, architecture, and team contribution breakdown)
+- **Executive PDF Dossier:** `Lensight_Project_Overview_and_Team_Contributions.pdf` (Attached with submission email — contains complete technical requirements, architecture, and team contribution breakdown)
 - **Project Archive:** Clean project zip archive containing source code and dependencies ready for immediate offline evaluation.
 
 ---
