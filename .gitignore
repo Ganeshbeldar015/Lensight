@@ -37,3 +37,7 @@ md/
 [Mm][Dd]/
 *.md
 **/*.md
+!README.md
+
+# Archives
+*.zip
